@@ -1,84 +1,350 @@
 ---
-const links = [
-  { label: "Services", href: "/#services" },
-  { label: "Process", href: "/#process" },
-  { label: "Why Us", href: "/#why" },
-  { label: "Work", href: "/#work" },
-  { label: "Contact", href: "/#contact" },
-  { label: "About", href: "/about" },
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/#services" },
+  { name: "Process", href: "/#process" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/#contact" },
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-black/5 bg-paper/80 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-    <a href="/" class="flex items-center gap-3">
-      <img src="/logo.png" alt="Resync Technology" class="h-10 w-10 rounded-xl object-contain" />
-      <div class="leading-tight">
-        <div class="text-base font-semibold text-ink">Resync Technology</div>
-        <div class="text-xs text-ink/60">Engineering-led delivery</div>
-      </div>
+<nav class="w-full fixed top-0 left-0 z-50 bg-white/80 backdrop-blur-xl border-b border-black/5">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <img src="/logo.png" alt="Resync Technology" class="h-8 w-auto" />
+      <span class="font-semibold text-lg tracking-tight text-ink">Resync Technology</span>
     </a>
 
-    <!-- Desktop nav -->
-    <nav class="hidden items-center gap-6 md:flex">
-      {links.map((l) => (
-        <a href={l.href} class="text-sm font-medium text-ink/70 hover:text-ink">
-          {l.label}
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map((l) => (
+        <a
+          href={l.href}
+          class="text-sm font-medium text-ink/80 hover:text-ink transition-colors"
+        >
+          {l.name}
         </a>
       ))}
       <a
         href="/#contact"
-        class="rounded-full bg-resync-600 px-4 py-2 text-sm font-semibold text-white hover:bg-resync-700"
+        class="px-4 py-2 rounded-xl2 bg-resync-600 text-white font-semibold shadow-soft hover:bg-resync-700 transition"
       >
         Start a Project
       </a>
-    </nav>
+    </div>
 
     <!-- Mobile button -->
-    <button
-      class="inline-flex items-center justify-center rounded-xl border border-black/10 bg-white/70 px-3 py-2 text-sm font-semibold text-ink md:hidden"
-      aria-controls="mobile-menu"
-      aria-expanded="false"
-      data-menu-button
-    >
-      Menu
-    </button>
-  </div>
+<button
+  class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-black/10 bg-white/70 text-ink md:hidden"
+  aria-controls="mobile-menu"
+  aria-expanded="false"
+  aria-label="Open navigation"
+  title="Menu"
+  data-menu-button
+>
+  <span class="sr-only">Open navigation</span>
+  <span class="hamburger" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden border-t border-black/5 bg-paper md:hidden" data-mobile-menu>
-    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4">
-      {links.map((l) => (
-        <a href={l.href} class="rounded-xl px-3 py-2 text-base font-medium text-ink/80 hover:bg-black/5">
-          {l.label}
+<!-- Mobile menu -->
+<div
+  id="mobile-menu"
+  class="hidden md:hidden"
+  data-mobile-menu
+>
+  <!-- Backdrop -->
+  <button
+    type="button"
+    class="mobile-backdrop"
+    aria-label="Close navigation"
+    data-menu-backdrop
+  ></button>
+
+  <!-- Panel -->
+  <div class="mobile-panel" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <div class="mobile-panel-inner">
+      <div class="mobile-head">
+        <a href="/" class="mobile-brand" data-mobile-link>
+          <img src="/logo.png" alt="Resync Technology" class="mobile-brand-logo" />
+          <span class="mobile-brand-name">Resync Technology</span>
         </a>
-      ))}
+
+        <button
+          type="button"
+          class="mobile-close"
+          aria-label="Close navigation"
+          data-menu-close
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="mobile-links">
+        {navLinks.map((l) => (
+          <a
+            href={l.href}
+            class="mobile-link"
+            data-mobile-link
+          >
+            {l.name}
+          </a>
+        ))}
+      </div>
+
       <a
         href="/#contact"
-        class="mt-2 rounded-xl bg-resync-600 px-4 py-3 text-center text-base font-semibold text-white hover:bg-resync-700"
+        class="mobile-cta"
+        data-mobile-link
       >
         Start a Project
       </a>
     </div>
   </div>
-</header>
+</div>
 
 <script>
   const btn = document.querySelector("[data-menu-button]");
   const menu = document.querySelector("[data-mobile-menu]");
+  const backdrop = document.querySelector("[data-menu-backdrop]");
+  const closeBtn = document.querySelector("[data-menu-close]");
+
   if (btn && menu) {
-    btn.addEventListener("click", () => {
-      const isOpen = !menu.classList.contains("hidden");
-      menu.classList.toggle("hidden");
-      btn.setAttribute("aria-expanded", String(!isOpen));
+    const panel = menu.querySelector(".mobile-panel");
+
+    let isOpen = false;
+    let removeCloseOnScroll = null;
+
+    const attachCloseOnScroll = () => {
+      // Close the menu if the user attempts to scroll (wheel / trackpad / touch)
+      const onScrollIntent = () => {
+        if (!isOpen) return;
+        setOpen(false);
+      };
+
+      // Use window-level listeners so the first scroll gesture closes the menu.
+      window.addEventListener("wheel", onScrollIntent, { passive: true });
+      window.addEventListener("touchmove", onScrollIntent, { passive: true });
+
+      removeCloseOnScroll = () => {
+        window.removeEventListener("wheel", onScrollIntent);
+        window.removeEventListener("touchmove", onScrollIntent);
+        removeCloseOnScroll = null;
+      };
+    };
+
+    const setOpen = (open) => {
+      isOpen = open;
+      btn.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+
+      if (open) {
+        menu.classList.remove("hidden");
+        document.documentElement.classList.add("nav-open");
+        // animate in on next frame
+        requestAnimationFrame(() => panel?.classList.add("is-open"));
+
+        // enable close-on-scroll behavior
+        attachCloseOnScroll();
+      } else {
+        panel?.classList.remove("is-open");
+        document.documentElement.classList.remove("nav-open");
+        // wait for animation then hide
+        setTimeout(() => menu.classList.add("hidden"), 180);
+
+        // cleanup listeners
+        if (removeCloseOnScroll) removeCloseOnScroll();
+      }
+    };
+
+    const toggle = () => {
+      const hidden = menu.classList.contains("hidden");
+      setOpen(hidden);
+    };
+
+    const close = () => setOpen(false);
+
+    btn.addEventListener("click", toggle);
+    backdrop?.addEventListener("click", close);
+    closeBtn?.addEventListener("click", close);
+
+    menu.querySelectorAll("[data-mobile-link]").forEach((a) => {
+      a.addEventListener("click", close);
     });
 
-    // Close menu after tap
-    menu.querySelectorAll("a").forEach((a) => {
-      a.addEventListener("click", () => {
-        menu.classList.add("hidden");
-        btn.setAttribute("aria-expanded", "false");
-      });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
     });
   }
 </script>
+
+<style>
+  /* Prevent background scroll when menu is open */
+  :global(html.nav-open),
+  :global(html.nav-open body) {
+    overflow: hidden;
+  }
+
+  /* Hamburger icon */
+  .hamburger {
+    position: relative;
+    width: 20px;
+    height: 14px;
+    display: inline-block;
+  }
+  .hamburger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform 180ms ease, top 180ms ease, opacity 180ms ease;
+  }
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 6px; }
+  .hamburger span:nth-child(3) { top: 12px; }
+
+  /* Turn into X when open */
+  button.is-open .hamburger span:nth-child(1) { top: 6px; transform: rotate(45deg); }
+  button.is-open .hamburger span:nth-child(2) { opacity: 0; }
+  button.is-open .hamburger span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+
+  /* Mobile menu layout */
+  .mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.28);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 50;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: rgba(250, 250, 250, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(2, 6, 23, 0.06);
+    z-index: 60;
+
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .mobile-panel.is-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .mobile-panel-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  .mobile-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 2px 10px;
+  }
+
+  .mobile-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: rgba(11, 15, 25, 0.92);
+    min-width: 0;
+  }
+
+  .mobile-brand-logo {
+    height: 28px;
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  .mobile-brand-name {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-close {
+    height: 44px;
+    width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    border: 1px solid rgba(2, 6, 23, 0.10);
+    background: rgba(255, 255, 255, 0.80);
+    color: rgba(11, 15, 25, 0.92);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .mobile-close:hover {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 8px;
+    padding-bottom: 16px;
+  }
+
+  .mobile-link {
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgba(11, 15, 25, 0.92);
+  }
+
+  .mobile-link:hover {
+    color: rgba(11, 15, 25, 1);
+  }
+
+  .mobile-cta {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    border-radius: 999px;
+    background: #e11d48;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.10);
+  }
+
+  .mobile-cta:hover {
+    background: #be123c;
+  }
+
+  /* Hide the mobile menu UI on desktop (md and up) */
+  @media (min-width: 768px) {
+    .mobile-backdrop,
+    .mobile-panel {
+      display: none;
+    }
+  }
+</style>
