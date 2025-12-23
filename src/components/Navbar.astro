@@ -1,0 +1,36 @@
+---
+const links = [
+  { label: "Services", href: "#services" },
+  { label: "Process", href: "#process" },
+  { label: "Why Us", href: "#why" },
+  { label: "Work", href: "#work" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-black/5 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/logo.png" alt="Resync Technology" class="h-7 w-7 rounded-md" />
+      <div class="leading-tight">
+        <div class="text-sm font-semibold">Resync Technology</div>
+        <div class="text-xs text-black/60">Engineering-led delivery</div>
+      </div>
+    </a>
+
+    <nav class="hidden items-center gap-6 text-sm text-black/70 md:flex">
+      {links.map((l) => (
+        <a href={l.href} class="hover:text-ink">{l.label}</a>
+      ))}
+    </nav>
+
+    <a
+      href="#contact"
+      class="inline-flex items-center justify-center rounded-xl2 bg-resync-600 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:bg-resync-700"
+    >
+      Start a Project
+    </a>
+  </div>
+
+  <div class="h-px w-full bg-gradient-to-r from-transparent via-resync-200 to-transparent"></div>
+</header>

@@ -1,0 +1,29 @@
+---
+import '../styles/global.css'
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const {
+  title = "Resync Technology",
+  description = "Engineering-led software studio. Modernize systems, automate operations, and ship reliable products.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-b from-resync-50/60 via-paper to-paper text-ink antialiased">
+    <Navbar />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

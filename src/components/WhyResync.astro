@@ -1,0 +1,36 @@
+---
+const bullets = [
+  { title: "Engineering-led execution", desc: "You get clean implementation and practical tradeoffs." },
+  { title: "Automation-first", desc: "Less manual work and fewer operational errors." },
+  { title: "Clean architecture", desc: "Maintainable systems that are easier to change." },
+  { title: "Observability + security", desc: "Know what’s happening in production—without slowing delivery." },
+];
+---
+
+<section id="why" class="border-t border-black/5 bg-slateink py-16 text-white">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80">
+        <span class="h-2 w-2 rounded-full bg-resync-500"></span>
+        Why Resync
+      </div>
+
+      <h2 class="mt-5 text-2xl font-semibold tracking-tight sm:text-3xl">
+        Small team, high leverage.
+      </h2>
+
+      <p class="mt-3 text-sm text-white/70">
+        We build pragmatic, maintainable systems with clear delivery milestones and no unnecessary process.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+      {bullets.map((b) => (
+        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6">
+          <div class="text-sm font-semibold">{b.title}</div>
+          <div class="mt-2 text-sm text-white/70">{b.desc}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

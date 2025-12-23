@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@layer base {
+  html { scroll-behavior: smooth; }
+}
+
+@theme {
+  --color-ink: #0b0f19;
+  --color-paper: #fafafa;
+  --color-slateink: #121826;
+
+  --color-resync-50: #fff1f2;
+  --color-resync-100: #ffe4e6;
+  --color-resync-200: #fecdd3;
+  --color-resync-300: #fda4af;
+  --color-resync-400: #fb7185;
+  --color-resync-500: #f43f5e;
+  --color-resync-600: #e11d48;
+  --color-resync-700: #be123c;
+  --color-resync-800: #9f1239;
+  --color-resync-900: #881337;
+
+  --radius-xl2: 1.25rem;
+  --shadow-soft: 0 10px 30px rgba(2, 6, 23, 0.08);
+}
