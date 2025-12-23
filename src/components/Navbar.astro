@@ -3,35 +3,82 @@ const links = [
   { label: "Services", href: "/#services" },
   { label: "Process", href: "/#process" },
   { label: "Why Us", href: "/#why" },
-  { label: "Work", href: "#work" },
-  {label: "About", href: "/about" },
+  { label: "Work", href: "/#work" },
   { label: "Contact", href: "/#contact" },
+  { label: "About", href: "/about" },
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-black/5 bg-white/80 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+<header class="sticky top-0 z-50 border-b border-black/5 bg-paper/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
     <a href="/" class="flex items-center gap-3">
-      <img src="/logo.png" alt="Resync Technology" class="h-7 w-7 rounded-md" />
+      <img src="/logo.png" alt="Resync Technology" class="h-10 w-10 rounded-xl object-contain" />
       <div class="leading-tight">
-        <div class="text-sm font-semibold">Resync Technology</div>
-        <div class="text-xs text-black/60">Engineering-led delivery</div>
+        <div class="text-base font-semibold text-ink">Resync Technology</div>
+        <div class="text-xs text-ink/60">Engineering-led delivery</div>
       </div>
     </a>
 
-    <nav class="hidden items-center gap-6 text-sm text-black/70 md:flex">
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-6 md:flex">
       {links.map((l) => (
-        <a href={l.href} class="hover:text-ink">{l.label}</a>
+        <a href={l.href} class="text-sm font-medium text-ink/70 hover:text-ink">
+          {l.label}
+        </a>
       ))}
+      <a
+        href="/#contact"
+        class="rounded-full bg-resync-600 px-4 py-2 text-sm font-semibold text-white hover:bg-resync-700"
+      >
+        Start a Project
+      </a>
     </nav>
 
-    <a
-      href="#contact"
-      class="inline-flex items-center justify-center rounded-xl2 bg-resync-600 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:bg-resync-700"
+    <!-- Mobile button -->
+    <button
+      class="inline-flex items-center justify-center rounded-xl border border-black/10 bg-white/70 px-3 py-2 text-sm font-semibold text-ink md:hidden"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      data-menu-button
     >
-      Start a Project
-    </a>
+      Menu
+    </button>
   </div>
 
-  <div class="h-px w-full bg-gradient-to-r from-transparent via-resync-200 to-transparent"></div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden border-t border-black/5 bg-paper md:hidden" data-mobile-menu>
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4">
+      {links.map((l) => (
+        <a href={l.href} class="rounded-xl px-3 py-2 text-base font-medium text-ink/80 hover:bg-black/5">
+          {l.label}
+        </a>
+      ))}
+      <a
+        href="/#contact"
+        class="mt-2 rounded-xl bg-resync-600 px-4 py-3 text-center text-base font-semibold text-white hover:bg-resync-700"
+      >
+        Start a Project
+      </a>
+    </div>
+  </div>
 </header>
+
+<script>
+  const btn = document.querySelector("[data-menu-button]");
+  const menu = document.querySelector("[data-mobile-menu]");
+  if (btn && menu) {
+    btn.addEventListener("click", () => {
+      const isOpen = !menu.classList.contains("hidden");
+      menu.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    // Close menu after tap
+    menu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>
