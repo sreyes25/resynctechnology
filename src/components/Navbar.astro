@@ -116,7 +116,7 @@ const navLinks = [
     const panel = menu.querySelector(".mobile-panel");
 
     let isOpen = false;
-    let removeCloseOnScroll = null;
+    let removeCloseOnScroll: (() => void) | null = null;
 
     const attachCloseOnScroll = () => {
       // Close the menu if the user attempts to scroll (wheel / trackpad / touch)
@@ -136,8 +136,8 @@ const navLinks = [
       };
     };
 
-    const setOpen = (open) => {
-      isOpen = open;
+    const setOpen = (open: boolean | undefined) => {
+      isOpen = open ?? false;
       btn.classList.toggle("is-open", open);
       btn.setAttribute("aria-expanded", open ? "true" : "false");
       btn.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
