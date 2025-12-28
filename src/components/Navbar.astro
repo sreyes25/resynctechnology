@@ -128,7 +128,8 @@ const serviceLinks = [
         const screenH = window.screen?.height ?? viewportH;
         const bar = Math.max(0, screenH - viewportH);
         // Default 64px; bump when the visible viewport is shorter than the screen (Chrome bottom bar)
-        const offset = Math.max(64, bar + 20);
+        // but clamp so it never creates an excessive gap in emulators/devtools.
+        const offset = Math.min(140, Math.max(64, bar + 20));
         docEl.style.setProperty("--rt-bottom-offset", `${offset}px`);
       };
       if (window.visualViewport) {
