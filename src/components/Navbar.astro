@@ -554,9 +554,9 @@ const serviceLinks = [
       position: fixed;
       left: 50%;
       transform: translateX(-50%);
-      bottom: 0;
+      bottom: calc(50px + env(safe-area-inset-bottom));
 
-      width: min(760px, calc(100% - 32px));
+      width: min(760px, calc(100% - 170px));
       padding: 14px 0 calc(18px + env(safe-area-inset-bottom));
       background: linear-gradient(180deg, rgba(9,9,12,0.94), rgba(5,5,8,0.98));
       border-top: 1px solid rgba(255,255,255,0.12);
