@@ -120,6 +120,20 @@ const serviceLinks = [
       const root = document.querySelector("[data-rt-root]");
       if (!root) return;
 
+      const docEl = document.documentElement;
+      // Reserve enough space to clear mobile browser UI (Chrome bottom bar, Safari safe area)
+      const updateBottomOffset = () => {
+        const vv = window.visualViewport;
+        if (!vv) return;
+        const chromeUI = Math.max(0, window.innerHeight - vv.height);
+        const offset = Math.max(50, chromeUI + 12); // default 50px, bump if Chrome UI eats space
+        docEl.style.setProperty("--rt-bottom-offset", `${offset}px`);
+      };
+      if (window.visualViewport) {
+        updateBottomOffset();
+        window.visualViewport.addEventListener("resize", updateBottomOffset);
+      }
+
       const openBtn = root.querySelector("[data-rt-open]");
       const overlay = root.querySelector("[data-rt-overlay]");
       if (!openBtn || !overlay) return;
@@ -173,6 +187,10 @@ const serviceLinks = [
   </script>
 
   <style>
+    :global(:root){
+      --rt-bottom-offset: 50px;
+    }
+
     /* ===== Desktop bar ===== */
     .rt-nav{
       position: fixed;
@@ -467,7 +485,7 @@ const serviceLinks = [
     }
 
     .rt-mobile-body{
-      padding: 14px 16px calc(140px + env(safe-area-inset-bottom));
+      padding: 14px 16px calc(140px + var(--rt-bottom-offset, 50px) + env(safe-area-inset-bottom));
       max-width: 760px;
       margin: 0 auto;
       width: 100%;
@@ -554,7 +572,7 @@ const serviceLinks = [
       position: fixed;
       left: 50%;
       transform: translateX(-50%);
-      bottom: calc(50px + env(safe-area-inset-bottom));
+      bottom: calc(var(--rt-bottom-offset, 50px) + env(safe-area-inset-bottom));
 
       width: min(760px, calc(100% - 170px));
       padding: 14px 0 calc(18px + env(safe-area-inset-bottom));
