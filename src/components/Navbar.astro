@@ -137,6 +137,11 @@ const serviceLinks = [
       // Use the VisualViewport height (when available) so mobile browser toolbars don't cover the bottom
       // of the menu content (notably Chrome iOS). We write a CSS var in px and size the overlay/panel to it.
       const docEl = document.documentElement;
+
+      // Chrome on iOS (CriOS) has known repaint/compositing bugs with backdrop-filter + fixed body.
+      // We add a class to apply safer CSS on that browser only.
+      const isCriOS = /CriOS/i.test(navigator.userAgent) && /iP(ad|hone|od)/i.test(navigator.userAgent);
+      if (isCriOS) docEl.classList.add("rt-crios");
       const setVvh = () => {
         const vv = window.visualViewport;
         if (!vv) {
@@ -149,7 +154,7 @@ const serviceLinks = [
       setVvh();
       if (window.visualViewport) {
         window.visualViewport.addEventListener("resize", onResize);
-        window.visualViewport.addEventListener("scroll", setVvh);
+        // window.visualViewport.addEventListener("scroll", setVvh);  // REMOVED for CriOS fix
       }
       window.addEventListener("resize", onResize);
 
@@ -214,7 +219,10 @@ const serviceLinks = [
       }
 
       // open
-      openBtn.addEventListener("click", () => setOpen(true));
+      openBtn.addEventListener("click", () => {
+        setVvh();
+        setOpen(true);
+      });
 
       // close buttons (X + backdrop)
       closeBtns.forEach((b) => b.addEventListener("click", closeMenu));
@@ -541,6 +549,14 @@ const serviceLinks = [
       touch-action: none;
     }
 
+    /* Chrome iOS repaint fix: avoid backdrop-filter on overlay layers */
+    :global(html.rt-crios) .rt-mobile,
+    :global(html.rt-crios) .rt-mobile-top,
+    :global(html.rt-crios) .rt-mobile-bottom{
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+    }
+
     /* ===== Mobile overlay ===== */
     .rt-mobile{
       position: fixed;
@@ -590,6 +606,10 @@ const serviceLinks = [
       display: flex;
       flex-direction: column;
       z-index: 1;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     .rt-mobile-top{
@@ -664,6 +684,10 @@ const serviceLinks = [
 
       display: flex;
       flex-direction: column;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     .rt-mobile-sub{
