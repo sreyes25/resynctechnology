@@ -163,6 +163,23 @@ const serviceLinks = [
       if (!openBtn || !overlay) return;
 
       const closeBtns = overlay.querySelectorAll("[data-rt-close]");
+      const mobileBody = overlay.querySelector(".rt-mobile-body");
+      const detailsEls = overlay.querySelectorAll("details");
+
+      // Force a repaint on CriOS when expanding/collapsing <details> or after scrolling.
+      // This addresses a known Chrome iOS compositing bug where content becomes visually blank but remains clickable.
+      const forceRepaint = () => {
+        if (!isCriOS) return;
+        overlay.classList.add("rt-repaint");
+        // Force reflow
+        void overlay.offsetHeight;
+        requestAnimationFrame(() => {
+          overlay.classList.remove("rt-repaint");
+        });
+      };
+
+      detailsEls.forEach((d) => d.addEventListener("toggle", forceRepaint));
+      if (mobileBody) mobileBody.addEventListener("scroll", () => requestAnimationFrame(forceRepaint), { passive: true });
       const linkBtns = overlay.querySelectorAll("[data-rt-link]");
 
       const lockClass = "rt-nav-open";
@@ -205,6 +222,8 @@ const serviceLinks = [
 
         if (isOpen) {
           overlay.classList.add("is-open");
+          // CriOS: ensure initial paint is correct
+          requestAnimationFrame(forceRepaint);
           lockScroll(true);
         } else {
           overlay.classList.remove("is-open");
@@ -555,6 +574,21 @@ const serviceLinks = [
     :global(html.rt-crios) .rt-mobile-bottom{
       -webkit-backdrop-filter: none !important;
       backdrop-filter: none !important;
+    }
+
+    /* CriOS repaint nudge: toggle this class briefly to force a composite repaint */
+    .rt-mobile.rt-repaint{
+      transform: translateY(0) translateZ(0);
+    }
+
+    /* CriOS: momentum scrolling + fixed body + blur can cause blank paints; use safer scrolling */
+    :global(html.rt-crios) .rt-mobile-body{
+      -webkit-overflow-scrolling: auto;
+    }
+
+    /* CriOS: sticky inside fixed overlays can trigger blank paints; use non-sticky header */
+    :global(html.rt-crios) .rt-mobile-top{
+      position: relative;
     }
 
     /* ===== Mobile overlay ===== */
