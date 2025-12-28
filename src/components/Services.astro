@@ -1,45 +1,123 @@
 ---
-const items = [
+const services = [
   {
-    title: "Custom Software Development",
-    desc: "End‑to‑end software solutions engineered for reliability, scalability, and long‑term maintainability."
+    title: "Software Engineering",
+    desc: "Build fast, maintainable software with clean architecture and practical tradeoffs—built to last.",
+    href: "/#contact",
+    icon: "code",
   },
   {
-    title: "Technical Consulting & Architecture",
-    desc: "System planning, audits, and strategic guidance to help teams modernize infrastructure and improve engineering workflow."
+    title: "Tech Consulting",
+    desc: "Clarify what to build, what to buy, and what to automate—so your stack stays aligned as AI shifts the landscape.",
+    href: "/#contact",
+    icon: "compass",
   },
   {
-    title: "Websites & Web Platforms",
-    desc: "Modern, performance‑focused websites and platforms built with clean UI, responsive design, and strong SEO foundations."
+    title: "Websites (SEO + Performance)",
+    desc: "High-converting websites that load fast, rank well, and are easy to maintain—built for NYC pace.",
+    href: "/#contact",
+    icon: "web",
   },
   {
-    title: "Workflow Automation & Internal Tools",
-    desc: "Automated processes and custom internal tools that eliminate repetitive work, reduce errors, and improve operational efficiency."
+    title: "Workflow Automations",
+    desc: "Automate repetitive ops: intake, scheduling, CRM, reporting, notifications, and internal tooling.",
+    href: "/#contact",
+    icon: "spark",
   },
   {
-    title: "iOS & Mobile App Development",
-    desc: "iOS‑first applications with clean architecture, scalable backends, and seamless integrations."
-  }
+    title: "App Development",
+    desc: "iOS-first and web apps built for real workflows—designed to ship, iterate, and scale.",
+    href: "/#contact",
+    icon: "mobile",
+  },
 ];
+
+const iconClass =
+  "mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl2 border border-white/10 bg-white/5 text-white/80";
 ---
 
-<section id="services" class="border-t border-black/5 bg-resync-50/40 py-16">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6">
-    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Services</h2>
-    <p class="mt-3 max-w-2xl text-base text-ink/70">
-      Focused offerings built for speed, reliability, and long-term maintainability.
-    </p>
+<section id="services" class="relative overflow-hidden bg-ink text-white">
+  <!-- subtle background depth -->
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black/30 via-black/20 to-black/50"></div>
+  <div class="absolute -top-48 left-[-140px] -z-10 h-[520px] w-[520px] rounded-full bg-resync-600/15 blur-3xl"></div>
+  <div class="absolute -bottom-56 right-[-160px] -z-10 h-[520px] w-[520px] rounded-full bg-white/10 blur-3xl"></div>
 
-    <div class="mt-12 grid gap-6 md:grid-cols-2">
-      {items.map((i) => (
-        <div class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:shadow-md hover:-translate-y-1">
-          <div class="flex items-start gap-2">
-            <span class="mt-1 inline-block h-2 w-2 rounded-full bg-resync-600"></span>
-            <div class="text-base font-semibold">{i.title}</div>
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Our services
+      </h2>
+      <p class="mt-3 text-base leading-relaxed text-white/70 sm:text-lg">
+        Practical engineering for NYC businesses: ship quickly, automate ops, and keep systems ready for what’s next.
+      </p>
+    </div>
+
+    <!-- Invertase-style list -->
+    <div class="mt-10 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+      {services.map((s) => (
+        <div class="p-6 sm:p-8">
+          <div class="flex gap-4">
+            <div class={iconClass} aria-hidden="true">
+              {s.icon === "code" && (
+                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" stroke="currentColor" stroke-width="2">
+                  <path d="M10 16L6 12l4-4M14 8l4 4-4 4" />
+                </svg>
+              )}
+              {s.icon === "compass" && (
+                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" />
+                  <path d="M14.5 9.5 10 14l-1 4 4-1 4.5-4.5-3-3Z" />
+                </svg>
+              )}
+              {s.icon === "web" && (
+                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" stroke="currentColor" stroke-width="2">
+                  <path d="M4 6h16M4 10h16M4 18h16M6 14h6" />
+                </svg>
+              )}
+              {s.icon === "spark" && (
+                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l1.2 4.6L18 8l-4.8 1.4L12 14l-1.2-4.6L6 8l4.8-1.4L12 2Z" />
+                  <path d="M19 13l.7 2.6L22 16l-2.3.4L19 19l-.7-2.6L16 16l2.3-.4L19 13Z" />
+                </svg>
+              )}
+              {s.icon === "mobile" && (
+                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" stroke="currentColor" stroke-width="2">
+                  <path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
+                  <path d="M11 19h2" />
+                </svg>
+              )}
+            </div>
+
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold text-white sm:text-xl">{s.title}</h3>
+              <p class="mt-2 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
+                {s.desc}
+              </p>
+
+              <a
+                href={s.href}
+                class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/85 transition hover:text-white"
+              >
+                Learn more
+                <span aria-hidden="true" class="text-white/60">›</span>
+              </a>
+            </div>
           </div>
-          <p class="mt-2 text-sm text-ink/60 leading-relaxed">{i.desc}</p>
         </div>
       ))}
+    </div>
+
+    <!-- bottom CTA strip -->
+    <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-sm text-white/60">
+        Need a website, automation, or app? We’ll map a plan and ship.
+      </p>
+      <a
+        href="/#contact"
+        class="inline-flex items-center justify-center rounded-xl2 bg-resync-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-resync-700"
+      >
+        Start a Project
+      </a>
     </div>
   </div>
 </section>

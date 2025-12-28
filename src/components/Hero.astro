@@ -1,40 +1,294 @@
-<section class="relative overflow-hidden">
-  <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-    <div class="inline-flex items-center gap-5 rounded-full border border-resync-200 bg-resync-50 px-3 py-1 mt-4 text-s text-ink/80 shadow-soft">
-      <span class="h-3 w-3 rounded-full bg-resync-600"></span>
-      <span class="font-semibold">Engineering-led • Fast delivery</span>
-    </div>
+---
+const primaryCta = "/#contact";
+const secondaryCta = "/#services";
+---
 
-    <h1 class="mt-6 text-4xl font-semibold tracking-tight leading-tight sm:text-5xl lg:text-6xl">
-      Build software that works and
-      <span class="bg-gradient-to-r from-resync-600 to-resync-700 bg-clip-text text-transparent">
-        scales
-      </span>
-      .
-    </h1>
-
-    <p class="mt-4 max-w-xl text-base text-ink/70 sm:text-lg">
-      We modernize systems, automate operations, and ship reliable products with
-      clean architecture.
-    </p>
-
-    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-      <a
-        href="#services"
-        class="w-full sm:w-auto rounded-xl2 bg-resync-600 px-6 py-3 text-center text-white font-semibold shadow-soft hover:bg-resync-700"
-      >
-        View Services
-      </a>
-      <a
-        href="#contact"
-        class="w-full sm:w-auto rounded-xl2 border border-resync-200 bg-white px-6 py-3 text-center text-ink font-semibold shadow-soft hover:border-resync-300"
-      >
-        Start a Project
-      </a>
-    </div>
+<section class="hero-wrap">
+  <!-- Background video -->
+  <div class="hero-bg">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="/hero-orb.webm" type="video/webm" />
+      <source src="/vid4.mp4" type="video/mp4" />
+    </video>
   </div>
 
-  <div class="pointer-events-none absolute inset-0 -z-10">
-    <div class="absolute left-1/2 top-[-20%] h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-resync-200/70 blur-3xl"></div>
+  <!-- Layered glows -->
+  <div class="hero-overlay hero-overlay-top"></div>
+  <div class="hero-overlay hero-overlay-bottom"></div>
+  <div class="hero-overlay hero-overlay-radial"></div>
+  <div class="hero-overlay hero-overlay-warm"></div>
+  <div class="hero-overlay hero-overlay-left"></div>
+
+  <div class="hero-shell">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">NYC-based software & modern engineering</p>
+        <h1 class="hero-title">
+         Tech Resynced<br class="hidden sm:block" />
+          for the Future
+        </h1>
+        <p class="hero-sub">
+          We help New York City companies adapt, automate, and thrive in a rapidly changing technology landscape—from AI-ready workflows to custom apps and automated systems.
+        </p>
+
+        <div class="hero-logos">
+          <p class="hero-logos-label">Building Modern Technology</p>
+          <div class="hero-logos-row">
+            <span>Websites</span>
+            <span>Apps</span>
+            <span>Automation</span>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href={primaryCta} class="cta-primary">
+            <span class="cta-glow"></span>
+            Book a consultation
+          </a>
+          <a href={secondaryCta} class="cta-secondary">
+            Explore our services <span aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+
+
+    </div>
   </div>
 </section>
+
+<style>
+  .hero-wrap{
+    position: relative;
+    overflow: hidden;
+    color: white;
+    min-height: min(100vh, 1100px);
+    background: #06060a81;
+  }
+  .hero-bg{
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+  }
+  .hero-video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.85;
+    filter: saturate(1.1);
+  }
+  .hero-overlay{
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+  .hero-overlay-top{
+    background: linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,0.45));
+  }
+  .hero-overlay-bottom{
+    background: linear-gradient(0deg, rgba(0,0,0,0.65), rgba(0,0,0,0));
+    mask-image: linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,0));
+  }
+  .hero-overlay-radial{
+    background: radial-gradient(circle at 30% 35%, rgba(70,70,85,0.45), rgba(0,0,0,0));
+  }
+  .hero-overlay-warm{
+    background: radial-gradient(circle at 80% 20%, rgba(255,170,90,0.38), rgba(0,0,0,0));
+  }
+  .hero-overlay-left{
+    background: linear-gradient(90deg, rgba(0,0,0,0.75), rgba(0,0,0,0));
+    mask-image: linear-gradient(90deg, rgba(0,0,0,1), rgba(0,0,0,0));
+  }
+
+  .hero-shell{
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 3.5rem) clamp(1.2rem, 4vw, 2.5rem) clamp(2rem, 8vw, 3.5rem);
+  }
+
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 6vw, 3rem);
+    align-items: center;
+  }
+
+  .hero-copy{
+    max-width: 640px;
+  }
+  .hero-eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 800;
+    font-size: 12px;
+    color: #f97373;
+  }
+  .hero-title{
+    margin-top: clamp(0.75rem, 2vw, 1.4rem);
+    font-size: clamp(2.6rem, 5vw, 3.9rem);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  }
+  .hero-sub{
+    margin-top: 1rem;
+    max-width: 560px;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .hero-logos{
+    margin-top: clamp(1.6rem, 3vw, 2rem);
+  }
+  .hero-logos-label{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.6);
+  }
+  .hero-logos-row{
+    margin-top: 0.75rem;
+    display: flex;
+    gap: clamp(1.2rem, 3vw, 2rem);
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.82);
+  }
+
+  .hero-ctas{
+    margin-top: clamp(1.8rem, 3vw, 2.2rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .cta-primary{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(135deg, #12070b, #1a0c12);
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.16),
+      0 14px 34px rgba(0,0,0,0.55);
+    overflow: hidden;
+    transition: transform 140ms ease, box-shadow 180ms ease;
+  }
+  .cta-primary .cta-glow{
+    position: absolute;
+    inset: -2px;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #ff9fb3, #ff4d6b, #c41432, #720a19);
+    opacity: 0.4;
+    filter: blur(10px);
+    pointer-events: none;
+  }
+  .cta-primary:hover{
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      0 18px 40px rgba(0,0,0,0.6);
+  }
+  .cta-secondary{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    background: rgba(255,255,255,0.06);
+    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+  .cta-secondary:hover{
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.3);
+    color: white;
+  }
+
+  .hero-visual{
+    position: relative;
+    width: min(520px, 80vw);
+    justify-self: center;
+    aspect-ratio: 1;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.65));
+  }
+  .hero-visual-glow{
+    position: absolute;
+    inset: -12%;
+    background: radial-gradient(circle, rgba(150,255,255,0.12), rgba(0,0,0,0));
+    filter: blur(14px);
+    z-index: 0;
+  }
+  .hero-visual-circle{
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.14);
+    opacity: 0.6;
+    z-index: 1;
+  }
+  .hero-visual-img{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (min-width: 1024px){
+    .hero-grid{
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+    }
+    .hero-visual{
+      width: 520px;
+      margin-left: auto;
+    }
+  }
+
+  @media (max-width: 639px){
+    .hero-wrap{
+      min-height: auto;
+      padding-bottom: 1rem;
+    }
+    .hero-shell{
+      padding-top: calc(72px + 1.2rem);
+    }
+    .hero-logos-row{
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .hero-ctas{
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .cta-primary,
+    .cta-secondary{
+      width: 100%;
+      justify-content: center;
+    }
+    .hero-visual{
+      width: min(340px, 80vw);
+      margin-top: 0.5rem;
+    }
+  }
+</style>

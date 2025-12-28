@@ -5,345 +5,601 @@ const navLinks = [
   { name: "About", href: "/about" },
   { name: "Contact", href: "/#contact" },
 ];
+
+// Mobile list excludes Services because it already appears in the accordion
+const mobileLinks = navLinks.filter((l) => l.name !== "Services");
+
+const serviceLinks = [
+  { name: "Websites", desc: "Fast, clean, SEO-ready", href: "/#services" },
+  { name: "App development", desc: "iOS / Web / Full-stack", href: "/#services" },
+  { name: "Workflow automation", desc: "Integrations & ops", href: "/#services" },
+  { name: "Tech consulting", desc: "Modernize your stack", href: "/#services" },
+];
 ---
 
-<nav class="w-full fixed top-0 left-0 z-50 bg-white/80 backdrop-blur-xl border-b border-black/5">
-  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2">
-      <img src="/logo.png" alt="Resync Technology" class="h-8 w-auto" />
-      <span class="font-semibold text-lg tracking-tight text-ink">Resync Technology</span>
+<nav class="rt-nav" data-rt-root>
+  <div class="rt-shell">
+    <!-- Brand -->
+    <a href="/" class="rt-brand" aria-label="Resync">
+      <img src="/logo.png" alt="Resync" class="rt-logo" />
+      <span class="rt-brand-name">Resync Technology</span>
     </a>
 
-    <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center gap-8">
+    <!-- Desktop links -->
+    <div class="rt-desktop">
       {navLinks.map((l) => (
         <a
           href={l.href}
-          class="text-sm font-medium text-ink/80 hover:text-ink transition-colors"
+          class={`rt-link ${l.name === "Services" ? "rt-has-dropdown" : ""}`}
         >
           {l.name}
         </a>
       ))}
-      <a
-        href="/#contact"
-        class="px-4 py-2 rounded-xl2 bg-resync-600 text-white font-semibold shadow-soft hover:bg-resync-700 transition"
-      >
-        Start a Project
-      </a>
     </div>
 
-    <!-- Mobile button -->
-<button
-  class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-black/10 bg-white/70 text-ink md:hidden"
-  aria-controls="mobile-menu"
-  aria-expanded="false"
-  aria-label="Open navigation"
-  title="Menu"
-  data-menu-button
->
-  <span class="sr-only">Open navigation</span>
-  <span class="hamburger" aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
-</button>
+    <!-- Desktop CTA -->
+    <div class="rt-desktop-actions">
+      <a href="/#contact" class="rt-cta rt-desktop-cta">Get in touch</a>
+    </div>
 
-<!-- Mobile menu -->
-<div
-  id="mobile-menu"
-  class="hidden md:hidden"
-  data-mobile-menu
->
-  <!-- Backdrop -->
-  <button
-    type="button"
-    class="mobile-backdrop"
-    aria-label="Close navigation"
-    data-menu-backdrop
-  ></button>
+    <!-- Mobile open button -->
+    <button
+      class="rt-menu-btn"
+      type="button"
+      aria-controls="rt-mobile"
+      aria-expanded="false"
+      aria-label="Open menu"
+      data-rt-open
+    >
+      <span class="rt-burger" aria-hidden="true"></span>
+    </button>
+  </div>
 
-  <!-- Panel -->
-  <div class="mobile-panel" role="dialog" aria-modal="true" aria-label="Site navigation">
-    <div class="mobile-panel-inner">
-      <div class="mobile-head">
-        <a href="/" class="mobile-brand" data-mobile-link>
-          <img src="/logo.png" alt="Resync Technology" class="mobile-brand-logo" />
-          <span class="mobile-brand-name">Resync Technology</span>
+  <!-- Mobile overlay -->
+  <div id="rt-mobile" class="rt-mobile" data-rt-overlay aria-hidden="true">
+    <!-- Backdrop button (click anywhere outside to close) -->
+    <button class="rt-backdrop" type="button" aria-label="Close menu" data-rt-close></button>
+
+    <!-- Panel -->
+    <div class="rt-panel" role="dialog" aria-modal="true" aria-label="Site navigation">
+      <!-- Top bar -->
+      <div class="rt-mobile-top">
+        <a href="/" class="rt-mobile-brand" data-rt-link>
+          <img src="/logo.png" alt="Resync Technology" class="rt-logo" />
+          <span class="rt-mobile-brand-name">Resync</span>
         </a>
 
-        <button
-          type="button"
-          class="mobile-close"
-          aria-label="Close navigation"
-          data-menu-close
-        >
+        <div class="rt-mobile-title">Menu</div>
+
+        <button class="rt-x" type="button" aria-label="Close menu" data-rt-close>
           <span aria-hidden="true">×</span>
         </button>
       </div>
 
-      <div class="mobile-links">
-        {navLinks.map((l) => (
-          <a
-            href={l.href}
-            class="mobile-link"
-            data-mobile-link
-          >
-            {l.name}
-          </a>
-        ))}
-      </div>
+      <!-- Body -->
+      <div class="rt-mobile-body">
+        <div class="rt-mobile-sub">NYC-BASED SOFTWARE &amp; MODERN ENGINEERING</div>
 
-      <a
-        href="/#contact"
-        class="mobile-cta"
-        data-mobile-link
-      >
-        Start a Project
-      </a>
+        <!-- Services accordion -->
+        <details class="rt-acc">
+          <summary class="rt-row">
+            <span>Services</span>
+            <span class="rt-chevron" aria-hidden="true"></span>
+          </summary>
+
+          <div class="rt-acc-inner">
+            {serviceLinks.map((s) => (
+              <a class="rt-service" href={s.href} data-rt-link>
+                <div class="rt-service-title">{s.name}</div>
+                <div class="rt-service-desc">{s.desc}</div>
+              </a>
+            ))}
+          </div>
+        </details>
+
+        <!-- Main links -->
+        <div class="rt-links">
+          {mobileLinks.map((l) => (
+            <a class="rt-row rt-row-link" href={l.href} data-rt-link>
+              <span>{l.name}</span>
+              {l.name === "Services" && <span class="rt-arrow" aria-hidden="true">›</span>}
+            </a>
+          ))}
+        </div>
+
+        <!-- Bottom CTA bar -->
+        <div class="rt-mobile-bottom">
+          <a class="rt-mobile-primary" href="/#contact" data-rt-link>Start a Project</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  const btn = document.querySelector("[data-menu-button]");
-  const menu = document.querySelector("[data-mobile-menu]");
-  const backdrop = document.querySelector("[data-menu-backdrop]");
-  const closeBtn = document.querySelector("[data-menu-close]");
+  <script is:inline>
+    (() => {
+      const root = document.querySelector("[data-rt-root]");
+      if (!root) return;
 
-  if (btn && menu) {
-    const panel = menu.querySelector(".mobile-panel");
+      const openBtn = root.querySelector("[data-rt-open]");
+      const overlay = root.querySelector("[data-rt-overlay]");
+      if (!openBtn || !overlay) return;
 
-    let isOpen = false;
-    let removeCloseOnScroll: (() => void) | null = null;
+      const closeBtns = overlay.querySelectorAll("[data-rt-close]");
+      const linkBtns = overlay.querySelectorAll("[data-rt-link]");
 
-    const attachCloseOnScroll = () => {
-      // Close the menu if the user attempts to scroll (wheel / trackpad / touch)
-      const onScrollIntent = () => {
-        if (!isOpen) return;
-        setOpen(false);
+      const lockClass = "rt-nav-open";
+      let isOpen = false;
+
+      // Simple lock toggle to avoid scroll jumps; menu sits over the current viewport
+      const lockScroll = (lock) => {
+        document.documentElement.classList.toggle(lockClass, lock);
+        document.body.classList.toggle(lockClass, lock);
       };
 
-      // Use window-level listeners so the first scroll gesture closes the menu.
-      window.addEventListener("wheel", onScrollIntent, { passive: true });
-      window.addEventListener("touchmove", onScrollIntent, { passive: true });
+      const setOpen = (open) => {
+        isOpen = !!open;
 
-      removeCloseOnScroll = () => {
-        window.removeEventListener("wheel", onScrollIntent);
-        window.removeEventListener("touchmove", onScrollIntent);
-        removeCloseOnScroll = null;
+        openBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        overlay.setAttribute("aria-hidden", isOpen ? "false" : "true");
+
+        if (isOpen) {
+          overlay.classList.add("is-open");
+          lockScroll(true);
+        } else {
+          overlay.classList.remove("is-open");
+          lockScroll(false);
+        }
       };
-    };
 
-    const setOpen = (open: boolean | undefined) => {
-      isOpen = open ?? false;
-      btn.classList.toggle("is-open", open);
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
-      btn.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      // open
+      openBtn.addEventListener("click", () => setOpen(true));
 
-      if (open) {
-        menu.classList.remove("hidden");
-        document.documentElement.classList.add("nav-open");
-        // animate in on next frame
-        requestAnimationFrame(() => panel?.classList.add("is-open"));
+      // close buttons (X + backdrop)
+      closeBtns.forEach((b) => b.addEventListener("click", () => setOpen(false)));
 
-        // enable close-on-scroll behavior
-        attachCloseOnScroll();
-      } else {
-        panel?.classList.remove("is-open");
-        document.documentElement.classList.remove("nav-open");
-        // wait for animation then hide
-        setTimeout(() => menu.classList.add("hidden"), 180);
+      // close on any navigation click
+      linkBtns.forEach((a) => a.addEventListener("click", () => setOpen(false)));
 
-        // cleanup listeners
-        if (removeCloseOnScroll) removeCloseOnScroll();
-      }
-    };
+      // close on ESC
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setOpen(false);
+      });
 
-    const toggle = () => {
-      const hidden = menu.classList.contains("hidden");
-      setOpen(hidden);
-    };
+      // close on resize to desktop
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768 && isOpen) setOpen(false);
+      });
+    })();
+  </script>
 
-    const close = () => setOpen(false);
-
-    btn.addEventListener("click", toggle);
-    backdrop?.addEventListener("click", close);
-    closeBtn?.addEventListener("click", close);
-
-    menu.querySelectorAll("[data-mobile-link]").forEach((a) => {
-      a.addEventListener("click", close);
-    });
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") close();
-    });
-  }
-</script>
-
-<style>
-  /* Prevent background scroll when menu is open */
-  :global(html.nav-open),
-  :global(html.nav-open body) {
-    overflow: hidden;
-  }
-
-  /* Hamburger icon */
-  .hamburger {
-    position: relative;
-    width: 20px;
-    height: 14px;
-    display: inline-block;
-  }
-  .hamburger span {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    border-radius: 999px;
-    background: currentColor;
-    transition: transform 180ms ease, top 180ms ease, opacity 180ms ease;
-  }
-  .hamburger span:nth-child(1) { top: 0; }
-  .hamburger span:nth-child(2) { top: 6px; }
-  .hamburger span:nth-child(3) { top: 12px; }
-
-  /* Turn into X when open */
-  button.is-open .hamburger span:nth-child(1) { top: 6px; transform: rotate(45deg); }
-  button.is-open .hamburger span:nth-child(2) { opacity: 0; }
-  button.is-open .hamburger span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
-
-  /* Mobile menu layout */
-  .mobile-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(2, 6, 23, 0.28);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border: 0;
-    padding: 0;
-    margin: 0;
-    z-index: 50;
-  }
-
-  .mobile-panel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 16px;
-    background: rgba(250, 250, 250, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(2, 6, 23, 0.06);
-    z-index: 60;
-
-    transform: translateY(-10px);
-    opacity: 0;
-    transition: transform 180ms ease, opacity 180ms ease;
-  }
-
-  .mobile-panel.is-open {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  .mobile-panel-inner {
-    max-width: 72rem;
-    margin: 0 auto;
-  }
-
-  .mobile-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 6px 2px 10px;
-  }
-
-  .mobile-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: rgba(11, 15, 25, 0.92);
-    min-width: 0;
-  }
-
-  .mobile-brand-logo {
-    height: 28px;
-    width: auto;
-    flex: 0 0 auto;
-  }
-
-  .mobile-brand-name {
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .mobile-close {
-    height: 44px;
-    width: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 14px;
-    border: 1px solid rgba(2, 6, 23, 0.10);
-    background: rgba(255, 255, 255, 0.80);
-    color: rgba(11, 15, 25, 0.92);
-    font-size: 28px;
-    line-height: 1;
-    cursor: pointer;
-  }
-
-  .mobile-close:hover {
-    background: rgba(255, 255, 255, 0.92);
-  }
-
-  .mobile-links {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding-top: 8px;
-    padding-bottom: 16px;
-  }
-
-  .mobile-link {
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    color: rgba(11, 15, 25, 0.92);
-  }
-
-  .mobile-link:hover {
-    color: rgba(11, 15, 25, 1);
-  }
-
-  .mobile-cta {
-    display: block;
-    text-align: center;
-    padding: 14px 16px;
-    border-radius: 999px;
-    background: #e11d48;
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.10);
-  }
-
-  .mobile-cta:hover {
-    background: #be123c;
-  }
-
-  /* Hide the mobile menu UI on desktop (md and up) */
-  @media (min-width: 768px) {
-    .mobile-backdrop,
-    .mobile-panel {
-      display: none;
+  <style>
+    /* ===== Desktop bar ===== */
+    .rt-nav{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9990;
+      background: linear-gradient(180deg, rgba(8,8,12,0.92), rgba(8,8,12,0.78));
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.22);
     }
-  }
-</style>
+
+    .rt-shell{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 18px;
+      height: 72px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .rt-desktop-actions{
+      display: none;
+      align-items: center;
+      gap: 12px;
+      justify-self: end;
+    }
+
+    .rt-brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.94);
+      min-width: 0;
+    }
+
+    .rt-logo{
+      height: 30px;
+      width: auto;
+      flex: 0 0 auto;
+    }
+
+    .rt-brand-name{
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .rt-desktop{
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      justify-self: center;
+    }
+
+    .rt-link{
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-weight: 650;
+      font-size: 15px;
+      letter-spacing: 0.005em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 160ms ease;
+      position: relative;
+    }
+    .rt-link::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -10px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.5), rgba(255,255,255,0));
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+    .rt-link:hover{
+      color: rgba(255,255,255,1);
+    }
+    .rt-link:hover::after{
+      opacity: 1;
+    }
+    .rt-link.rt-has-dropdown::before{
+      content: "▾";
+      font-size: 12px;
+      opacity: 0.75;
+      margin-right: 4px;
+    }
+
+    .rt-cta{
+      position: relative;
+      padding: 11px 20px;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      background: linear-gradient(135deg, #0f0f12, #0c0c11);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.16),
+        0 10px 28px rgba(0,0,0,0.45);
+      transition: transform 140ms ease, box-shadow 180ms ease;
+      overflow: hidden;
+    }
+    .rt-cta::before{
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 999px;
+      padding: 2px;
+      background: linear-gradient(120deg, #ff4d6b, #9b0f24 40%, #ffb0b8 60%, #6c0a16);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .rt-cta:hover{
+      transform: translateY(-1px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 14px 32px rgba(0,0,0,0.55);
+    }
+    .rt-menu-btn{
+      display: inline-flex;
+      width: 44px; height: 44px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.25);
+      color: white;
+      cursor: pointer;
+      justify-self: end;
+    }
+
+    .rt-burger{
+      width: 18px; height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+      position: relative;
+      display: block;
+    }
+    .rt-burger::before,
+    .rt-burger::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px; height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+    }
+    .rt-burger::before{ top: -6px; }
+    .rt-burger::after{ top: 6px; }
+
+    @media (min-width: 768px){
+      .rt-desktop{ display: flex; }
+      .rt-desktop-actions{ display: inline-flex; }
+      .rt-desktop-cta{ display: inline-flex; }
+      .rt-menu-btn{ display: none; }
+    }
+
+    /* Hide desktop CTA block on mobile */
+    @media (max-width: 767px){
+      .rt-desktop-actions,
+      .rt-desktop-cta{
+        display: none;
+      }
+    }
+
+    /* ===== Scroll lock ===== */
+    :global(html.rt-nav-open),
+    :global(body.rt-nav-open){
+      overflow: hidden;
+      height: 100%;
+      touch-action: none;
+    }
+
+    /* ===== Mobile overlay ===== */
+    .rt-mobile{
+      position: fixed;
+      inset: 0;
+      height: 100vh;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      background: rgba(3,3,5,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      isolation: isolate;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+      will-change: opacity, transform;
+    }
+
+    .rt-mobile.is-open{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* solid black full-screen background (the “invertase” effect) */
+    .rt-backdrop{
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      border: 0;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      z-index: 0;
+    }
+
+    /* panel sits above backdrop */
+    .rt-panel{
+      position: relative;
+      height: 100%;
+      min-height: 100vh;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.92);
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+    }
+
+    .rt-mobile-top{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+
+      padding: max(10px, env(safe-area-inset-top)) 14px 10px;
+      background: rgba(0,0,0,0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rt-mobile-brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.92);
+      min-width: 0;
+    }
+
+    .rt-mobile-brand-name{
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      text-transform: uppercase;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    .rt-mobile-title{
+      justify-self: center;
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      opacity: 0.92;
+    }
+
+    .rt-x{
+      justify-self: end;
+      width: 44px; height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.92);
+      font-size: 28px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .rt-mobile-body{
+      padding: 14px 16px calc(140px + env(safe-area-inset-bottom));
+      max-width: 760px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: calc(100vh - 84px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: linear-gradient(180deg, rgba(6,6,8,0.99), rgba(6,6,8,0.94));
+    }
+
+    .rt-mobile-sub{
+      color: rgba(225, 29, 72, 0.85);
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin: 10px 0 14px;
+    }
+
+    .rt-row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      font-size: 20px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.90);
+    }
+
+    .rt-row-link:hover{ color: rgba(255,255,255,1); }
+
+    .rt-arrow{
+      opacity: 0.55;
+      font-size: 22px;
+    }
+
+    /* Accordion */
+    .rt-acc{
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+    .rt-acc summary{
+      list-style: none;
+      cursor: pointer;
+    }
+    .rt-acc summary::-webkit-details-marker{ display: none; }
+
+    .rt-chevron{
+      width: 10px; height: 10px;
+      border-right: 2px solid rgba(255,255,255,0.55);
+      border-bottom: 2px solid rgba(255,255,255,0.55);
+      transform: rotate(45deg);
+      transition: transform 160ms ease;
+      margin-right: 6px;
+    }
+    details[open] .rt-chevron{
+      transform: rotate(-135deg);
+    }
+
+    .rt-acc-inner{
+      padding: 6px 0 6px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .rt-service{
+      display: block;
+      padding: 14px 0;
+      text-decoration: none;
+      color: rgba(255,255,255,0.90);
+    }
+    .rt-service-title{
+      font-weight: 750;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .rt-service-desc{
+      margin-top: 4px;
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+    }
+
+    /* Bottom CTA bar */
+    .rt-mobile-bottom{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+
+      width: min(760px, calc(100% - 32px));
+      padding: 14px 0 calc(18px + env(safe-area-inset-bottom));
+      background: linear-gradient(180deg, rgba(9,9,12,0.94), rgba(5,5,8,0.98));
+      border-top: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 -14px 50px rgba(0,0,0,0.45);
+
+      display: grid;
+      gap: 10px;
+    }
+
+    .rt-mobile-primary{
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #7a0a1f, #e11d48 45%, #ff5670 60%, #b50f2f);
+      box-shadow:
+        inset 0 2px 8px rgba(255,255,255,0.16),
+        inset 0 -6px 12px rgba(0,0,0,0.3),
+        0 10px 28px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      transition: transform 120ms ease, box-shadow 160ms ease;
+    }
+    .rt-mobile-primary:active{
+      transform: translateY(1px);
+      box-shadow:
+        inset 0 2px 10px rgba(0,0,0,0.45),
+        0 8px 20px rgba(0,0,0,0.35);
+    }
+
+    .rt-mobile-secondary{
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.92);
+      font-weight: 850;
+      text-decoration: none;
+    }
+  </style>
+</nav>
