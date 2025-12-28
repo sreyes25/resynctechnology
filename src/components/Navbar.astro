@@ -120,28 +120,6 @@ const serviceLinks = [
       const root = document.querySelector("[data-rt-root]");
       if (!root) return;
 
-      const docEl = document.documentElement;
-      // Reserve enough space to clear mobile browser UI (Chrome bottom bar, Safari safe area)
-      const updateBottomOffset = () => {
-        const vv = window.visualViewport;
-        const viewportH = vv?.height ?? window.innerHeight;
-        const screenH = window.screen?.height ?? viewportH;
-        const bar = Math.max(0, screenH - viewportH);
-        // Default 64px; bump when the visible viewport is shorter than the screen (Chrome bottom bar)
-        // but clamp so it never creates an excessive gap in emulators/devtools.
-        const offset = Math.min(140, Math.max(64, bar + 20));
-        docEl.style.setProperty("--rt-bottom-offset", `${offset}px`);
-      };
-      if (window.visualViewport) {
-        updateBottomOffset();
-        window.visualViewport.addEventListener("resize", updateBottomOffset);
-        window.visualViewport.addEventListener("scroll", updateBottomOffset);
-      } else {
-        // Fallback for older browsers
-        updateBottomOffset();
-        window.addEventListener("resize", updateBottomOffset);
-      }
-
       const openBtn = root.querySelector("[data-rt-open]");
       const overlay = root.querySelector("[data-rt-overlay]");
       if (!openBtn || !overlay) return;
@@ -195,10 +173,6 @@ const serviceLinks = [
   </script>
 
   <style>
-    :global(:root){
-      --rt-bottom-offset: 50px;
-    }
-
     /* ===== Desktop bar ===== */
     .rt-nav{
       position: fixed;
@@ -493,7 +467,7 @@ const serviceLinks = [
     }
 
     .rt-mobile-body{
-      padding: 14px 16px calc(160px + var(--rt-bottom-offset, 64px) + env(safe-area-inset-bottom));
+      padding: 14px 16px calc(120px + env(safe-area-inset-bottom));
       max-width: 760px;
       margin: 0 auto;
       width: 100%;
@@ -580,7 +554,7 @@ const serviceLinks = [
       position: fixed;
       left: 50%;
       transform: translateX(-50%);
-      bottom: calc(var(--rt-bottom-offset, 64px) + env(safe-area-inset-bottom));
+      bottom: env(safe-area-inset-bottom);
 
       width: min(760px, calc(100% - 170px));
       padding: 14px 0 calc(18px + env(safe-area-inset-bottom));
