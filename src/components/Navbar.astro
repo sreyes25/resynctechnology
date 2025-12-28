@@ -120,6 +120,33 @@ const serviceLinks = [
       const root = document.querySelector("[data-rt-root]");
       if (!root) return;
 
+      // Extra bottom padding for Chrome iOS (toolbar can overlap the bottom of scroll areas)
+      const isChromeIOS = /CriOS\//.test(navigator.userAgent);
+      const docEl = document.documentElement;
+
+      const updateChromeBottomPad = () => {
+        if (!isChromeIOS || !window.visualViewport) {
+          docEl.style.setProperty("--rt-extra-bottom", "0px");
+          return;
+        }
+
+        // When Chrome's bottom toolbar is visible, the visual viewport is shorter than the layout viewport.
+        // Use that delta as extra padding so the CTA/footer isn't obscured.
+        const vv = window.visualViewport;
+        const delta = Math.max(0, window.innerHeight - vv.height);
+
+        // Tune/clamp so it helps on real devices but doesn't create a huge gap in devtools/emulators.
+        const extra = Math.min(90, Math.max(0, Math.round(delta + 12)));
+        docEl.style.setProperty("--rt-extra-bottom", `${extra}px`);
+      };
+
+      updateChromeBottomPad();
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", updateChromeBottomPad);
+        window.visualViewport.addEventListener("scroll", updateChromeBottomPad);
+      }
+      window.addEventListener("resize", updateChromeBottomPad);
+
       const openBtn = root.querySelector("[data-rt-open]");
       const overlay = root.querySelector("[data-rt-overlay]");
       if (!openBtn || !overlay) return;
@@ -173,6 +200,10 @@ const serviceLinks = [
   </script>
 
   <style>
+
+    :global(:root){
+      --rt-extra-bottom: 0px;
+    }
 
     /* ===== Desktop bar ===== */
     .rt-nav{
@@ -468,7 +499,7 @@ const serviceLinks = [
     }
 
     .rt-mobile-body{
-      padding: 14px 16px max(24px, env(safe-area-inset-bottom));
+      padding: 14px 16px calc(env(safe-area-inset-bottom) + 24px + var(--rt-extra-bottom, 0px));
       max-width: 760px;
       margin: 0 auto;
       width: 100%;
@@ -566,7 +597,7 @@ const serviceLinks = [
       width: 100%;
       margin-top: auto;
 
-      padding: 14px 0 max(27px, env(safe-area-inset-bottom));
+      padding: 14px 0 calc(env(safe-area-inset-bottom) + 18px + var(--rt-extra-bottom, 0px));
       background: linear-gradient(180deg, rgba(9,9,12,0.50), rgba(5,5,8,0.70));
       border-top: 1px solid rgba(255,255,255,0.12);
 
