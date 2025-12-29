@@ -194,30 +194,10 @@ const serviceLinks = [
       // close helper for listeners
       const closeMenu = () => setOpen(false);
 
-      // Lock background scroll WITHOUT jumping to top (mobile-safe)
-      let savedScrollY = 0;
+      // Minimal scroll lock (avoids fixed-body compositing bugs on iOS Chrome)
       const lockScroll = (lock) => {
-        if (lock) {
-          savedScrollY = window.scrollY || 0;
-          document.documentElement.classList.add(lockClass);
-          document.body.classList.add(lockClass);
-          // Freeze the page at the current scroll position
-          document.body.style.position = "fixed";
-          document.body.style.top = `-${savedScrollY}px`;
-          document.body.style.left = "0";
-          document.body.style.right = "0";
-          document.body.style.width = "100%";
-        } else {
-          document.documentElement.classList.remove(lockClass);
-          document.body.classList.remove(lockClass);
-          // Unfreeze and restore scroll position
-          document.body.style.position = "";
-          document.body.style.top = "";
-          document.body.style.left = "";
-          document.body.style.right = "";
-          document.body.style.width = "";
-          window.scrollTo(0, savedScrollY);
-        }
+        document.documentElement.classList.toggle(lockClass, lock);
+        document.body.classList.toggle(lockClass, lock);
       };
 
       const setOpen = (open) => {
@@ -578,14 +558,10 @@ const serviceLinks = [
     }
 
     /* ===== Scroll lock ===== */
-    :global(html.rt-nav-open){
-      /* prevent scroll chaining on iOS/Chrome while menu is open */
-      overscroll-behavior: none;
-      touch-action: none;
-    }
-
+    :global(html.rt-nav-open),
     :global(body.rt-nav-open){
-      /* body is fixed via JS to preserve scroll position */
+      overflow: hidden;
+      height: 100%;
       overscroll-behavior: none;
       touch-action: none;
     }
