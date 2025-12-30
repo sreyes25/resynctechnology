@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <g transform="translate(600,140) scale(0.9)"
+     fill="none" stroke="#fff"
+     stroke-linecap="round" stroke-linejoin="round"
+     opacity="0.80">
+
+    <!-- trajectory arc -->
+    <path
+      d="M120 420
+         C260 300 420 240 620 200"
+      stroke-width="44"
+      opacity="0.70"
+    />
+
+    <!-- arrow head -->
+    <path d="M620 200 L570 200" stroke-width="44" opacity="0.70"/>
+    <path d="M620 200 L590 235" stroke-width="44" opacity="0.70"/>
+
+    <!-- launch origin -->
+    <circle cx="120" cy="420" r="36" stroke-width="28" opacity="0.55"/>
+
+    <!-- mid-flight checkpoint -->
+    <circle cx="340" cy="300" r="26" stroke-width="20" opacity="0.45"/>
+
+    <!-- support / stability ring -->
+    <circle cx="620" cy="200" r="64" stroke-width="20" opacity="0.35"/>
+    <circle cx="620" cy="200" r="34" stroke-width="14" opacity="0.25"/>
+
+    <!-- subtle ground reference -->
+    <path d="M60 460 H260" stroke-width="16" opacity="0.25"/>
+  </g>
+</svg>
