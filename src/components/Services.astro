@@ -21,16 +21,35 @@ const services = [
 ];
 
 const iconClass =
-  "mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl2 border border-white/10 bg-white/5 text-white/80";
+  "mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_10px_30px_rgba(0,0,0,0.35)]";
 ---
 
-<section id="services" class="relative overflow-hidden bg-ink text-white">
-  <!-- subtle background depth -->
-  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black/30 via-black/20 to-black/50"></div>
-  <div class="absolute -top-48 left-[-140px] -z-10 h-[520px] w-[520px] rounded-full bg-resync-600/15 blur-3xl"></div>
-  <div class="absolute -bottom-56 right-[-160px] -z-10 h-[520px] w-[520px] rounded-full bg-white/10 blur-3xl"></div>
+<section id="services" class="relative overflow-hidden bg-[#07080ba6] text-white">
+  <!-- Ambient background (dark, premium — matches CTA / footer vibe) -->
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <!-- Base dark gradient (keeps everything rich black) -->
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.88)_45%,rgba(0,0,0,0.96)_100%)]"></div>
 
-  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-10">
+    <!-- Deep red undertone sweep (subtle, not pink) -->
+    <div class="absolute -top-72 left-[-320px] h-[700px] w-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(225,29,72,0.22),transparent_62%)] blur-3xl"></div>
+    <div class="absolute -bottom-80 right-[-360px] h-[760px] w-[760px] rounded-full bg-[radial-gradient(circle_at_center,rgba(159,18,57,0.22),transparent_64%)] blur-3xl"></div>
+
+    <!-- Secondary cool tint (very faint) -->
+    <div class="absolute -top-72 right-[-420px] h-[760px] w-[760px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12),transparent_66%)] blur-3xl"></div>
+
+    <!-- Soft inner highlight to avoid flatness -->
+    <div class="absolute inset-0 bg-[radial-gradient(90%_70%_at_55%_20%,rgba(255,255,255,0.05),transparent_58%)]"></div>
+
+    <!-- Dot texture (make it visible on true black) -->
+    <div class="absolute inset-0 opacity-[0.24] [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.22)_1px,transparent_1px)] [background-size:10px_10px]"></div>
+    <div class="absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:5px_5px]"></div>
+
+    <!-- Vignette + top fade (keeps focus on content, blends into hero) -->
+    <div class="absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_0%,transparent_35%,rgba(0,0,0,0.82)_100%)]"></div>
+    <div class="absolute inset-x-0 top-0 h-16 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.65),transparent)]"></div>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-16">
     <div class="max-w-2xl">
       <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
         Our services
@@ -38,24 +57,24 @@ const iconClass =
     </div>
 
     <!-- Invertase-style list -->
-    <div class="mt-10 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+    <div class="mt-10 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.035] backdrop-blur-md shadow-[0_30px_90px_rgba(0,0,0,0.55)] ring-1 ring-white/5">
       {services.map((s) => (
-        <div class="p-6 sm:p-8">
+        <div class="p-6 sm:p-8 transition-colors duration-200 hover:bg-white/[0.03] hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.07),0_0_0_1px_rgba(225,29,72,0.14)]">
           <div class="flex gap-4">
             <div class={iconClass} aria-hidden="true">
               {s.icon === "web" && (
-                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 text-red-300/70" stroke="currentColor" stroke-width="2">
                   <path d="M4 6h16M4 10h16M4 18h16M6 14h6" />
                 </svg>
               )}
               {s.icon === "spark" && (
-                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 text-red-400/70" stroke="currentColor" stroke-width="2">
                   <path d="M12 2l1.2 4.6L18 8l-4.8 1.4L12 14l-1.2-4.6L6 8l4.8-1.4L12 2Z" />
                   <path d="M19 13l.7 2.6L22 16l-2.3.4L19 19l-.7-2.6L16 16l2.3-.4L19 13Z" />
                 </svg>
               )}
               {s.icon === "mobile" && (
-                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 text-red-200/70" stroke="currentColor" stroke-width="2">
                   <path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
                   <path d="M11 19h2" />
                 </svg>

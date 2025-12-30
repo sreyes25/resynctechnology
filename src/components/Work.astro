@@ -1,19 +1,25 @@
-<section id="work" class="bg-paper">
-  <div class="mx-auto max-w-6xl px-6 py-16 md:py-24">
+<section id="work" class="relative overflow-hidden border-t border-black/5 bg-paper">
+  <!-- Ambient background (light mode, subtle) -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute inset-0 bg-[radial-gradient(60%_80%_at_18%_12%,rgba(99,102,241,0.12),transparent_60%),radial-gradient(60%_80%_at_82%_18%,rgba(16,185,129,0.10),transparent_58%),radial-gradient(70%_90%_at_60%_110%,rgba(231,40,69,0.08),transparent_55%)]"></div>
+    <div class="absolute inset-0 opacity-35 [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:10px_10px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,transparent_45%,rgba(0,0,0,0.06)_100%)]"></div>
+  </div>
+  <div class="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
     <div class="max-w-2xl">
-      <h2 class="text-3xl font-black tracking-tight md:text-4xl">Work</h2>
-      <p class="mt-3 text-slateink/80">
+      <h2 class="text-3xl font-semibold tracking-tight md:text-4xl">Work</h2>
+      <p class="mt-3 text-sm leading-relaxed text-ink/65 sm:text-base">
         Real builds focused on speed, reliability, and clean architecture.
       </p>
     </div>
 
     <div class="mt-10 grid gap-6 md:grid-cols-2">
       <!-- Card 1 -->
-      <article class="rounded-xl2 border border-black/10 bg-white p-7 shadow-soft transition hover:shadow-md">
+      <article class="rounded-2xl border border-black/10 bg-white/90 p-7 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <div class="flex items-start justify-between gap-6">
           <div>
             <h3 class="text-xl font-bold">Invoice Americano</h3>
-            <p class="mt-2 text-sm text-slateink/80">
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">
               iOS invoicing app for contractors and small business owners. Create invoices fast, generate professional PDFs, and keep client history organized.
             </p>
           </div>
@@ -36,9 +42,9 @@
       </article>
 
       <!-- Card 2 -->
-      <article class="rounded-xl2 border border-black/10 bg-white p-7 shadow-soft transition hover:shadow-md">
+      <article class="rounded-2xl border border-black/10 bg-white/90 p-7 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <h3 class="text-xl font-bold">Client Systems & Automation</h3>
-        <p class="mt-2 text-sm text-slateink/80">
+        <p class="mt-2 text-sm leading-relaxed text-ink/70">
           Internal tooling, workflow automation, integrations, and monitoring — built to reduce manual work and increase operational clarity.
         </p>
 
