@@ -1,20 +1,32 @@
 ---
-const services = [
+const iconSrc = {
+  web: "/services/web.svg",
+  spark: "/services/automate.svg",
+  mobile: "/services/app.svg",
+};
+type IconKey = keyof typeof iconSrc;
+
+const services: Array<{
+  title: string;
+  desc: string;
+  href: string;
+  icon: IconKey;
+}> = [
   {
     title: "Apps",
-    desc: "Custom iOS and web apps built for real workflows—ship fast, iterate confidently, and scale without rewrites.",
+    desc: "Custom iOS and web apps built for real workflows. Ship fast, iterate with confidence, scale without rewrites.",
     href: "/#contact",
     icon: "mobile",
   },
   {
     title: "Websites",
-    desc: "Fast, clean, SEO-ready websites that look sharp on every device and are easy to update as you grow.",
+    desc: "Fast and clean SEO-ready sites that look sharp on every device and stay easy to update as you grow.",
     href: "/#contact",
     icon: "web",
   },
   {
-    title: "Automations",
-    desc: "Automate repetitive ops with integrations and internal tooling—save time, reduce errors, and keep teams moving.",
+    title: "Automation",
+    desc: "Automate repetitive ops with integrations and internal tooling—save time, reduce errors, keep teams moving.",
     href: "/#contact",
     icon: "spark",
   },
@@ -31,18 +43,18 @@ const iconClass =
     <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.88)_45%,rgba(0,0,0,0.96)_100%)]"></div>
 
     <!-- Deep red undertone sweep (subtle, not pink) -->
-    <div class="absolute -top-72 left-[-320px] h-[700px] w-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(225,29,72,0.22),transparent_62%)] blur-3xl"></div>
-    <div class="absolute -bottom-80 right-[-360px] h-[760px] w-[760px] rounded-full bg-[radial-gradient(circle_at_center,rgba(159,18,57,0.22),transparent_64%)] blur-3xl"></div>
+    <div class="absolute -top-72 -left-80 h-175 w-175 rounded-full bg-[radial-gradient(circle_at_center,rgba(225,29,72,0.22),transparent_62%)] blur-3xl"></div>
+    <div class="absolute -bottom-80 -right-90 h-190 w-190 rounded-full bg-[radial-gradient(circle_at_center,rgba(159,18,57,0.22),transparent_64%)] blur-3xl"></div>
 
     <!-- Secondary cool tint (very faint) -->
-    <div class="absolute -top-72 right-[-420px] h-[760px] w-[760px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12),transparent_66%)] blur-3xl"></div>
+    <div class="absolute -top-72 -right-105 h-190 w-190 rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12),transparent_66%)] blur-3xl"></div>
 
     <!-- Soft inner highlight to avoid flatness -->
     <div class="absolute inset-0 bg-[radial-gradient(90%_70%_at_55%_20%,rgba(255,255,255,0.05),transparent_58%)]"></div>
 
     <!-- Dot texture (make it visible on true black) -->
-    <div class="absolute inset-0 opacity-[0.24] [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.22)_1px,transparent_1px)] [background-size:10px_10px]"></div>
-    <div class="absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:5px_5px]"></div>
+    <div class="absolute inset-0 opacity-[0.24] bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.22)_1px,transparent_1px)] bg-size-[10px_10px]"></div>
+    <div class="absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-size-[5px_5px]"></div>
 
     <!-- Vignette + top fade (keeps focus on content, blends into hero) -->
     <div class="absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_0%,transparent_35%,rgba(0,0,0,0.82)_100%)]"></div>
@@ -59,26 +71,10 @@ const iconClass =
     <!-- Invertase-style list -->
     <div class="mt-10 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.035] backdrop-blur-md shadow-[0_30px_90px_rgba(0,0,0,0.55)] ring-1 ring-white/5">
       {services.map((s) => (
-        <div class="p-6 sm:p-8 transition-colors duration-200 hover:bg-white/[0.03] hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.07),0_0_0_1px_rgba(225,29,72,0.14)]">
+        <div class="p-6 sm:p-8 transition-colors duration-200 hover:bg-white/3 hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.07),0_0_0_1px_rgba(225,29,72,0.14)]">
           <div class="flex gap-4">
             <div class={iconClass} aria-hidden="true">
-              {s.icon === "web" && (
-                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 text-red-300/70" stroke="currentColor" stroke-width="2">
-                  <path d="M4 6h16M4 10h16M4 18h16M6 14h6" />
-                </svg>
-              )}
-              {s.icon === "spark" && (
-                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 text-red-400/70" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2l1.2 4.6L18 8l-4.8 1.4L12 14l-1.2-4.6L6 8l4.8-1.4L12 2Z" />
-                  <path d="M19 13l.7 2.6L22 16l-2.3.4L19 19l-.7-2.6L16 16l2.3-.4L19 13Z" />
-                </svg>
-              )}
-              {s.icon === "mobile" && (
-                <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 text-red-200/70" stroke="currentColor" stroke-width="2">
-                  <path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
-                  <path d="M11 19h2" />
-                </svg>
-              )}
+              <img src={iconSrc[s.icon]} alt="" class="h-5 w-5" loading="lazy" />
             </div>
 
             <div class="min-w-0 flex-1">
@@ -102,7 +98,7 @@ const iconClass =
 
     <!-- bottom CTA strip -->
     <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <p class="text-sm text-white/60">
+      <p class="text-m text-white/80">
         Need an app, website, or automation? We’ll map a plan and ship.
       </p>
      <a href="/#contact" class="rt-btn-primary">

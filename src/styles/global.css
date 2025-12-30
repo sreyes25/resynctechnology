@@ -144,7 +144,7 @@
 
     transform: translateX(-45%) rotate(12deg);
     opacity: 0.45;
-    animation: rtRiver 2.8s ease-in-out infinite;
+    animation: rtRiver 4.8s ease-in-out infinite;
   }
 
   .rt-btn-primary > *{
@@ -176,11 +176,20 @@
     );
     border-color: rgba(255,255,255,0.16);
   }
+
+  /* River animation */
+  @keyframes rtRiver{
+    0%{ transform: translateX(-45%) rotate(12deg); opacity: 0.30; }
+    40%{ opacity: 0.15; }
+    60%{ opacity: 0.05; }
+    100%{ transform: translateX(45%) rotate(12deg); opacity: 0.30; }
+  }
 }
 
 .cta-secondary{
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 12px 16px;
     border-radius: 18px;
@@ -220,12 +229,3 @@
   color: rgba(10, 20, 30, 0.92);
   transform: translateY(-1px);
 }
-
-/* River animation
-@keyframes rtRiver{
-  0%{ transform: translateX(-45%) rotate(12deg); opacity: 0.30; }
-  40%{ opacity: 0.65; }
-  60%{ opacity: 0.55; }
-  100%{ transform: translateX(45%) rotate(12deg); opacity: 0.30; }
-}
-  */

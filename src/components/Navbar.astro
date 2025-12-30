@@ -10,10 +10,10 @@ const navLinks = [
 const mobileLinks = navLinks.filter((l) => l.name !== "Services");
 
 const serviceLinks = [
-  { name: "Websites", desc: "Fast, clean, SEO-ready", href: "/#services" },
-  { name: "App development", desc: "iOS / Web / Full-stack", href: "/#services" },
-  { name: "Workflow automation", desc: "Integrations & ops", href: "/#services" },
-  { name: "Tech consulting", desc: "Modernize your stack", href: "/#services" },
+  { name: "Websites", desc: "Fast and clean SEO-ready", href: "/#services", icon: "/services/web.svg" },
+  { name: "App development", desc: "iOS / Web / full-stack", href: "/#services", icon: "/services/app.svg" },
+  { name: "Workflow automation", desc: "Integrations & ops", href: "/#services", icon: "/services/automate.svg" },
+  { name: "Consultation", desc: "Modernize your stack", href: "/#services", icon: "/services/consultation.svg" },
 ];
 ---
 
@@ -36,8 +36,13 @@ const serviceLinks = [
             <div class="rt-dropdown" role="menu">
               {serviceLinks.map((s) => (
                 <a class="rt-dropdown-item" href={s.href} role="menuitem">
-                  <div class="rt-dropdown-title">{s.name}</div>
-                  <div class="rt-dropdown-desc">{s.desc}</div>
+                  <div class="rt-dropdown-item-inner">
+                    <div class="rt-dropdown-title-row">
+                      <img src={s.icon} alt="" class="rt-service-icon" loading="lazy" />
+                      <div class="rt-dropdown-title">{s.name}</div>
+                    </div>
+                    <div class="rt-dropdown-desc">{s.desc}</div>
+                  </div>
                 </a>
               ))}
             </div>
@@ -99,8 +104,6 @@ const serviceLinks = [
 
       <!-- Body -->
       <div class="rt-mobile-body">
-        <div class="rt-mobile-sub">NYC-BASED SOFTWARE &amp; MODERN ENGINEERING</div>
-
         <!-- Services accordion -->
         <details class="rt-acc">
           <summary class="rt-row">
@@ -111,8 +114,13 @@ const serviceLinks = [
           <div class="rt-acc-inner">
             {serviceLinks.map((s) => (
               <a class="rt-service" href={s.href} data-rt-link>
-                <div class="rt-service-title">{s.name}</div>
-                <div class="rt-service-desc">{s.desc}</div>
+                <div class="rt-service-inner">
+                  <div class="rt-service-title-row">
+                    <img src={s.icon} alt="" class="rt-service-icon" loading="lazy" />
+                    <div class="rt-service-title">{s.name}</div>
+                  </div>
+                  <div class="rt-service-desc">{s.desc}</div>
+                </div>
               </a>
             ))}
           </div>
@@ -129,7 +137,7 @@ const serviceLinks = [
 
         <!-- Bottom CTA bar -->
         <div class="rt-mobile-bottom">
-          <a class="rt-mobile-primary" href="/#contact" data-rt-link>Start a Project</a>
+          <a class="rt-mobile-primary" href="/#contact" data-rt-link>Resync Project</a>
         </div>
       </div>
     </div>
@@ -223,6 +231,7 @@ const serviceLinks = [
           overlay.classList.remove("is-open");
           overlay.setAttribute("aria-hidden", "true");
           overlay.setAttribute("inert", "");
+          detailsEls.forEach((d) => (d.open = false));
 
           lockScroll(false);
 
@@ -416,10 +425,21 @@ const serviceLinks = [
       color: rgba(255,255,255,0.88);
       transition: background 120ms ease, color 120ms ease, transform 120ms ease;
     }
+    .rt-dropdown-item-inner{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+    }
     .rt-dropdown-item:hover{
       background: rgba(255,255,255,0.06);
       color: rgba(255,255,255,1);
       transform: translateX(2px);
+    }
+    .rt-dropdown-title-row{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
     .rt-dropdown-title{
       font-weight: 760;
@@ -427,10 +447,16 @@ const serviceLinks = [
       letter-spacing: -0.01em;
     }
     .rt-dropdown-desc{
-      margin-top: 4px;
+      margin-top: -9px;
+      margin-left: 30px; /* align with title text (icon + gap) */
       color: rgba(255,255,255,0.64);
       font-size: 13px;
       letter-spacing: 0.01em;
+    }
+    .rt-service-icon{
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
     }
 
     /* ===== Desktop CTA (pill / glass) ===== */
@@ -778,13 +804,25 @@ const serviceLinks = [
       text-decoration: none;
       color: rgba(255,255,255,0.90);
     }
+    .rt-service-inner{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .rt-service-title-row{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
     .rt-service-title{
       font-weight: 750;
       font-size: 18px;
       letter-spacing: -0.01em;
     }
     .rt-service-desc{
-      margin-top: 4px;
+      margin-top: -9px;
+      margin-left: 32px; /* align with title text (icon + gap) */
       color: rgba(255,255,255,0.55);
       font-size: 14px;
     }

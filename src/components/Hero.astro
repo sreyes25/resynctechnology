@@ -31,26 +31,36 @@ const secondaryCta = "/#services";
       <div class="hero-copy">
         <p class="hero-eyebrow">NYC Software Development</p>
         <h1 class="hero-title">
-         Resyncing Technology<br class="hidden sm:block" />
-         of the Future
+         Resynchronizing<br class="hidden sm:block" />
+         Technology for the<br class="hidden sm:block" />
+        Modern Business
         </h1>
         <p class="hero-sub">
-          We help New York City Businesses adapt, automate, and thrive in a rapidly changing technology landscape. From AI-ready workflows to custom apps and automated systems.
+          At Resync, we help businesses modernize, integrate, and build software that fits the way you operate.
         </p>
 
         <div class="hero-logos">
           <p class="hero-logos-label">Building Modern Technology</p>
           <div class="hero-logos-row">
-            <span>Apps</span>
-            <span>Websites</span>
-            <span>Automation</span>
+            <span class="hero-logo-item">
+              <img src="/services/app.svg" alt="" class="hero-logo-icon" loading="lazy" />
+              Apps
+            </span>
+            <span class="hero-logo-item">
+              <img src="/services/web.svg" alt="" class="hero-logo-icon" loading="lazy" />
+              Websites
+            </span>
+            <span class="hero-logo-item">
+              <img src="/services/automate.svg" alt="" class="hero-logo-icon" loading="lazy" />
+              Automation
+            </span>
           </div>
         </div>
 
         <div class="hero-ctas">
           <a href={primaryCta} class="rt-btn-primary">
             <span class="cta-glow"></span>
-            Start a Project
+            Resync Project
           </a>
           <a href={secondaryCta} class="cta-secondary">
             Explore our services <span aria-hidden="true">›</span>
@@ -166,6 +176,15 @@ const secondaryCta = "/#services";
     font-size: 1rem;
     font-weight: 700;
     color: rgba(255,255,255,0.82);
+  }
+  .hero-logo-item{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .hero-logo-icon{
+    width: 20px;
+    height: 20px;
   }
 
   .hero-ctas{

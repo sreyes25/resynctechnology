@@ -7,8 +7,8 @@ const steps = [
     span: "md:col-span-3",
     img: "/process/discovery.svg",
     artPos: "calc(100% - 15px) 25%",
-    artSize: "45% auto",
-    artOpacity: 0.30,
+    artSize: "40% auto",
+    artOpacity: 0.40,
   },
   {
     k: "02",
@@ -17,8 +17,8 @@ const steps = [
     span: "md:col-span-3",
     img: "/process/scope.svg",
     artPos: "calc(100% - 15px) 25%",
-    artSize: "40% auto",
-    artOpacity: 0.30,
+    artSize: "37% auto",
+    artOpacity: 0.40,
   },
   {
     k: "03",
@@ -27,8 +27,8 @@ const steps = [
     span: "md:col-span-4",
     img: "/process/build.svg",
     artPos: "calc(100% - 30px) 50%",
-    artSize: "40% auto",
-    artOpacity: 0.30,
+    artSize: "37% auto",
+    artOpacity: 0.40,
   },
   {
     k: "04",
@@ -37,8 +37,8 @@ const steps = [
     span: "md:col-span-2",
     img: "/process/launch2.svg",
     artPos: "calc(100% - 25px) 50%",
-    artSize: "40% auto",
-    artOpacity: 0.30,
+    artSize: "35% auto",
+    artOpacity: 0.40,
   },
 ];
 ---
@@ -116,7 +116,7 @@ const steps = [
           <div class="absolute inset-0 bg-[radial-gradient(70%_70%_at_30%_30%,rgba(255,255,255,0.10),transparent_60%)]"></div>
 
           {/* Subtle dot texture */}
-          <div class="absolute inset-0 opacity-25 [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:7px_7px]"></div>
+          <div class="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-size-[7px_7px]"></div>
 
           {/* Edge vignette */}
           <div class="absolute inset-0 bg-[radial-gradient(120%_100%_at_50%_0%,transparent_40%,rgba(0,0,0,0.55)_100%)]"></div>
@@ -127,7 +127,7 @@ const steps = [
           {/* Sheen sweep */}
           <div class="process-sheen pointer-events-none absolute -inset-10 bg-[linear-gradient(110deg,transparent_0%,rgba(255,255,255,0.10)_35%,rgba(255,255,255,0.05)_50%,transparent_70%)]"></div>
 
-          <div class="relative flex min-h-[220px] flex-col justify-end p-6 sm:min-h-[240px]">
+          <div class="relative flex min-h-55 flex-col justify-end p-6 sm:min-h-60">
             <div class="mb-3">
               <span class="process-step-stamp inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-white/75 backdrop-blur">
                 <span class="font-mono tracking-wider text-white/80">{s.k}</span>
