@@ -36,29 +36,30 @@ const iconClass =
   "mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_10px_30px_rgba(0,0,0,0.35)]";
 ---
 
-<section id="services" class="relative overflow-hidden bg-[#07080ba6] text-white">
+<section id="services" class="relative overflow-hidden bg-[#040305] text-white">
   <!-- Ambient background (dark, premium — matches CTA / footer vibe) -->
   <div class="pointer-events-none absolute inset-0 -z-10">
-    <!-- Base dark gradient (keeps everything rich black) -->
-    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.88)_45%,rgba(0,0,0,0.96)_100%)]"></div>
+    <!-- Base dark gradient with slight red carryover from hero -->
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,6,8,0.95)_0%,rgba(7,4,6,0.92)_32%,rgba(4,3,5,0.96)_70%,rgba(3,2,4,0.98)_100%)]"></div>
 
-    <!-- Deep red undertone sweep (subtle, not pink) -->
-    <div class="absolute -top-72 -left-80 h-175 w-175 rounded-full bg-[radial-gradient(circle_at_center,rgba(225,29,72,0.22),transparent_62%)] blur-3xl"></div>
-    <div class="absolute -bottom-80 -right-90 h-190 w-190 rounded-full bg-[radial-gradient(circle_at_center,rgba(159,18,57,0.22),transparent_64%)] blur-3xl"></div>
+    <!-- Deep red undertone sweep (pulls hero tone downward) -->
+    <div class="absolute -top-64 -left-72 h-175 w-175 rounded-full bg-[radial-gradient(circle_at_center,rgba(225,29,72,0.22),transparent_62%)] blur-3xl"></div>
+    <div class="absolute -top-72 right-[-50px] h-150 w-150 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,122,90,0.18),transparent_58%)] blur-3xl"></div>
+    <div class="absolute -bottom-90 -right-90 h-190 w-190 rounded-full bg-[radial-gradient(circle_at_center,rgba(159,18,57,0.22),transparent_64%)] blur-3xl"></div>
 
     <!-- Secondary cool tint (very faint) -->
-    <div class="absolute -top-72 -right-105 h-190 w-190 rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12),transparent_66%)] blur-3xl"></div>
+    <div class="absolute -top-88 -right-105 h-190 w-190 rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.1),transparent_66%)] blur-3xl"></div>
 
     <!-- Soft inner highlight to avoid flatness -->
-    <div class="absolute inset-0 bg-[radial-gradient(90%_70%_at_55%_20%,rgba(255,255,255,0.05),transparent_58%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(110%_80%_at_55%_18%,rgba(255,255,255,0.05),transparent_60%)]"></div>
 
     <!-- Dot texture (make it visible on true black) -->
     <div class="absolute inset-0 opacity-[0.24] bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.22)_1px,transparent_1px)] bg-size-[10px_10px]"></div>
     <div class="absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-size-[5px_5px]"></div>
 
     <!-- Vignette + top fade (keeps focus on content, blends into hero) -->
-    <div class="absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_0%,transparent_35%,rgba(0,0,0,0.82)_100%)]"></div>
-    <div class="absolute inset-x-0 top-0 h-16 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.65),transparent)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(140%_120%_at_50%_0%,rgba(26,10,15,0.14),transparent_36%,rgba(0,0,0,0.86)_100%)]"></div>
+    <div class="absolute inset-x-0 top-0 h-20 bg-[linear-gradient(to_bottom,rgba(4,3,5,0.8),transparent)]"></div>
   </div>
 
   <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-16">
