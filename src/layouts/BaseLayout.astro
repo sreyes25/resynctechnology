@@ -6,7 +6,17 @@ import Footer from "../components/Footer.astro";
 const {
   title = "Resync Technology",
   description = "Engineering-led software studio. Modernize systems, automate operations, and ship reliable products.",
+  // Optional page-level overrides
+  ogImage = "/og.png",
+  noIndex = false,
+  canonical = Astro.url?.toString?.() ?? "",
 } = Astro.props;
+
+const canonicalUrl = canonical || (Astro.url?.toString?.() ?? "");
+const absoluteOgImage =
+  canonicalUrl && ogImage
+    ? new URL(ogImage, canonicalUrl).toString()
+    : ogImage;
 ---
 
 <!doctype html>
@@ -15,6 +25,22 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <!-- SEO -->
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:type" content="website" />
+    {absoluteOgImage && <meta property="og:image" content={absoluteOgImage} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {absoluteOgImage && <meta name="twitter:image" content={absoluteOgImage} />}
     <title>{title}</title>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TS78Y9ZJW"></script>
@@ -34,6 +60,15 @@ const {
     <meta name="theme-color" content="#0f172a" />
     <meta property="og:site_name" content="Resync Technology" />
     <meta property="og:type" content="website" />
+
+    <!-- Structured Data (Organization) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Resync Technology",
+      url: canonicalUrl || undefined,
+      logo: canonicalUrl ? new URL("/logo.png", canonicalUrl).toString() : "/logo.png",
+    })}></script>
   </head>
 
   <body class="min-h-screen bg-gradient-to-b from-resync-50/60 via-paper to-paper text-ink antialiased">
