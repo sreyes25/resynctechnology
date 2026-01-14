@@ -1,0 +1,641 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const tags = ["iOS", "Payments", "PDF Generation", "Automation"];
+
+const features = [
+  {
+    title: "Fast invoicing",
+    desc: "Create invoices in seconds with clean defaults and reusable client info.",
+  },
+  {
+    title: "Clean PDFs",
+    desc: "Generate professional PDFs that look consistent across devices.",
+  },
+  {
+    title: "Client history",
+    desc: "Track invoices by client so repeat work stays organized.",
+  },
+  {
+    title: "Payments built in",
+    desc: "Connect payments and reduce friction so getting paid feels simple.",
+  },
+];
+
+const screenshots = [
+  {
+    src: "/work/invoice-americano/shot-1.png",
+    alt: "Invoice Americano — invoice list",
+    caption: "Invoices at a glance",
+  },
+  {
+    src: "/work/invoice-americano/shot-2.png",
+    alt: "Invoice Americano — invoice builder",
+    caption: "Build an invoice fast",
+  },
+  {
+    src: "/work/invoice-americano/shot-3.png",
+    alt: "Invoice Americano — PDF preview",
+    caption: "Clean PDF preview",
+  },
+  {
+    src: "/work/invoice-americano/shot-4.png",
+    alt: "Invoice Americano — share & payment",
+    caption: "Share + payments",
+  },
+];
+---
+
+<BaseLayout
+  title="Invoice Americano — Resync Technology"
+  description="Invoice Americano is an iOS invoicing app for contractors and small business owners—create invoices fast, generate clean PDFs, track client history, and connect payments."
+>
+  <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
+    <!-- Background system (match About page) -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div
+        class="absolute -left-24 top-0 h-72 w-72 rounded-full bg-resync-600/25 blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(225,29,72,0.08),transparent_28%),radial-gradient(circle_at_50%_70%,rgba(255,255,255,0.05),transparent_38%)]"
+      >
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <!-- Eyebrow -->
+      <p
+        class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-slate-100/80 shadow-[0_12px_36px_rgba(0,0,0,0.35)] backdrop-blur"
+      >
+        <span class="h-2 w-2 rounded-full bg-resync-500"></span>
+        Featured product
+      </p>
+
+      <!-- Title + subcopy -->
+      <div class="mt-6 grid gap-10 md:grid-cols-[1.25fr_0.75fr] md:items-start">
+        <div>
+          <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
+            Invoice Americano
+          </h1>
+          <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-200/90">
+            An iOS invoicing app built for contractors and small business owners
+            who want professional invoices without expensive, complicated tools.
+            Create invoices fast, generate clean PDFs, track client history, and
+            connect payments—so getting paid feels simple.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            {
+              tags.map((t) => (
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-100">
+                  {t}
+                </span>
+              ))
+            }
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/#contact" class="rt-btn-primary">
+              Start a Project
+              <span class="cta-glow" aria-hidden="true"></span>
+            </a>
+            <a
+              href="mailto:reyesasergio@resynctechnology.com?subject=Invoice%20Americano%20Inquiry"
+              class="cta-secondary"
+            >
+              Email about this product
+            </a>
+          </div>
+        </div>
+
+        <!-- Side card (inspired by your About page cards, not a copy) -->
+        <div
+          class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur"
+        >
+          <h2 class="text-base font-semibold text-white">
+            Built for real workflows
+          </h2>
+          <p class="mt-2 text-sm text-slate-200/80">
+            Invoice Americano is designed around the job: create → send → get
+            paid. No clutter, no learning curve.
+          </p>
+
+          <div class="mt-5 grid gap-3">
+            <div class="rounded-xl2 border border-white/10 bg-white/[0.04] p-4">
+              <p
+                class="text-xs font-semibold uppercase tracking-wider text-slate-100/70"
+              >
+                Primary outcome
+              </p>
+              <p class="mt-1 text-sm text-slate-200/90">
+                Faster invoicing + fewer payment delays
+              </p>
+            </div>
+            <div class="rounded-xl2 border border-white/10 bg-white/[0.04] p-4">
+              <p
+                class="text-xs font-semibold uppercase tracking-wider text-slate-100/70"
+              >
+                What we built
+              </p>
+              <p class="mt-1 text-sm text-slate-200/90">
+                iOS app + PDF engine + payment workflow
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features (same visual language as About page values) -->
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        {
+          features.map((f) => (
+            <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
+              <h3 class="text-base font-semibold text-white">{f.title}</h3>
+              <p class="mt-2 text-sm text-slate-200/80">{f.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Product screenshots (auto-scrolling carousel, calm + premium) -->
+      <div
+        class="mt-16 rounded-xl2 border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-8 md:p-10 shadow-[0_20px_70px_rgba(0,0,0,0.32)] backdrop-blur"
+      >
+        <div
+          class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
+        >
+          <div>
+            <h2 class="text-2xl font-bold text-white">Product walkthrough</h2>
+            <p class="mt-2 max-w-2xl text-slate-200/85">
+              Drop in vertical iPhone screenshots here. The carousel scrolls
+              gently on its own (and pauses on hover).
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              class="ia-nav-btn"
+              data-ia-prev
+              aria-label="Previous screenshot"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              class="ia-nav-btn"
+              data-ia-next
+              aria-label="Next screenshot"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-7">
+          <div
+            class="ia-carousel"
+            data-ia-carousel
+            aria-label="Invoice Americano screenshots carousel"
+          >
+            {
+              screenshots.map((s, idx) => (
+                <figure
+                  class="ia-slide"
+                  data-ia-slide
+                  aria-label={`Slide ${idx + 1} of ${screenshots.length}`}
+                >
+                  <div class="ia-phone" aria-hidden="true">
+                    <div class="ia-frame" />
+
+                    <div class="ia-buttons" aria-hidden="true">
+                      <span class="ia-btn ia-btn-top" />
+                      <span class="ia-btn ia-btn-mid" />
+                      <span class="ia-btn ia-btn-bot" />
+                    </div>
+                    <div class="ia-power" aria-hidden="true" />
+
+                    <div class="ia-phone-inner">
+                      <div class="ia-island" aria-hidden="true">
+                        <span class="ia-island-l" />
+                        <span class="ia-island-r" />
+                      </div>
+
+                      <img
+                        src={s.src}
+                        alt={s.alt}
+                        loading={idx === 0 ? "eager" : "lazy"}
+                        class="ia-shot"
+                      />
+                    </div>
+                  </div>
+
+                  <figcaption class="mt-4 text-center">
+                    <p class="text-sm font-semibold text-white">{s.caption}</p>
+                    <p class="mt-1 text-xs text-slate-200/70">{s.alt}</p>
+                  </figcaption>
+                </figure>
+              ))
+            }
+          </div>
+
+          <div
+            class="mt-6 flex justify-center gap-2"
+            data-ia-dots
+            aria-label="Carousel navigation dots"
+          >
+          </div>
+        </div>
+      </div>
+
+      <script is:inline>
+        (() => {
+          const root = document.querySelector("[data-ia-carousel]");
+          if (!root) return;
+
+          const slides = Array.from(root.querySelectorAll("[data-ia-slide]"));
+          const dotsWrap = document.querySelector("[data-ia-dots]");
+          const prevBtn = document.querySelector("[data-ia-prev]");
+          const nextBtn = document.querySelector("[data-ia-next]");
+
+          // Respect reduced motion
+          const prefersReduced = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          ).matches;
+
+          // Build dots
+          const dots = slides.map((_, i) => {
+            const b = document.createElement("button");
+            b.type = "button";
+            b.className = "ia-dot-btn";
+            b.setAttribute("aria-label", `Go to slide ${i + 1}`);
+            b.addEventListener("click", () => scrollToIndex(i));
+            dotsWrap?.appendChild(b);
+            return b;
+          });
+
+          const getIndexFromScroll = () => {
+            const w = root.clientWidth;
+            if (!w) return 0;
+            const i = Math.round(root.scrollLeft / w);
+            return Math.max(0, Math.min(slides.length - 1, i));
+          };
+
+          const setActiveDot = (i) => {
+            dots.forEach((d, idx) => {
+              d.dataset.active = idx === i ? "true" : "false";
+            });
+          };
+
+          const scrollToIndex = (i) => {
+            const w = root.clientWidth;
+            root.scrollTo({
+              left: i * w,
+              behavior: prefersReduced ? "auto" : "smooth",
+            });
+            setActiveDot(i);
+          };
+
+          const step = (dir) => {
+            const i = getIndexFromScroll();
+            const next = (i + dir + slides.length) % slides.length;
+            scrollToIndex(next);
+          };
+
+          prevBtn?.addEventListener("click", () => step(-1));
+          nextBtn?.addEventListener("click", () => step(1));
+
+          // Auto-advance (calm)
+          let timer = null;
+          const start = () => {
+            if (prefersReduced) return;
+            stop();
+            timer = window.setInterval(() => step(1), 5200);
+          };
+          const stop = () => {
+            if (timer) window.clearInterval(timer);
+            timer = null;
+          };
+
+          root.addEventListener("mouseenter", stop);
+          root.addEventListener("mouseleave", start);
+          root.addEventListener("focusin", stop);
+          root.addEventListener("focusout", start);
+
+          // Sync dots on manual scroll
+          let raf = null;
+          root.addEventListener(
+            "scroll",
+            () => {
+              if (raf) cancelAnimationFrame(raf);
+              raf = requestAnimationFrame(() =>
+                setActiveDot(getIndexFromScroll())
+              );
+            },
+            { passive: true }
+          );
+
+          // Init
+          setActiveDot(0);
+          start();
+        })();
+      </script>
+
+      <style>
+        /* Carousel layout: one slide per viewport, scroll-snap for premium feel */
+        .ia-carousel {
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 100%;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+          border-radius: 18px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.03);
+          box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+        }
+        .ia-carousel::-webkit-scrollbar {
+          height: 10px;
+        }
+        .ia-carousel::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .ia-carousel::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.12);
+          border-radius: 999px;
+        }
+
+        .ia-slide {
+          scroll-snap-align: start;
+          padding: 18px;
+          display: grid;
+          place-items: center;
+        }
+
+        /* Phone frame (glassy, subtle, consistent with site) */
+        .ia-phone {
+          position: relative;
+          width: min(360px, 86vw);
+          aspect-ratio: 9 / 19.5;
+          border-radius: 44px;
+
+          /* metallic frame */
+          background:
+            radial-gradient(
+              120% 80% at 30% 15%,
+              rgba(255, 255, 255, 0.18),
+              transparent 55%
+            ),
+            radial-gradient(
+              90% 70% at 70% 90%,
+              rgba(255, 255, 255, 0.1),
+              transparent 60%
+            ),
+            linear-gradient(
+              180deg,
+              rgba(255, 255, 255, 0.14),
+              rgba(255, 255, 255, 0.06)
+            );
+
+          border: 1px solid rgba(255, 255, 255, 0.22);
+          box-shadow:
+            0 2px 0 rgba(255, 255, 255, 0.12) inset,
+            0 -10px 24px rgba(0, 0, 0, 0.35) inset,
+            0 28px 90px rgba(0, 0, 0, 0.58);
+
+          padding: 14px; /* bezel thickness */
+          transform: translateZ(0);
+        }
+
+        /* inner glass bezel */
+        .ia-frame {
+          pointer-events: none;
+          position: absolute;
+          inset: 8px;
+          border-radius: 38px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.35) inset,
+            0 0 0 10px rgba(0, 0, 0, 0.3) inset;
+        }
+
+        .ia-phone-inner {
+          position: relative;
+          height: 100%;
+          width: 100%;
+          border-radius: 34px;
+          overflow: hidden;
+          background: rgba(0, 0, 0, 0.3);
+          box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+            0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Dynamic Island */
+        .ia-island {
+          pointer-events: none;
+          position: absolute;
+          top: 12px;
+          left: 50%;
+          transform: translateX(-50%);
+          height: 24px;
+          width: 120px;
+          border-radius: 999px;
+          background: rgba(0, 0, 0, 0.92);
+          box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+            0 10px 24px rgba(0, 0, 0, 0.35);
+          opacity: 0.95;
+          display: grid;
+          grid-auto-flow: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          z-index: 2;
+        }
+        .ia-island-l {
+          height: 6px;
+          width: 34px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.1);
+        }
+        .ia-island-r {
+          height: 10px;
+          width: 10px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Side buttons + power */
+        .ia-buttons {
+          pointer-events: none;
+          position: absolute;
+          left: -3px;
+          top: 24%;
+          width: 6px;
+          height: 52%;
+          display: grid;
+          gap: 10px;
+          z-index: 1;
+        }
+        .ia-btn {
+          display: block;
+          width: 6px;
+          border-radius: 999px;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.22),
+            rgba(0, 0, 0, 0.2)
+          );
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.35) inset,
+            0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .ia-btn-top {
+          height: 26px;
+        }
+        .ia-btn-mid {
+          height: 42px;
+        }
+        .ia-btn-bot {
+          height: 42px;
+        }
+
+        .ia-power {
+          pointer-events: none;
+          position: absolute;
+          right: -3px;
+          top: 36%;
+          width: 6px;
+          height: 64px;
+          border-radius: 999px;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.22),
+            rgba(0, 0, 0, 0.2)
+          );
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.35) inset,
+            0 8px 16px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+        }
+
+        .ia-shot {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          display: block;
+          filter: saturate(1.02) contrast(1.02);
+        }
+
+        .ia-nav-btn {
+          height: 40px;
+          width: 40px;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          background: rgba(255, 255, 255, 0.06);
+          color: rgba(255, 255, 255, 0.9);
+          font-weight: 900;
+          box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+          backdrop-filter: blur(10px);
+          transition:
+            transform 0.18s ease,
+            background 0.18s ease,
+            border-color 0.18s ease;
+        }
+        .ia-nav-btn:hover {
+          transform: translateY(-1px);
+          background: rgba(255, 255, 255, 0.09);
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .ia-dot-btn {
+          height: 8px;
+          width: 8px;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          background: rgba(255, 255, 255, 0.08);
+          transition:
+            transform 0.18s ease,
+            background 0.18s ease,
+            border-color 0.18s ease;
+        }
+        .ia-dot-btn[data-active="true"] {
+          background: rgba(255, 64, 92, 0.8);
+          border-color: rgba(255, 64, 92, 0.4);
+          transform: scale(1.2);
+          box-shadow: 0 0 0 4px rgba(255, 64, 92, 0.14);
+        }
+
+        @media (min-width: 768px) {
+          .ia-slide {
+            padding: 22px;
+          }
+          .ia-phone {
+            width: 380px;
+          }
+        }
+      </style>
+
+      <!-- Optional: light “case study” strip (keeps your calm tone) -->
+      <div
+        class="mt-16 rounded-xl2 border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-10 shadow-[0_20px_70px_rgba(0,0,0,0.32)] backdrop-blur"
+      >
+        <h2 class="text-2xl font-bold text-white">Why it works</h2>
+        <p class="mt-3 leading-relaxed text-slate-200/90">
+          Contractors don’t need more software—they need fewer steps. Invoice
+          Americano is built to keep the process tight: clear inputs, clean
+          output, and a straight path to payment.
+        </p>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <div class="rounded-xl2 border border-white/10 bg-white/5 p-6">
+            <h3 class="text-base font-semibold text-white">Simple UX</h3>
+            <p class="mt-2 text-sm text-slate-200/80">
+              Fast screens, minimal friction, designed for mobile.
+            </p>
+          </div>
+          <div class="rounded-xl2 border border-white/10 bg-white/5 p-6">
+            <h3 class="text-base font-semibold text-white">Clean output</h3>
+            <p class="mt-2 text-sm text-slate-200/80">
+              PDFs that look professional and are easy to share.
+            </p>
+          </div>
+          <div class="rounded-xl2 border border-white/10 bg-white/5 p-6">
+            <h3 class="text-base font-semibold text-white">System thinking</h3>
+            <p class="mt-2 text-sm text-slate-200/80">
+              Built to integrate payments and keep records organized.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA (match About page CTA block style) -->
+      <div
+        class="mt-16 rounded-xl2 border border-white/10 bg-white/[0.04] p-10 shadow-[0_20px_70px_rgba(0,0,0,0.38)] backdrop-blur"
+      >
+        <h2 class="text-xl font-bold text-white">Want something similar?</h2>
+        <p class="mt-3 leading-relaxed text-slate-200/85">
+          If you want an app, a dashboard, or a payments + invoicing workflow
+          built cleanly—tell us what you’re trying to accomplish. We’ll scope
+          it, plan it, and ship it fast.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/#contact" class="rt-btn-primary">
+            Start a Project
+            <span class="cta-glow" aria-hidden="true"></span>
+          </a>
+          <a href="/#services" class="cta-secondary">Explore Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
