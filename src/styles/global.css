@@ -30,6 +30,16 @@
 
 @layer components {
 
+  /* Hero */
+
+  .hero-eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+    font-size: 14px;
+    color: #ffffff;
+  }
+
   /* Primary CTA (dark backgrounds) */
   .rt-btn-primary{
     position: relative;

@@ -2,7 +2,7 @@
 // src/pages/invoiceamericano/paymentsuccess.astro
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-// Optional query params you can append from Stripe/Supabase:
+// Optional query params you can append from Stripe/:
 // ?invoice=abc123
 // ?amount=125.00&currency=USD
 const sp = Astro.url.searchParams;
@@ -57,16 +57,16 @@ const paidLine = formatMoney(amount, currency);
   </style>
 
   <section
-    class="relative min-h-[100vh] overflow-hidden bg-[#05060f] text-slate-100"
+    class="relative min-h-screen overflow-hidden bg-[#05060f] text-slate-100"
   >
     <!-- Background system (same family as the site, but calmer / app-like) -->
     <div class="pointer-events-none absolute inset-0 -z-10">
       <div
-        class="absolute -left-24 top-[-40px] h-80 w-80 rounded-full bg-resync-600/20 blur-3xl"
+        class="absolute -left-24 -top-10 h-80 w-80 rounded-full bg-resync-600/20 blur-3xl"
       >
       </div>
       <div
-        class="absolute right-[-40px] top-0 h-96 w-96 rounded-full bg-[#0d172a] blur-[140px]"
+        class="absolute -right-10 top-0 h-96 w-96 rounded-full bg-[#0d172a] blur-[140px]"
       >
       </div>
       <div
@@ -88,7 +88,7 @@ const paidLine = formatMoney(amount, currency);
     </div>
 
     <div
-      class="mx-auto flex min-h-[100vh] max-w-6xl items-center justify-center px-6 py-14"
+      class="mx-auto flex min-h-screen max-w-6xl items-center justify-center px-6 py-14"
     >
       <!-- App-style confirmation sheet -->
       <div
@@ -96,7 +96,7 @@ const paidLine = formatMoney(amount, currency);
       >
         <div class="flex items-center gap-3">
           <div
-            class="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/[0.06] shadow-[0_12px_45px_rgba(0,0,0,0.35)]"
+            class="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/6 shadow-[0_12px_45px_rgba(0,0,0,0.35)]"
           >
             <!-- simple “success” dot (keep it subtle, app-like) -->
             <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
@@ -120,7 +120,7 @@ const paidLine = formatMoney(amount, currency);
           (paidLine || invoiceId) && (
             <div class="mt-6 grid gap-3">
               {paidLine && (
-                <div class="rounded-xl2 border border-white/10 bg-white/[0.04] p-5">
+                <div class="rounded-xl2 border border-white/10 bg-white/4 p-5">
                   <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-100/60">
                     Amount paid
                   </p>
@@ -129,7 +129,7 @@ const paidLine = formatMoney(amount, currency);
               )}
 
               {invoiceId && (
-                <div class="rounded-xl2 border border-white/10 bg-white/[0.04] p-5">
+                <div class="rounded-xl2 border border-white/10 bg-white/4 p-5">
                   <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-100/60">
                     Invoice
                   </p>
