@@ -26,6 +26,31 @@ const capabilities = {
   devops: ["Vercel", "Netlify", "AWS", "Cloudflare", "Docker"],
 };
 
+const pillClass = (name: string) => {
+  const key = name.toLowerCase();
+  if (key.includes("react")) return "tech-react";
+  if (key.includes("next")) return "tech-next";
+  if (key.includes("vue")) return "tech-vue";
+  if (key.includes("tailwind")) return "tech-tailwind";
+  if (key.includes("astro")) return "tech-astro";
+  if (key.includes("node")) return "tech-node";
+  if (key.includes("laravel")) return "tech-laravel";
+  if (key.includes("supabase")) return "tech-supabase";
+  if (key.includes("firebase")) return "tech-firebase";
+  if (key.includes("postgres")) return "tech-postgres";
+  if (key.includes("wordpress")) return "tech-wordpress";
+  if (key.includes("shopify")) return "tech-shopify";
+  if (key.includes("webflow")) return "tech-webflow";
+  if (key.includes("sanity")) return "tech-sanity";
+  if (key.includes("contentful")) return "tech-contentful";
+  if (key.includes("vercel")) return "tech-vercel";
+  if (key.includes("netlify")) return "tech-netlify";
+  if (key.includes("aws")) return "tech-aws";
+  if (key.includes("cloudflare")) return "tech-cloudflare";
+  if (key.includes("docker")) return "tech-docker";
+  return "tech-generic";
+};
+
 const industries = [
   { title: "Education & HR", desc: "Recruitment sites, training portals, and internal tools." },
   { title: "Healthcare", desc: "Patient-first UX, HIPAA-aware workflows, and secure data handling." },
@@ -194,7 +219,7 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="ws-section ws-mid accent-purple relative overflow-hidden text-slateink">
+  <section class="ws-section ws-mid ws-pop accent-purple">
     <div class="section-wash"></div>
     <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
       <div class="max-w-2xl">
@@ -299,48 +324,48 @@ const testimonials = [
 
   <section class="ws-section ws-mid accent-purple relative overflow-hidden text-slateink">
     <div class="section-wash"></div>
-    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-3xl">
-        <h2 class="section-title text-3xl font-bold text-slateink">Contract-ready delivery stack</h2>
-        <p class="mt-3 text-slate-700">
+    <div class="section-content ws-wrap">
+      <div class="ws-container">
+        <h2 class="section-title">Contract-ready delivery stack</h2>
+        <p class="section-body">
           We’re a contracted web partner built for outcomes, not busywork. You get a focused team that can
           scope fast, execute cleanly, and hand off with confidence—whether it’s a full rebuild or a targeted sprint.
         </p>
-        <p class="mt-3 text-slate-700">
+        <p class="section-body">
           Strategy, design, development, and analytics stay aligned so every launch supports growth, not just aesthetics.
         </p>
       </div>
 
-      <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <div class="accent-card capability-card rounded-xl2 border border-black/5 p-6 shadow-soft">
-          <h3 class="text-base font-semibold text-slateink">Frontend</h3>
-          <div class="mt-3 flex flex-wrap gap-2">
+      <div class="ws-grid-2">
+        <div class="accent-card rounded-2xl border border-black/5 bg-white p-6 shadow-soft accent-purple">
+          <h3 class="text-base font-semibold">Frontend</h3>
+          <div class="ws-pill-row">
             {capabilities.frontend.map((item) => (
-              <span class="capability-pill rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{item}</span>
+              <span class={`tech-pill ${pillClass(item)}`}>{item}</span>
             ))}
           </div>
         </div>
-        <div class="accent-card capability-card rounded-xl2 border border-black/5 p-6 shadow-soft">
+        <div class="accent-card rounded-2xl border border-black/5 bg-white p-6 shadow-soft accent-blue">
           <h3 class="text-base font-semibold text-slateink">Backend</h3>
-          <div class="mt-3 flex flex-wrap gap-2">
+          <div class="ws-pill-row">
             {capabilities.backend.map((item) => (
-              <span class="capability-pill rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{item}</span>
+              <span class={`tech-pill ${pillClass(item)}`}>{item}</span>
             ))}
           </div>
         </div>
-        <div class="accent-card capability-card rounded-xl2 border border-black/5 p-6 shadow-soft">
+        <div class="accent-card rounded-2xl border border-black/5 bg-white p-6 shadow-soft accent-green">
           <h3 class="text-base font-semibold text-slateink">CMS + Commerce</h3>
-          <div class="mt-3 flex flex-wrap gap-2">
+          <div class="ws-pill-row">
             {capabilities.cms.map((item) => (
-              <span class="capability-pill rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{item}</span>
+              <span class={`tech-pill ${pillClass(item)}`}>{item}</span>
             ))}
           </div>
         </div>
-        <div class="accent-card capability-card rounded-xl2 border border-black/5 p-6 shadow-soft">
+        <div class="accent-card rounded-2xl border border-black/5 bg-white p-6 shadow-soft accent-red">
           <h3 class="text-base font-semibold text-slateink">Cloud + DevOps</h3>
-          <div class="mt-3 flex flex-wrap gap-2">
+          <div class="ws-pill-row">
             {capabilities.devops.map((item) => (
-              <span class="capability-pill rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{item}</span>
+              <span class={`tech-pill ${pillClass(item)}`}>{item}</span>
             ))}
           </div>
         </div>
@@ -348,39 +373,36 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="ws-section ws-mid accent-blue relative overflow-hidden text-slateink">
+  <section class="ws-section ws-mid accent-blue">
     <div class="section-wash"></div>
-    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <div class="max-w-2xl">
-        <h2 class="section-title text-3xl font-bold text-slateink">Industries served</h2>
+        <h2 class="text-3xl font-bold text-slateink">Industries served</h2>
         <p class="mt-3 text-slate-700">
           We adapt the build to your business model and customer journey.
         </p>
       </div>
 
-      <div class="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-        <div class="accent-card rounded-2xl border border-black/5 p-6 shadow-soft">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Where we deliver</p>
+      <div class="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <div class="rounded-2xl border border-white/40 bg-white/85 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.12),0_24px_60px_rgba(75,184,255,0.18)] backdrop-blur">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">Where we deliver</p>
           <h3 class="mt-3 text-2xl font-semibold text-slateink">Vertical expertise with modern UX</h3>
           <p class="mt-3 text-sm text-slate-600">
             We build for industries that need trust, clarity, and conversion—so the site looks sharp and performs under
             real-world customer behavior.
           </p>
-          <div class="mt-6 flex flex-wrap gap-3 text-xs text-slate-500">
-            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Lead-gen funnels</span>
-            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Booking workflows</span>
-            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">eCommerce UX</span>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full border border-blue-200/70 bg-blue-50/80 px-3 py-1 text-slate-700">Lead-gen funnels</span>
+            <span class="rounded-full border border-blue-200/70 bg-blue-50/80 px-3 py-1 text-slate-700">Booking workflows</span>
+            <span class="rounded-full border border-blue-200/70 bg-blue-50/80 px-3 py-1 text-slate-700">eCommerce UX</span>
           </div>
         </div>
 
-        <div class="space-y-4">
+        <div class="grid gap-4 sm:grid-cols-2">
           {industries.map((industry) => (
-            <div class="industry-row accent-card rounded-2xl border border-black/5 p-5 shadow-soft">
-              <div class="industry-bar" aria-hidden="true"></div>
-              <div>
-                <h4 class="text-base font-semibold text-slateink">{industry.title}</h4>
-                <p class="mt-2 text-sm text-slate-600">{industry.desc}</p>
-              </div>
+            <div class="rounded-2xl border border-white/40 bg-white/85 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.12)] backdrop-blur">
+              <h4 class="text-base font-semibold text-slateink">{industry.title}</h4>
+              <p class="mt-2 text-sm text-slate-600">{industry.desc}</p>
             </div>
           ))}
         </div>
