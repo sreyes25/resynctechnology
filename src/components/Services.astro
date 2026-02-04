@@ -3,6 +3,7 @@ const iconSrc = {
   web: "/services/web.svg",
   spark: "/services/automate.svg",
   mobile: "/services/app.svg",
+  marketing: "/services/consultation.svg",
 };
 type IconKey = keyof typeof iconSrc;
 
@@ -29,6 +30,12 @@ const services: Array<{
     desc: "Automate repetitive ops with integrations and internal tooling—save time, reduce errors, keep teams moving.",
     href: "/#contact",
     icon: "spark",
+  },
+  {
+    title: "Digital Marketing",
+    desc: "Paid + organic growth across search, social, and email—clear strategy, clean tracking, measurable results.",
+    href: "/services/digital-marketing",
+    icon: "marketing",
   },
 ];
 
@@ -97,10 +104,114 @@ const iconClass =
       ))}
     </div>
 
+    <!-- Digital marketing feature (homepage preview) -->
+    <div class="mt-12 grid items-center gap-8 rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.5)] backdrop-blur-md sm:p-8 lg:grid-cols-[1.05fr_0.95fr]">
+      <div>
+        <p class="hero-eyebrow text-white/80">Digital marketing services</p>
+        <h3 class="mt-3 text-2xl font-bold text-white sm:text-3xl">
+          Demand generation with clean strategy and tight execution.
+        </h3>
+        <p class="mt-3 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">
+          Marketing is crowded. We build clear positioning, launch fast tests, and scale what works across paid,
+          organic, and retention channels—so you get more calls, signups, and revenue without wasted spend.
+        </p>
+
+        <ul class="mt-6 grid gap-3 text-sm text-white/80 sm:grid-cols-2">
+          {[
+            "Pay Per Click (PPC) services",
+            "Search Engine Optimization (SEO)",
+            "Social media marketing",
+            "eCommerce marketing",
+            "Email marketing + lifecycle",
+            "Answer Engine Optimization (AEO)",
+            "Generative Engine Optimization (GEO)",
+          ].map((item) => (
+            <li class="flex items-center gap-2">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-xs text-white/90">→</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/#contact" class="rt-btn-primary">
+            <span class="cta-glow"></span>
+            Get in Touch
+          </a>
+          <a href="/services/digital-marketing" class="cta-secondary">
+            Learn More →
+          </a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -top-6 right-2 h-20 w-20 rounded-full bg-gradient-to-br from-[#ff7a59] to-[#f43f5e] opacity-70 blur-2xl"></div>
+        <div class="absolute -bottom-10 left-4 h-28 w-28 rounded-full bg-gradient-to-br from-[#38bdf8] to-[#6366f1] opacity-60 blur-2xl"></div>
+
+        <div class="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-4 shadow-[0_25px_70px_rgba(0,0,0,0.45)]">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="flex items-center justify-between text-xs text-white/60">
+              <span class="font-semibold text-white/80">Campaign Snapshot</span>
+              <span>Last 30 days</span>
+            </div>
+            <div class="mt-4 grid gap-3 sm:grid-cols-3">
+              {[
+                { label: "Leads", value: "428", delta: "+18%" },
+                { label: "CAC", value: "$42", delta: "-12%" },
+                { label: "ROAS", value: "4.2x", delta: "+0.6" },
+              ].map((stat) => (
+                <div class="rounded-xl border border-white/10 bg-white/5 p-3">
+                  <div class="text-xs text-white/60">{stat.label}</div>
+                  <div class="mt-2 text-lg font-semibold text-white">{stat.value}</div>
+                  <div class="mt-1 text-xs text-emerald-300/90">{stat.delta}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-xs text-white/60">Top channels</div>
+              <div class="mt-3 space-y-2">
+                {[
+                  { name: "Search", pct: "46%" },
+                  { name: "Social", pct: "32%" },
+                  { name: "Email", pct: "22%" },
+                ].map((row) => (
+                  <div class="flex items-center justify-between text-sm text-white/80">
+                    <span>{row.name}</span>
+                    <span class="text-white/60">{row.pct}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-xs text-white/60">Creative in flight</div>
+              <div class="mt-3 space-y-2 text-sm text-white/80">
+                <div class="flex items-center justify-between">
+                  <span>Ad set A</span>
+                  <span class="text-white/60">Scaling</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span>Ad set B</span>
+                  <span class="text-white/60">Testing</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span>Landing page C</span>
+                  <span class="text-white/60">Live</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- bottom CTA strip -->
     <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <p class="text-m text-white/80">
-        Need an app, website, or automation? We’ll map a plan and ship.
+        Need an app, website, automation, or marketing push? We’ll map a plan and ship.
       </p>
      <a href="/#contact" class="rt-btn-primary">
       <span class="cta-glow"></span>
