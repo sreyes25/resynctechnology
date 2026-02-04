@@ -81,6 +81,23 @@ const projects = [
   },
 ];
 
+const featuredSites = [
+  {
+    name: "Park Slope Dermatology",
+    url: "https://parkslopedermatology.com/",
+    label: "Healthcare",
+    summary: "WordPress foundation with custom design, bespoke components, and automation workflows tailored to patient intake.",
+    tags: ["WordPress", "Custom design", "Automation"],
+  },
+  {
+    name: "Infiniker",
+    url: "https://infiniker.com/",
+    label: "Home Services",
+    summary: "Fully custom site built from scratch with a clean structure and conversion-focused layout.",
+    tags: ["Custom build", "Performance", "Conversion UX"],
+  },
+];
+
 const testimonials = [
   {
     quote:
@@ -221,10 +238,11 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="bg-paper text-slateink">
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl">
-        <h2 class="text-3xl font-bold text-slateink">Core website services</h2>
+  <section class="relative overflow-hidden bg-[linear-gradient(180deg,#fafafa_0%,#f1f5f9_55%,#f8fafc_100%)] text-slateink">
+    <div class="section-wash" style="--accent: 219 112 231;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl" style="--accent: 219 112 231;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Core website services</h2>
         <p class="mt-3 text-slate-700">
           Custom digital solutions built to streamline operations, increase visibility, and drive growth.
         </p>
@@ -232,7 +250,7 @@ const testimonials = [
 
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         {serviceCategories.map((service) => (
-          <div class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+          <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
             <h3 class="text-lg font-semibold text-slateink">{service.title}</h3>
             <p class="mt-2 text-sm leading-relaxed text-slate-600">{service.desc}</p>
             <a href={service.href} class="mt-4 inline-flex items-center text-sm font-semibold text-resync-700">
@@ -245,35 +263,104 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="relative overflow-hidden bg-[#0a0e1a] text-slate-100">
-    <div class="pointer-events-none absolute inset-0 -z-10">
-      <div class="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-resync-700/25 blur-3xl"></div>
-      <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div>
-    </div>
-
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl">
-        <h2 class="text-3xl font-bold text-white">How the process works</h2>
-        <p class="mt-3 text-slate-200/85">
-          Clear steps, fast execution, and no surprises.
+  <section class="relative overflow-hidden bg-paper text-slateink">
+    <div class="section-wash" style="--accent: 75 184 255;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl" style="--accent: 75 184 255;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Featured websites</h2>
+        <p class="mt-3 text-slate-700">
+          A quick look at recent builds. Tap in to view the live experience.
         </p>
       </div>
 
-      <div class="mt-10 grid gap-6 md:grid-cols-4">
-        {process.map((step) => (
-          <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
-            <h3 class="text-base font-semibold text-white">{step.title}</h3>
-            <p class="mt-2 text-sm text-slate-200/80">{step.desc}</p>
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        {featuredSites.map((site) => (
+          <div class="accent-card group overflow-hidden rounded-2xl border border-black/5 bg-white shadow-soft">
+            <div class="border-b border-black/5 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              {site.label}
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold text-slateink">{site.name}</h3>
+                  <p class="mt-2 text-sm text-slate-600">{site.summary}</p>
+                </div>
+                <a
+                  href={site.url}
+                  class="hidden shrink-0 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900 sm:inline-flex"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Visit site
+                </a>
+              </div>
+
+              <div class="mt-5 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+                <div class="flex items-center justify-between border-b border-slate-200 bg-white px-3 py-2 text-[11px] text-slate-400">
+                  <span class="font-semibold text-slate-500">Live preview</span>
+                  <span class="truncate">{site.url}</span>
+                </div>
+                <div class="preview-frame relative h-72 bg-slate-50 md:h-80 lg:h-[22rem]" data-preview>
+                  <div class="preview-canvas">
+                    <iframe
+                      src={site.url}
+                      class="preview-iframe"
+                      loading="lazy"
+                      title={`${site.name} preview`}
+                    ></iframe>
+                  </div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent"></div>
+                  <div class="absolute bottom-3 left-3 flex flex-wrap gap-2">
+                    <a
+                      href={site.url}
+                      class="pointer-events-auto rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-soft transition hover:border-slate-300 hover:text-slate-900"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Open live site
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-500">
+                {site.tags?.map((tag) => (
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">{tag}</span>
+                ))}
+              </div>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="bg-paper text-slateink">
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl">
-        <h2 class="text-3xl font-bold text-slateink">Why clients choose Resync</h2>
+  <section class="relative overflow-hidden bg-[#f3f4f6] text-slateink">
+    <div class="section-wash" style="--accent: 255 92 92;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl" style="--accent: 255 92 92;">
+        <h2 class="section-title text-3xl font-bold text-slateink">How the process works</h2>
+        <p class="mt-3 text-slate-700">
+          Clear steps, fast execution, and no surprises.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-4">
+        {process.map((step) => (
+          <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+            <h3 class="text-base font-semibold text-slateink">{step.title}</h3>
+            <p class="mt-2 text-sm text-slate-600">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-paper text-slateink">
+    <div class="section-wash" style="--accent: 87 255 122;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl" style="--accent: 87 255 122;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Why clients choose Resync</h2>
         <p class="mt-3 text-slate-700">
           A strategic partner that balances speed, clarity, and long-term scalability.
         </p>
@@ -281,7 +368,7 @@ const testimonials = [
 
       <div class="mt-8 grid gap-4 md:grid-cols-2">
         {reasons.map((item) => (
-          <div class="flex items-start gap-3 rounded-xl border border-black/5 bg-white p-4 shadow-soft">
+          <div class="accent-card flex items-start gap-3 rounded-xl border border-black/5 bg-white p-4 shadow-soft">
             <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-resync-50 text-resync-700">✓</span>
             <p class="text-sm text-slate-700">{item}</p>
           </div>
@@ -290,49 +377,50 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="bg-[#0a0e1a] text-slate-100">
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-3xl">
-        <h2 class="text-3xl font-bold text-white">Experience and capabilities</h2>
-        <p class="mt-3 text-slate-200/85">
+  <section class="relative overflow-hidden bg-[#f6f7f9] text-slateink">
+    <div class="section-wash" style="--accent: 219 112 231;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-3xl" style="--accent: 219 112 231;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Experience and capabilities</h2>
+        <p class="mt-3 text-slate-700">
           We have delivered projects across fintech, real estate, medical, legal, and consumer brands.
           We understand both startup speed and enterprise requirements, and we scale the build to fit your budget and goals.
         </p>
-        <p class="mt-3 text-slate-200/85">
+        <p class="mt-3 text-slate-700">
           Our team covers strategy, design, development, and analytics—so you get a full-stack partner, not just a build.
         </p>
       </div>
 
       <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
-          <h3 class="text-base font-semibold text-white">Frontend</h3>
+        <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+          <h3 class="text-base font-semibold text-slateink">Frontend</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {capabilities.frontend.map((item) => (
-              <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-100">{item}</span>
+              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">{item}</span>
             ))}
           </div>
         </div>
-        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
-          <h3 class="text-base font-semibold text-white">Backend</h3>
+        <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+          <h3 class="text-base font-semibold text-slateink">Backend</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {capabilities.backend.map((item) => (
-              <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-100">{item}</span>
+              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">{item}</span>
             ))}
           </div>
         </div>
-        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
-          <h3 class="text-base font-semibold text-white">CMS + Commerce</h3>
+        <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+          <h3 class="text-base font-semibold text-slateink">CMS + Commerce</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {capabilities.cms.map((item) => (
-              <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-100">{item}</span>
+              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">{item}</span>
             ))}
           </div>
         </div>
-        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
-          <h3 class="text-base font-semibold text-white">Cloud + DevOps</h3>
+        <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+          <h3 class="text-base font-semibold text-slateink">Cloud + DevOps</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {capabilities.devops.map((item) => (
-              <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-100">{item}</span>
+              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">{item}</span>
             ))}
           </div>
         </div>
@@ -340,10 +428,11 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="bg-paper text-slateink">
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl">
-        <h2 class="text-3xl font-bold text-slateink">Industries served</h2>
+  <section class="relative overflow-hidden bg-paper text-slateink">
+    <div class="section-wash" style="--accent: 75 184 255;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl" style="--accent: 75 184 255;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Industries served</h2>
         <p class="mt-3 text-slate-700">
           We adapt the build to your business model and customer journey.
         </p>
@@ -351,7 +440,7 @@ const testimonials = [
 
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         {industries.map((industry) => (
-          <div class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+          <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
             <h3 class="text-base font-semibold text-slateink">{industry.title}</h3>
             <p class="mt-2 text-sm text-slate-600">{industry.desc}</p>
           </div>
@@ -360,41 +449,43 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="bg-[#0a0e1a] text-slate-100">
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl">
-        <h2 class="text-3xl font-bold text-white">Featured work</h2>
-        <p class="mt-3 text-slate-200/85">
+  <section class="relative overflow-hidden bg-[#f3f4f6] text-slateink">
+    <div class="section-wash" style="--accent: 255 92 92;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl" style="--accent: 255 92 92;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Featured work</h2>
+        <p class="mt-3 text-slate-700">
           Real-world projects built for speed, clarity, and results.
         </p>
       </div>
 
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         {projects.map((project) => (
-          <a href={project.href} class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur transition hover:border-white/20 hover:bg-white/10">
-            <h3 class="text-lg font-semibold text-white">{project.title}</h3>
-            <p class="mt-2 text-sm text-slate-200/80">{project.desc}</p>
+          <a href={project.href} class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
+            <h3 class="text-lg font-semibold text-slateink">{project.title}</h3>
+            <p class="mt-2 text-sm text-slate-600">{project.desc}</p>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="bg-paper text-slateink">
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl">
-        <h2 class="text-3xl font-bold text-slateink">Other services</h2>
+  <section class="relative overflow-hidden bg-paper text-slateink">
+    <div class="section-wash" style="--accent: 87 255 122;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl" style="--accent: 87 255 122;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Other services</h2>
         <p class="mt-3 text-slate-700">
           Explore the rest of our delivery stack.
         </p>
       </div>
 
       <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <a href="/#services" class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
+        <a href="/#services" class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
           <h3 class="text-lg font-semibold text-slateink">Mobile App Development</h3>
           <p class="mt-2 text-sm text-slate-600">Custom iOS and web apps designed for real workflows.</p>
         </a>
-        <a href="/services/digital-marketing" class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
+        <a href="/services/digital-marketing" class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
           <h3 class="text-lg font-semibold text-slateink">Digital Marketing</h3>
           <p class="mt-2 text-sm text-slate-600">Paid, organic, and lifecycle growth with clear reporting.</p>
         </a>
@@ -402,39 +493,110 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="relative overflow-hidden bg-[#0a0e1a] text-slate-100">
-    <div class="pointer-events-none absolute inset-0 -z-10">
-      <div class="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-resync-700/25 blur-3xl"></div>
-      <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div>
-    </div>
+  <style>
+    .section-wash{
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        linear-gradient(120deg, rgba(var(--accent), 0.08), transparent 45%),
+        radial-gradient(60% 60% at 8% 0%, rgba(var(--accent), 0.24), transparent 68%),
+        radial-gradient(50% 60% at 92% 28%, rgba(var(--accent), 0.18), transparent 70%);
+    }
+    .section-content{
+      position: relative;
+      z-index: 1;
+    }
+    .section-title{
+      position: relative;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, rgba(var(--accent), 0.18), rgba(var(--accent), 0.04) 70%);
+      box-shadow: inset 0 0 0 1px rgba(var(--accent), 0.18);
+    }
+    .accent-card{
+      border-color: rgba(var(--accent), 0.18);
+      box-shadow: 0 18px 50px rgba(var(--accent), 0.08), 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+    .accent-card:hover{
+      border-color: rgba(var(--accent), 0.32);
+      box-shadow: 0 22px 60px rgba(var(--accent), 0.12), 0 12px 36px rgba(15, 23, 42, 0.1);
+    }
+    .preview-frame{
+      --preview-scale: 0.6;
+      overflow: hidden;
+    }
+    .preview-canvas{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1440px;
+      height: 900px;
+      transform-origin: top left;
+      transform: scale(var(--preview-scale));
+    }
+    .preview-iframe{
+      width: 1440px;
+      height: 900px;
+      border: 0;
+      display: block;
+    }
+  </style>
 
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl">
-        <h2 class="text-3xl font-bold text-white">Testimonials</h2>
-        <p class="mt-3 text-slate-200/85">
+  <script is:inline>
+    (() => {
+      const BASE_W = 1440;
+      const BASE_H = 900;
+      const update = () => {
+        document.querySelectorAll("[data-preview]").forEach((el) => {
+          const w = el.clientWidth;
+          const h = el.clientHeight;
+          if (!w || !h) return;
+          const scale = Math.min(w / BASE_W, h / BASE_H);
+          el.style.setProperty("--preview-scale", scale.toFixed(4));
+        });
+      };
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", update, { once: true });
+      } else {
+        update();
+      }
+      window.addEventListener("resize", () => requestAnimationFrame(update));
+    })();
+  </script>
+
+  <section class="relative overflow-hidden bg-paper text-slateink">
+    <div class="section-wash" style="--accent: 219 112 231;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl" style="--accent: 219 112 231;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Testimonials</h2>
+        <p class="mt-3 text-slate-700">
           Long-term partnerships built on results and clear delivery.
         </p>
       </div>
 
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         {testimonials.map((item) => (
-          <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
-            <div class="flex gap-1 text-amber-300">
+          <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+            <div class="flex gap-1 text-amber-400">
               <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
-            <p class="mt-4 text-sm text-slate-200/85">“{item.quote}”</p>
-            <div class="mt-4 text-sm font-semibold text-white">{item.name}</div>
-            <div class="text-xs text-slate-300/80">{item.role} · {item.company}</div>
+            <p class="mt-4 text-sm text-slate-600">“{item.quote}”</p>
+            <div class="mt-4 text-sm font-semibold text-slateink">{item.name}</div>
+            <div class="text-xs text-slate-500">{item.role} · {item.company}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="bg-paper text-slateink">
-    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="rounded-xl2 border border-black/5 bg-white p-10 shadow-soft">
-        <h2 class="text-3xl font-bold text-slateink">Ready to start in the next 30–90 days?</h2>
+  <section class="relative overflow-hidden bg-paper text-slateink">
+    <div class="section-wash" style="--accent: 255 92 92;"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="accent-card rounded-xl2 border border-black/5 bg-white p-10 shadow-soft" style="--accent: 255 92 92;">
+        <h2 class="section-title text-3xl font-bold text-slateink">Ready to start in the next 30–90 days?</h2>
         <p class="mt-3 text-slate-700">
           Tell us what you need and we’ll map a plan that aligns with your budget, timeline, and growth goals.
         </p>
