@@ -19,34 +19,6 @@ const serviceCategories = [
   },
 ];
 
-const process = [
-  {
-    title: "Discovery",
-    desc: "Align on goals, audience, and success metrics before any pixels ship.",
-  },
-  {
-    title: "Planning",
-    desc: "Define scope, sitemap, and timeline so delivery is clear and predictable.",
-  },
-  {
-    title: "Development",
-    desc: "Build with modern frameworks, performance budgets, and best practices.",
-  },
-  {
-    title: "Quality Assurance",
-    desc: "QA, accessibility, and launch readiness so the site is reliable on day one.",
-  },
-];
-
-const reasons = [
-  "User-first strategy and conversion-focused design",
-  "Transparent communication and tight project management",
-  "Proven process with clear checkpoints and scope control",
-  "Full team support: design, development, and strategy",
-  "Scalable builds that support long-term growth",
-  "ROI-driven decisions over vanity metrics",
-];
-
 const capabilities = {
   frontend: ["Astro", "React", "Next.js", "Vue", "Tailwind CSS"],
   backend: ["Node.js", "Laravel", "Supabase", "Firebase", "Postgres"],
@@ -63,24 +35,6 @@ const industries = [
   { title: "Construction & Trades", desc: "Local search visibility with clear quote funnels." },
 ];
 
-const projects = [
-  {
-    title: "Invoice Americano",
-    desc: "iOS invoicing platform with web landing and conversion flow.",
-    href: "/invoiceamericano",
-  },
-  {
-    title: "Growth Landing System",
-    desc: "Multi-page site optimized for paid traffic and lead capture.",
-    href: "/#work",
-  },
-  {
-    title: "Boutique Commerce",
-    desc: "Shopify rebuild focused on speed, SEO, and product discovery.",
-    href: "/#work",
-  },
-];
-
 const featuredSites = [
   {
     name: "Park Slope Dermatology",
@@ -88,6 +42,7 @@ const featuredSites = [
     label: "Healthcare",
     summary: "WordPress foundation with custom design, bespoke components, and automation workflows tailored to patient intake.",
     tags: ["WordPress", "Custom design", "Automation"],
+    bg: "#acffac66",
   },
   {
     name: "Infiniker",
@@ -95,6 +50,7 @@ const featuredSites = [
     label: "Home Services",
     summary: "Fully custom site built from scratch with a clean structure and conversion-focused layout.",
     tags: ["Custom build", "Performance", "Conversion UX"],
+    bg: "#4bb8ff59",
   },
 ];
 
@@ -238,10 +194,10 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="relative overflow-hidden bg-[linear-gradient(180deg,#fafafa_0%,#f1f5f9_55%,#f8fafc_100%)] text-slateink">
-    <div class="section-wash" style="--accent: 219 112 231;"></div>
+  <section class="ws-section ws-mid accent-purple relative overflow-hidden text-slateink">
+    <div class="section-wash"></div>
     <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl" style="--accent: 219 112 231;">
+      <div class="max-w-2xl">
         <h2 class="section-title text-3xl font-bold text-slateink">Core website services</h2>
         <p class="mt-3 text-slate-700">
           Custom digital solutions built to streamline operations, increase visibility, and drive growth.
@@ -250,7 +206,10 @@ const testimonials = [
 
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         {serviceCategories.map((service) => (
-          <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+          <div class="accent-card service-card rounded-xl2 border border-black/5 p-6 shadow-soft">
+            <div class="service-card-top">
+              <span class="service-chip">Core</span>
+            </div>
             <h3 class="text-lg font-semibold text-slateink">{service.title}</h3>
             <p class="mt-2 text-sm leading-relaxed text-slate-600">{service.desc}</p>
             <a href={service.href} class="mt-4 inline-flex items-center text-sm font-semibold text-resync-700">
@@ -263,10 +222,10 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="relative overflow-hidden bg-paper text-slateink">
-    <div class="section-wash" style="--accent: 75 184 255;"></div>
+  <section class="ws-section ws-mid accent-blue relative overflow-hidden text-slateink">
+    <div class="section-wash"></div>
     <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl" style="--accent: 75 184 255;">
+      <div class="max-w-2xl">
         <h2 class="section-title text-3xl font-bold text-slateink">Featured websites</h2>
         <p class="mt-3 text-slate-700">
           A quick look at recent builds. Tap in to view the live experience.
@@ -274,10 +233,13 @@ const testimonials = [
       </div>
 
       <div class="mt-10 grid gap-6 lg:grid-cols-2">
-        {featuredSites.map((site) => (
-          <div class="accent-card group overflow-hidden rounded-2xl border border-black/5 bg-white shadow-soft">
-            <div class="border-b border-black/5 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-              {site.label}
+        {featuredSites.map((site, idx) => (
+          <div
+            class={`accent-card accent-split ${idx % 2 === 0 ? "accent-purple" : "accent-blue"} group overflow-hidden rounded-2xl border shadow-soft`}
+            style={site.bg ? `--card-bg: ${site.bg};` : undefined}
+          >
+            <div class="border-b border-black/5 bg-white/70 px-4 py-3">
+              <span class="accent-strap">{site.label}</span>
             </div>
             <div class="p-5">
               <div class="flex items-center justify-between gap-4">
@@ -287,7 +249,7 @@ const testimonials = [
                 </div>
                 <a
                   href={site.url}
-                  class="hidden shrink-0 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900 sm:inline-flex"
+                  class="visit-site-btn hidden shrink-0 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition sm:inline-flex"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -295,7 +257,7 @@ const testimonials = [
                 </a>
               </div>
 
-              <div class="mt-5 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+              <div class="preview-frame mt-5 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
                 <div class="flex items-center justify-between border-b border-slate-200 bg-white px-3 py-2 text-[11px] text-slate-400">
                   <span class="font-semibold text-slate-500">Live preview</span>
                   <span class="truncate">{site.url}</span>
@@ -313,7 +275,7 @@ const testimonials = [
                   <div class="absolute bottom-3 left-3 flex flex-wrap gap-2">
                     <a
                       href={site.url}
-                      class="pointer-events-auto rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-soft transition hover:border-slate-300 hover:text-slate-900"
+                      class="visit-site-btn pointer-events-auto rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-soft transition"
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -325,7 +287,7 @@ const testimonials = [
 
               <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-500">
                 {site.tags?.map((tag) => (
-                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">{tag}</span>
+                  <span class="tag-pill rounded-full border border-slate-200 bg-slate-50 px-3 py-1">{tag}</span>
                 ))}
               </div>
             </div>
@@ -335,92 +297,50 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="relative overflow-hidden bg-[#f3f4f6] text-slateink">
-    <div class="section-wash" style="--accent: 255 92 92;"></div>
+  <section class="ws-section ws-mid accent-purple relative overflow-hidden text-slateink">
+    <div class="section-wash"></div>
     <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl" style="--accent: 255 92 92;">
-        <h2 class="section-title text-3xl font-bold text-slateink">How the process works</h2>
+      <div class="max-w-3xl">
+        <h2 class="section-title text-3xl font-bold text-slateink">Contract-ready delivery stack</h2>
         <p class="mt-3 text-slate-700">
-          Clear steps, fast execution, and no surprises.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-4">
-        {process.map((step) => (
-          <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
-            <h3 class="text-base font-semibold text-slateink">{step.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{step.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="relative overflow-hidden bg-paper text-slateink">
-    <div class="section-wash" style="--accent: 87 255 122;"></div>
-    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl" style="--accent: 87 255 122;">
-        <h2 class="section-title text-3xl font-bold text-slateink">Why clients choose Resync</h2>
-        <p class="mt-3 text-slate-700">
-          A strategic partner that balances speed, clarity, and long-term scalability.
-        </p>
-      </div>
-
-      <div class="mt-8 grid gap-4 md:grid-cols-2">
-        {reasons.map((item) => (
-          <div class="accent-card flex items-start gap-3 rounded-xl border border-black/5 bg-white p-4 shadow-soft">
-            <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-resync-50 text-resync-700">✓</span>
-            <p class="text-sm text-slate-700">{item}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="relative overflow-hidden bg-[#f6f7f9] text-slateink">
-    <div class="section-wash" style="--accent: 219 112 231;"></div>
-    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-3xl" style="--accent: 219 112 231;">
-        <h2 class="section-title text-3xl font-bold text-slateink">Experience and capabilities</h2>
-        <p class="mt-3 text-slate-700">
-          We have delivered projects across fintech, real estate, medical, legal, and consumer brands.
-          We understand both startup speed and enterprise requirements, and we scale the build to fit your budget and goals.
+          We’re a contracted web partner built for outcomes, not busywork. You get a focused team that can
+          scope fast, execute cleanly, and hand off with confidence—whether it’s a full rebuild or a targeted sprint.
         </p>
         <p class="mt-3 text-slate-700">
-          Our team covers strategy, design, development, and analytics—so you get a full-stack partner, not just a build.
+          Strategy, design, development, and analytics stay aligned so every launch supports growth, not just aesthetics.
         </p>
       </div>
 
       <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+        <div class="accent-card capability-card rounded-xl2 border border-black/5 p-6 shadow-soft">
           <h3 class="text-base font-semibold text-slateink">Frontend</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {capabilities.frontend.map((item) => (
-              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">{item}</span>
+              <span class="capability-pill rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{item}</span>
             ))}
           </div>
         </div>
-        <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+        <div class="accent-card capability-card rounded-xl2 border border-black/5 p-6 shadow-soft">
           <h3 class="text-base font-semibold text-slateink">Backend</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {capabilities.backend.map((item) => (
-              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">{item}</span>
+              <span class="capability-pill rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{item}</span>
             ))}
           </div>
         </div>
-        <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+        <div class="accent-card capability-card rounded-xl2 border border-black/5 p-6 shadow-soft">
           <h3 class="text-base font-semibold text-slateink">CMS + Commerce</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {capabilities.cms.map((item) => (
-              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">{item}</span>
+              <span class="capability-pill rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{item}</span>
             ))}
           </div>
         </div>
-        <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+        <div class="accent-card capability-card rounded-xl2 border border-black/5 p-6 shadow-soft">
           <h3 class="text-base font-semibold text-slateink">Cloud + DevOps</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {capabilities.devops.map((item) => (
-              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">{item}</span>
+              <span class="capability-pill rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{item}</span>
             ))}
           </div>
         </div>
@@ -428,122 +348,46 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="relative overflow-hidden bg-paper text-slateink">
-    <div class="section-wash" style="--accent: 75 184 255;"></div>
+  <section class="ws-section ws-mid accent-blue relative overflow-hidden text-slateink">
+    <div class="section-wash"></div>
     <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl" style="--accent: 75 184 255;">
+      <div class="max-w-2xl">
         <h2 class="section-title text-3xl font-bold text-slateink">Industries served</h2>
         <p class="mt-3 text-slate-700">
           We adapt the build to your business model and customer journey.
         </p>
       </div>
 
-      <div class="mt-10 grid gap-6 md:grid-cols-3">
-        {industries.map((industry) => (
-          <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
-            <h3 class="text-base font-semibold text-slateink">{industry.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{industry.desc}</p>
+      <div class="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="accent-card rounded-2xl border border-black/5 p-6 shadow-soft">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Where we deliver</p>
+          <h3 class="mt-3 text-2xl font-semibold text-slateink">Vertical expertise with modern UX</h3>
+          <p class="mt-3 text-sm text-slate-600">
+            We build for industries that need trust, clarity, and conversion—so the site looks sharp and performs under
+            real-world customer behavior.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3 text-xs text-slate-500">
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Lead-gen funnels</span>
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Booking workflows</span>
+            <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">eCommerce UX</span>
           </div>
-        ))}
+        </div>
+
+        <div class="space-y-4">
+          {industries.map((industry) => (
+            <div class="industry-row accent-card rounded-2xl border border-black/5 p-5 shadow-soft">
+              <div class="industry-bar" aria-hidden="true"></div>
+              <div>
+                <h4 class="text-base font-semibold text-slateink">{industry.title}</h4>
+                <p class="mt-2 text-sm text-slate-600">{industry.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="relative overflow-hidden bg-[#f3f4f6] text-slateink">
-    <div class="section-wash" style="--accent: 255 92 92;"></div>
-    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl" style="--accent: 255 92 92;">
-        <h2 class="section-title text-3xl font-bold text-slateink">Featured work</h2>
-        <p class="mt-3 text-slate-700">
-          Real-world projects built for speed, clarity, and results.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-3">
-        {projects.map((project) => (
-          <a href={project.href} class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
-            <h3 class="text-lg font-semibold text-slateink">{project.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{project.desc}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="relative overflow-hidden bg-paper text-slateink">
-    <div class="section-wash" style="--accent: 87 255 122;"></div>
-    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl" style="--accent: 87 255 122;">
-        <h2 class="section-title text-3xl font-bold text-slateink">Other services</h2>
-        <p class="mt-3 text-slate-700">
-          Explore the rest of our delivery stack.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <a href="/#services" class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
-          <h3 class="text-lg font-semibold text-slateink">Mobile App Development</h3>
-          <p class="mt-2 text-sm text-slate-600">Custom iOS and web apps designed for real workflows.</p>
-        </a>
-        <a href="/services/digital-marketing" class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
-          <h3 class="text-lg font-semibold text-slateink">Digital Marketing</h3>
-          <p class="mt-2 text-sm text-slate-600">Paid, organic, and lifecycle growth with clear reporting.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <style>
-    .section-wash{
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background:
-        linear-gradient(120deg, rgba(var(--accent), 0.08), transparent 45%),
-        radial-gradient(60% 60% at 8% 0%, rgba(var(--accent), 0.24), transparent 68%),
-        radial-gradient(50% 60% at 92% 28%, rgba(var(--accent), 0.18), transparent 70%);
-    }
-    .section-content{
-      position: relative;
-      z-index: 1;
-    }
-    .section-title{
-      position: relative;
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 14px;
-      background: linear-gradient(90deg, rgba(var(--accent), 0.18), rgba(var(--accent), 0.04) 70%);
-      box-shadow: inset 0 0 0 1px rgba(var(--accent), 0.18);
-    }
-    .accent-card{
-      border-color: rgba(var(--accent), 0.18);
-      box-shadow: 0 18px 50px rgba(var(--accent), 0.08), 0 10px 30px rgba(15, 23, 42, 0.08);
-    }
-    .accent-card:hover{
-      border-color: rgba(var(--accent), 0.32);
-      box-shadow: 0 22px 60px rgba(var(--accent), 0.12), 0 12px 36px rgba(15, 23, 42, 0.1);
-    }
-    .preview-frame{
-      --preview-scale: 0.6;
-      overflow: hidden;
-    }
-    .preview-canvas{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1440px;
-      height: 900px;
-      transform-origin: top left;
-      transform: scale(var(--preview-scale));
-    }
-    .preview-iframe{
-      width: 1440px;
-      height: 900px;
-      border: 0;
-      display: block;
-    }
-  </style>
 
   <script is:inline>
     (() => {
@@ -567,10 +411,10 @@ const testimonials = [
     })();
   </script>
 
-  <section class="relative overflow-hidden bg-paper text-slateink">
-    <div class="section-wash" style="--accent: 219 112 231;"></div>
+  <section class="ws-section ws-mid accent-purple relative overflow-hidden text-slateink">
+    <div class="section-wash"></div>
     <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="max-w-2xl" style="--accent: 219 112 231;">
+      <div class="max-w-2xl">
         <h2 class="section-title text-3xl font-bold text-slateink">Testimonials</h2>
         <p class="mt-3 text-slate-700">
           Long-term partnerships built on results and clear delivery.
@@ -579,7 +423,7 @@ const testimonials = [
 
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         {testimonials.map((item) => (
-          <div class="accent-card rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+          <div class="accent-card rounded-xl2 border border-black/5 p-6 shadow-soft">
             <div class="flex gap-1 text-amber-400">
               <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
@@ -592,10 +436,10 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="relative overflow-hidden bg-paper text-slateink">
-    <div class="section-wash" style="--accent: 255 92 92;"></div>
+  <section class="ws-section ws-mid accent-red relative overflow-hidden text-slateink">
+    <div class="section-wash"></div>
     <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <div class="accent-card rounded-xl2 border border-black/5 bg-white p-10 shadow-soft" style="--accent: 255 92 92;">
+      <div class="accent-card rounded-xl2 border border-black/5 p-10 shadow-soft">
         <h2 class="section-title text-3xl font-bold text-slateink">Ready to start in the next 30–90 days?</h2>
         <p class="mt-3 text-slate-700">
           Tell us what you need and we’ll map a plan that aligns with your budget, timeline, and growth goals.
