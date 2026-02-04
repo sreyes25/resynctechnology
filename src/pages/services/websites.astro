@@ -1,0 +1,450 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const serviceCategories = [
+  {
+    title: "Web Development",
+    desc: "High-converting websites with strong UX, fast performance, and clean CMS workflows.",
+    href: "/#contact",
+  },
+  {
+    title: "MVP Websites",
+    desc: "Launch quickly with focused scope, validate demand, and scale with a stable foundation.",
+    href: "/#contact",
+  },
+  {
+    title: "eCommerce Development",
+    desc: "Shopify, WooCommerce, and custom storefronts designed for conversion and retention.",
+    href: "/#contact",
+  },
+];
+
+const process = [
+  {
+    title: "Discovery",
+    desc: "Align on goals, audience, and success metrics before any pixels ship.",
+  },
+  {
+    title: "Planning",
+    desc: "Define scope, sitemap, and timeline so delivery is clear and predictable.",
+  },
+  {
+    title: "Development",
+    desc: "Build with modern frameworks, performance budgets, and best practices.",
+  },
+  {
+    title: "Quality Assurance",
+    desc: "QA, accessibility, and launch readiness so the site is reliable on day one.",
+  },
+];
+
+const reasons = [
+  "User-first strategy and conversion-focused design",
+  "Transparent communication and tight project management",
+  "Proven process with clear checkpoints and scope control",
+  "Full team support: design, development, and strategy",
+  "Scalable builds that support long-term growth",
+  "ROI-driven decisions over vanity metrics",
+];
+
+const capabilities = {
+  frontend: ["Astro", "React", "Next.js", "Vue", "Tailwind CSS"],
+  backend: ["Node.js", "Laravel", "Supabase", "Firebase", "Postgres"],
+  cms: ["WordPress", "Shopify", "Webflow", "Sanity", "Contentful"],
+  devops: ["Vercel", "Netlify", "AWS", "Cloudflare", "Docker"],
+};
+
+const industries = [
+  { title: "Education & HR", desc: "Recruitment sites, training portals, and internal tools." },
+  { title: "Healthcare", desc: "Patient-first UX, HIPAA-aware workflows, and secure data handling." },
+  { title: "Real Estate", desc: "Listings, lead capture, and CRM-ready integrations." },
+  { title: "Professional Services", desc: "Authority positioning for agencies, firms, and consultants." },
+  { title: "Retail & eCommerce", desc: "Conversion-first storefronts with retention focus." },
+  { title: "Construction & Trades", desc: "Local search visibility with clear quote funnels." },
+];
+
+const projects = [
+  {
+    title: "Invoice Americano",
+    desc: "iOS invoicing platform with web landing and conversion flow.",
+    href: "/invoiceamericano",
+  },
+  {
+    title: "Growth Landing System",
+    desc: "Multi-page site optimized for paid traffic and lead capture.",
+    href: "/#work",
+  },
+  {
+    title: "Boutique Commerce",
+    desc: "Shopify rebuild focused on speed, SEO, and product discovery.",
+    href: "/#work",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Resync delivered a clean, modern site that immediately improved our lead quality. The process was fast and transparent.",
+    name: "Alicia M.",
+    role: "Marketing Lead",
+    company: "HealthSpan",
+  },
+  {
+    quote:
+      "We launched our new Shopify store in weeks and conversions jumped. The team thought about UX and performance end-to-end.",
+    name: "Drew K.",
+    role: "Founder",
+    company: "Northway Goods",
+  },
+  {
+    quote:
+      "Clear roadmap, tight execution, and the site looks incredible. Exactly what we needed to go to market.",
+    name: "Priya S.",
+    role: "CEO",
+    company: "Civic Analytics",
+  },
+];
+---
+
+<BaseLayout
+  title="Websites — Resync Technology"
+  description="Custom websites built for speed, conversion, and growth. WordPress, Shopify, and modern web stacks designed around your goals."
+>
+  <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-24 top-0 h-72 w-72 rounded-full bg-resync-600/25 blur-3xl"></div>
+      <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(225,29,72,0.08),transparent_28%),radial-gradient(circle_at_50%_70%,rgba(255,255,255,0.05),transparent_38%)]"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <p class="hero-eyebrow">Website development</p>
+
+      <div class="mt-4 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
+            Websites built to convert, scale, and stay fast.
+          </h1>
+          <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-200/90">
+            We design and build custom websites that match your goals and budget—WordPress, Shopify, and modern web stacks.
+            Whether it’s a commercial site, a lead-gen engine, or an eCommerce storefront, we build for performance and ROI.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/#contact" class="rt-btn-primary">
+              Start a Project
+              <span class="cta-glow" aria-hidden="true"></span>
+            </a>
+            <a href="/#services" class="cta-secondary">View All Services</a>
+          </div>
+
+          <div class="mt-8 grid gap-3 text-sm text-slate-200/85 sm:grid-cols-2">
+            {[
+              "Custom builds + redesigns",
+              "WordPress, Shopify, Webflow",
+              "SEO-ready architecture",
+              "Conversion-focused UX",
+            ].map((item) => (
+              <div class="flex items-center gap-2">
+                <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-xs text-white/90">→</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -top-6 right-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#ff7a59] to-[#f43f5e] opacity-70 blur-2xl"></div>
+          <div class="absolute -bottom-8 left-6 h-28 w-28 rounded-full bg-gradient-to-br from-[#38bdf8] to-[#6366f1] opacity-60 blur-2xl"></div>
+
+          <div class="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-4 shadow-[0_25px_70px_rgba(0,0,0,0.45)]">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="flex items-center justify-between text-xs text-white/60">
+                <span class="font-semibold text-white/80">Site Performance</span>
+                <span>Last 30 days</span>
+              </div>
+              <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                {[
+                  { label: "Page speed", value: "96/100", delta: "↑" },
+                  { label: "Leads", value: "+34%", delta: "↑" },
+                  { label: "Bounce", value: "-22%", delta: "↓" },
+                ].map((stat) => (
+                  <div class="rounded-xl border border-white/10 bg-white/5 p-3">
+                    <div class="text-xs text-white/60">{stat.label}</div>
+                    <div class="mt-2 text-lg font-semibold text-white">{stat.value}</div>
+                    <div class="mt-1 text-xs text-emerald-300/90">{stat.delta}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs text-white/60">UX Focus</div>
+                <div class="mt-3 space-y-2 text-sm text-white/80">
+                  <div class="flex items-center justify-between">
+                    <span>Landing pages</span>
+                    <span class="text-white/60">Optimized</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span>Navigation</span>
+                    <span class="text-white/60">Clear</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span>Forms</span>
+                    <span class="text-white/60">High intent</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs text-white/60">Build Stack</div>
+                <div class="mt-3 space-y-2 text-sm text-white/80">
+                  <div class="flex items-center justify-between">
+                    <span>WordPress</span>
+                    <span class="text-white/60">CMS</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span>Shopify</span>
+                    <span class="text-white/60">Commerce</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span>Astro</span>
+                    <span class="text-white/60">Frontend</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper text-slateink">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-slateink">Core website services</h2>
+        <p class="mt-3 text-slate-700">
+          Custom digital solutions built to streamline operations, increase visibility, and drive growth.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {serviceCategories.map((service) => (
+          <div class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+            <h3 class="text-lg font-semibold text-slateink">{service.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">{service.desc}</p>
+            <a href={service.href} class="mt-4 inline-flex items-center text-sm font-semibold text-resync-700">
+              Learn more
+              <span aria-hidden="true" class="ml-2">›</span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-[#0a0e1a] text-slate-100">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-resync-700/25 blur-3xl"></div>
+      <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div>
+    </div>
+
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-white">How the process works</h2>
+        <p class="mt-3 text-slate-200/85">
+          Clear steps, fast execution, and no surprises.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-4">
+        {process.map((step) => (
+          <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
+            <h3 class="text-base font-semibold text-white">{step.title}</h3>
+            <p class="mt-2 text-sm text-slate-200/80">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper text-slateink">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-slateink">Why clients choose Resync</h2>
+        <p class="mt-3 text-slate-700">
+          A strategic partner that balances speed, clarity, and long-term scalability.
+        </p>
+      </div>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        {reasons.map((item) => (
+          <div class="flex items-start gap-3 rounded-xl border border-black/5 bg-white p-4 shadow-soft">
+            <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-resync-50 text-resync-700">✓</span>
+            <p class="text-sm text-slate-700">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#0a0e1a] text-slate-100">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-bold text-white">Experience and capabilities</h2>
+        <p class="mt-3 text-slate-200/85">
+          We have delivered projects across fintech, real estate, medical, legal, and consumer brands.
+          We understand both startup speed and enterprise requirements, and we scale the build to fit your budget and goals.
+        </p>
+        <p class="mt-3 text-slate-200/85">
+          Our team covers strategy, design, development, and analytics—so you get a full-stack partner, not just a build.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
+          <h3 class="text-base font-semibold text-white">Frontend</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {capabilities.frontend.map((item) => (
+              <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-100">{item}</span>
+            ))}
+          </div>
+        </div>
+        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
+          <h3 class="text-base font-semibold text-white">Backend</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {capabilities.backend.map((item) => (
+              <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-100">{item}</span>
+            ))}
+          </div>
+        </div>
+        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
+          <h3 class="text-base font-semibold text-white">CMS + Commerce</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {capabilities.cms.map((item) => (
+              <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-100">{item}</span>
+            ))}
+          </div>
+        </div>
+        <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
+          <h3 class="text-base font-semibold text-white">Cloud + DevOps</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {capabilities.devops.map((item) => (
+              <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-100">{item}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper text-slateink">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-slateink">Industries served</h2>
+        <p class="mt-3 text-slate-700">
+          We adapt the build to your business model and customer journey.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {industries.map((industry) => (
+          <div class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft">
+            <h3 class="text-base font-semibold text-slateink">{industry.title}</h3>
+            <p class="mt-2 text-sm text-slate-600">{industry.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#0a0e1a] text-slate-100">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-white">Featured work</h2>
+        <p class="mt-3 text-slate-200/85">
+          Real-world projects built for speed, clarity, and results.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {projects.map((project) => (
+          <a href={project.href} class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur transition hover:border-white/20 hover:bg-white/10">
+            <h3 class="text-lg font-semibold text-white">{project.title}</h3>
+            <p class="mt-2 text-sm text-slate-200/80">{project.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper text-slateink">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-slateink">Other services</h2>
+        <p class="mt-3 text-slate-700">
+          Explore the rest of our delivery stack.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <a href="/#services" class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
+          <h3 class="text-lg font-semibold text-slateink">Mobile App Development</h3>
+          <p class="mt-2 text-sm text-slate-600">Custom iOS and web apps designed for real workflows.</p>
+        </a>
+        <a href="/services/digital-marketing" class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft transition hover:-translate-y-0.5">
+          <h3 class="text-lg font-semibold text-slateink">Digital Marketing</h3>
+          <p class="mt-2 text-sm text-slate-600">Paid, organic, and lifecycle growth with clear reporting.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-[#0a0e1a] text-slate-100">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-resync-700/25 blur-3xl"></div>
+      <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div>
+    </div>
+
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-white">Testimonials</h2>
+        <p class="mt-3 text-slate-200/85">
+          Long-term partnerships built on results and clear delivery.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {testimonials.map((item) => (
+          <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
+            <div class="flex gap-1 text-amber-300">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="mt-4 text-sm text-slate-200/85">“{item.quote}”</p>
+            <div class="mt-4 text-sm font-semibold text-white">{item.name}</div>
+            <div class="text-xs text-slate-300/80">{item.role} · {item.company}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper text-slateink">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="rounded-xl2 border border-black/5 bg-white p-10 shadow-soft">
+        <h2 class="text-3xl font-bold text-slateink">Ready to start in the next 30–90 days?</h2>
+        <p class="mt-3 text-slate-700">
+          Tell us what you need and we’ll map a plan that aligns with your budget, timeline, and growth goals.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/#contact" class="rt-btn-primary-light">
+            Talk to an Expert
+          </a>
+          <a href="/#work" class="cta-secondary">View Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
