@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import vercel from "@astrojs/vercel/serverless";
 import tailwindcss from "@tailwindcss/vite";
-import vercel from "@astrojs/vercel/server";
 
 export default defineConfig({
   output: "server",
