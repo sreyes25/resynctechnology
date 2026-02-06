@@ -8,7 +8,7 @@
     --rt-nav-offset: calc(var(--rt-nav-height) + env(safe-area-inset-top));
   }
 
-  main{
+  main > :first-child{
     padding-top: var(--rt-nav-offset);
   }
 
@@ -667,4 +667,10 @@
   border-color: rgba(10, 20, 30, 0.22);
   color: rgba(10, 20, 30, 0.92);
   transform: translateY(-1px);
+}
+
+@layer utilities {
+  .rt-hero-top{
+    padding-top: clamp(2.5rem, 6vw, 3.5rem);
+  }
 }
