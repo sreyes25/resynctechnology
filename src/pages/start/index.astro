@@ -1,0 +1,253 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { budgetRanges, projectTypes, timelineOptions } from "../../lib/intake";
+
+const title = "Start a Project | Resync Technology";
+const description =
+  "Share the basics of your project and we'll respond with next steps.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="relative overflow-hidden py-16 sm:py-20">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(120%_85%_at_15%_15%,rgba(244,63,94,0.10),transparent_60%),radial-gradient(120%_85%_at_85%_20%,rgba(14,165,233,0.12),transparent_55%)]"></div>
+      <div class="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.06)_1px,transparent_1px)] bg-size-[10px_10px]"></div>
+    </div>
+
+    <div class="mx-auto max-w-4xl px-4 sm:px-6">
+      <div class="rounded-3xl border border-white/60 bg-white/80 p-8 shadow-soft backdrop-blur sm:p-12">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-resync-600">Start a project</p>
+          <h1 class="mt-3 text-3xl font-semibold text-slateink sm:text-4xl">Tell us what you’re building.</h1>
+          <p class="mt-3 text-sm text-slate-600">
+            Share your goals, timelines, and constraints. We’ll review and send a clear path forward.
+          </p>
+        </div>
+
+        <form class="mt-10 grid gap-6" action="/api/intake" method="post" data-intake-form>
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label for="name" class="text-sm font-semibold text-slateink">Full name *</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+                class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slateink shadow-sm focus:border-resync-500 focus:outline-none focus:ring-2 focus:ring-resync-200"
+              />
+            </div>
+            <div>
+              <label for="email" class="text-sm font-semibold text-slateink">Email *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slateink shadow-sm focus:border-resync-500 focus:outline-none focus:ring-2 focus:ring-resync-200"
+              />
+            </div>
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label for="company" class="text-sm font-semibold text-slateink">Company</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                autocomplete="organization"
+                class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slateink shadow-sm focus:border-resync-500 focus:outline-none focus:ring-2 focus:ring-resync-200"
+              />
+            </div>
+            <div>
+              <label for="budget" class="text-sm font-semibold text-slateink">Budget range</label>
+              <select
+                id="budget"
+                name="budget"
+                class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slateink shadow-sm focus:border-resync-500 focus:outline-none focus:ring-2 focus:ring-resync-200"
+              >
+                <option value="">Select a range</option>
+                {budgetRanges.map((range) => (
+                  <option value={range}>{range}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label for="projectType" class="text-sm font-semibold text-slateink">Project type *</label>
+              <select
+                id="projectType"
+                name="projectType"
+                required
+                class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slateink shadow-sm focus:border-resync-500 focus:outline-none focus:ring-2 focus:ring-resync-200"
+              >
+                <option value="">Choose one</option>
+                {projectTypes.map((type) => (
+                  <option value={type}>{type}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="timeline" class="text-sm font-semibold text-slateink">Timeline</label>
+              <select
+                id="timeline"
+                name="timeline"
+                class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slateink shadow-sm focus:border-resync-500 focus:outline-none focus:ring-2 focus:ring-resync-200"
+              >
+                <option value="">Select a timeline</option>
+                {timelineOptions.map((option) => (
+                  <option value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="text-sm font-semibold text-slateink">Message / project details *</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              minlength="20"
+              rows={6}
+              class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slateink shadow-sm focus:border-resync-500 focus:outline-none focus:ring-2 focus:ring-resync-200"
+              placeholder="Goals, constraints, timelines, or any links we should see."
+            ></textarea>
+            <p class="mt-2 text-xs text-slate-500">Minimum 20 characters.</p>
+          </div>
+
+          <div class="hidden" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <button type="submit" class="rt-btn-primary" data-submit>
+              <span class="cta-glow"></span>
+              Send details
+            </button>
+            <p class="text-xs text-slate-500">We typically respond within 1–2 business days.</p>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"
+            role="status"
+            aria-live="polite"
+            data-form-status
+            hidden
+          ></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.querySelector("[data-intake-form]");
+    if (form) {
+      const statusEl = form.querySelector("[data-form-status]");
+      const submitBtn = form.querySelector("[data-submit]");
+      const defaultBtnHTML = submitBtn ? submitBtn.innerHTML : "";
+
+      const setStatus = (message, tone) => {
+        if (!statusEl) return;
+        statusEl.textContent = message;
+        statusEl.hidden = false;
+        statusEl.classList.remove(
+          "border-emerald-200",
+          "text-emerald-700",
+          "bg-emerald-50",
+          "border-red-200",
+          "text-red-700",
+          "bg-red-50",
+          "border-slate-200",
+          "text-slate-700",
+          "bg-slate-50"
+        );
+        if (tone === "success") {
+          statusEl.classList.add("border-emerald-200", "text-emerald-700", "bg-emerald-50");
+        } else if (tone === "error") {
+          statusEl.classList.add("border-red-200", "text-red-700", "bg-red-50");
+        }
+      };
+
+      const rebuildFormDataFromInputs = () => {
+        // Force iOS autofill to commit values:
+        if (document.activeElement && typeof document.activeElement.blur === "function") {
+          document.activeElement.blur();
+        }
+
+        const fd = new FormData();
+
+        const nameInput = form.querySelector('input[name="name"]');
+        const emailInput = form.querySelector('input[name="email"]');
+        const companyInput = form.querySelector('input[name="company"]');
+        const websiteInput = form.querySelector('input[name="website"]');
+        const messageInput = form.querySelector('textarea[name="message"]');
+        const projectTypeSelect = form.querySelector('select[name="projectType"]');
+        const budgetSelect = form.querySelector('select[name="budget"]');
+        const timelineSelect = form.querySelector('select[name="timeline"]');
+
+        const safe = (el) => (el && "value" in el ? String(el.value ?? "") : "");
+
+        fd.set("name", safe(nameInput).trim());
+        fd.set("email", safe(emailInput).trim());
+
+        const company = safe(companyInput).trim();
+        if (company) fd.set("company", company);
+
+        // honeypot always included
+        fd.set("website", safe(websiteInput).trim());
+
+        fd.set("message", safe(messageInput).trim());
+        fd.set("projectType", safe(projectTypeSelect).trim());
+        fd.set("budget", safe(budgetSelect).trim());
+        fd.set("timeline", safe(timelineSelect).trim());
+
+        return fd;
+      };
+
+      form.addEventListener("submit", async (event) => {
+        if (!window.fetch) return;
+        event.preventDefault();
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="cta-glow"></span> Sending...';
+        }
+
+        const formData = rebuildFormDataFromInputs();
+
+        // Debug: remove after you confirm it works
+        console.log("[intake] formData entries:", Array.from(formData.entries()));
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            headers: { Accept: "application/json" },
+            body: formData,
+          });
+
+          const result = await response.json().catch(() => ({ ok: false, error: "Unexpected response." }));
+
+          if (response.ok && result.ok) {
+            form.reset();
+            setStatus("Thanks! Your project details have been sent.", "success");
+          } else {
+            setStatus(result.error || "Something went wrong. Please try again.", "error");
+          }
+        } catch (error) {
+          setStatus("Could not send the form. Please try again.", "error");
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = defaultBtnHTML;
+          }
+        }
+      });
+    }
+  </script>
+</BaseLayout>

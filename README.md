@@ -38,6 +38,14 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Intake Form Notes
+
+The start-project form posts to `POST /api/intake`. The handler lives in `src/pages/api/intake.ts` with shared validation in `src/lib/intake.ts`.
+
+TODOs for production:
+- Add email sending (Resend/Nodemailer) in `src/pages/api/intake.ts`.
+- Persist submissions to a database in `src/pages/api/intake.ts` after validation.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

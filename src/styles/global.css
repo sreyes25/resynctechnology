@@ -2,6 +2,19 @@
 
 @layer base {
   html { scroll-behavior: smooth; }
+
+  :root{
+    --rt-nav-height: 72px;
+    --rt-nav-offset: calc(var(--rt-nav-height) + env(safe-area-inset-top));
+  }
+
+  main{
+    padding-top: var(--rt-nav-offset);
+  }
+
+  :where(section, [id]){
+    scroll-margin-top: var(--rt-nav-offset);
+  }
 }
 
 @theme {
