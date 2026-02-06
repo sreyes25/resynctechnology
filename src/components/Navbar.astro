@@ -148,6 +148,7 @@ const serviceLinks = [
     (() => {
       const root = document.querySelector("[data-rt-root]");
       if (!root) return;
+      const nav = document.querySelector(".rt-nav");
 
       // Use the VisualViewport height (when available) so mobile browser toolbars don't cover the bottom
       // of the menu content (notably Chrome iOS). We write a CSS var in px and size the overlay/panel to it.
@@ -165,8 +166,14 @@ const serviceLinks = [
         }
         docEl.style.setProperty("--rt-vvh", `${Math.round(vv.height)}px`);
       };
+      const setNavHeight = () => {
+        if (!nav) return;
+        const h = Math.ceil(nav.getBoundingClientRect().height);
+        docEl.style.setProperty("--rt-nav-height", `${h}px`);
+      };
 
       setVvh();
+      setNavHeight();
       if (window.visualViewport) {
         window.visualViewport.addEventListener("resize", onResize);
         // window.visualViewport.addEventListener("scroll", setVvh);  // REMOVED for CriOS fix
@@ -246,6 +253,7 @@ const serviceLinks = [
       // Responsive handler (setVvh + close on desktop)
       function onResize() {
         setVvh();
+        setNavHeight();
         if (window.innerWidth >= 768 && isOpen) setOpen(false);
       }
 
@@ -268,6 +276,12 @@ const serviceLinks = [
 
       // close on resize to desktop
       window.addEventListener("resize", onResize);
+
+      // Keep nav height in sync with responsive/zoom changes
+      if (nav && "ResizeObserver" in window) {
+        const ro = new ResizeObserver(() => setNavHeight());
+        ro.observe(nav);
+      }
     })();
   </script>
 

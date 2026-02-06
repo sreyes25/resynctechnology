@@ -670,7 +670,5 @@
 }
 
 @layer utilities {
-  .rt-hero-top{
-    padding-top: clamp(2.5rem, 6vw, 3.5rem);
-  }
+ 
 }

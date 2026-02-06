@@ -19,7 +19,7 @@ const secondaryCta = "/#services";
         <p class="hero-eyebrow">NYC Software Development</p>
         <h1 class="hero-title">
          Resync Your Technology<br class="hidden sm:block" />
-         To Your Business<br class="hidden sm:block" />
+         Building AI-Powered Apps, Agents, and Platforms<br class="hidden sm:block" />
         </h1>
         <p class="hero-sub">
           At Resync Technology, we help businesses modernize, integrate, and build custom software that fits the way you operate.
@@ -66,7 +66,7 @@ const secondaryCta = "/#services";
     color: white;
     min-height: min(45vh, 1100px);
     background: linear-gradient(180deg, rgb(34 0 7) 0%, rgb(136 0 26 / 51%) 5%, rgba(58, 12, 22, 0.9) 20%, rgba(20, 10, 14, 0.8) 56%, rgba(6, 3, 5, 0.92) 92%, rgba(3, 2, 4, 0.98) 100%);
-    padding-top: 3%;
+    padding-top: calc(var(--rt-nav-offset) + 3%);
   }
   .hero-bg{
     position: absolute;
@@ -122,7 +122,7 @@ const secondaryCta = "/#services";
     z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
-    padding: clamp(2.5rem, 6vw, 3.5rem) clamp(1.2rem, 4vw, 2.5rem) clamp(2rem, 8vw, 3.5rem);
+    padding: clamp(0rem, 0vw, 0rem) clamp(1.2rem, 4vw, 1rem) clamp(2rem, 8vw, 3.5rem);
   }
 
   .hero-grid{
@@ -232,9 +232,6 @@ const secondaryCta = "/#services";
     .hero-wrap{
       min-height: auto;
       padding-bottom: 1rem;
-    }
-    .hero-shell{
-      padding-top: calc(72px + 1.2rem);
     }
     .hero-logos-row{
       gap: 1.4rem;
