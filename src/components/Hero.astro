@@ -16,10 +16,11 @@ const secondaryCta = "/#services";
   <div class="hero-shell">
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="hero-eyebrow">NYC Software Development</p>
+        <p class="hero-eyebrow">Resync Your Technology</p>
         <h1 class="hero-title">
-         Resync Your Technology<br class="hidden sm:block" />
-         Building AI-Powered Apps, Agents, and Platforms<br class="hidden sm:block" />
+         Building <span class="highlight shimmer">AI-Powered</span><br class="hidden sm:block" />
+         Apps, Agents,<br class="hidden sm:block" />
+         and Platforms
         </h1>
         <p class="hero-sub">
           At Resync Technology, we help businesses modernize, integrate, and build custom software that fits the way you operate.
@@ -127,7 +128,7 @@ const secondaryCta = "/#services";
 
   .hero-grid{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
     gap: clamp(2rem, 6vw, 3rem);
     align-items: center;
   }
@@ -216,11 +217,47 @@ const secondaryCta = "/#services";
     height: 100%;
     object-fit: contain;
   }
+  .highlight {
+  position: relative;
+  color: #f59e0b;
+  font-weight: 700;
+  /* This creates a warm, sun-like glow around the letters */
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.4),
+               0 0 20px rgba(245, 158, 11, 0.2);
+
+  /* Optional: adds a tiny bit of extra spacing for readability */
+  letter-spacing: 0.02em;
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(245,158,11,0.85) 0%,
+    rgba(255,249,230,0.95) 50%,
+    rgba(245,158,11,0.85) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none;
+    background-position: 50% center;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
 
   @media (min-width: 1024px){
     .hero-grid{
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem;
+      grid-template-columns: 2.1fr 0.9fr;
+      gap: 1rem;
     }
     .hero-visual{
       width: 520px;

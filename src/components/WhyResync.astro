@@ -26,10 +26,15 @@ const bullets = [
 <section id="why" class="relative overflow-hidden border-t border-white/10 bg-[#0b0f14] py-16 text-white">
   <!-- Ambient background (subtle, premium) -->
   <div class="pointer-events-none absolute inset-0">
-    <div class="absolute inset-0 bg-[radial-gradient(60%_80%_at_18%_12%,rgba(99,102,241,0.22),transparent_60%),radial-gradient(60%_80%_at_82%_18%,rgba(16,185,129,0.10),transparent_58%),radial-gradient(70%_90%_at_60%_110%,rgba(255,255,255,0.05),transparent_55%)]"></div>
-    <div class="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-size-[8px_8px]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,transparent_45%,rgba(0,0,0,0.65)_100%)]"></div>
-  </div>
+  <!-- Red energy glow accents -->
+  <div class="absolute inset-0 bg-[radial-gradient(60%_80%_at_18%_12%,rgba(255,60,60,0.18),transparent_65%),radial-gradient(60%_80%_at_82%_18%,rgba(255,0,90,0.12),transparent_60%),radial-gradient(70%_90%_at_60%_110%,rgba(255,255,255,0.03),transparent_60%)]"></div>
+
+  <!-- Dot pattern (kept the same, just darkened slightly) -->
+  <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[8px_8px]"></div>
+
+  <!-- Dark vignette overlay (kept, but deepened for Resync style) -->
+  <div class="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,transparent_40%,rgba(0,0,0,0.78)_100%)]"></div>
+</div>
 
   <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
     <div class="grid gap-10 md:grid-cols-12 md:items-start">
