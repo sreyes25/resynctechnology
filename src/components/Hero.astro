@@ -446,6 +446,7 @@ const secondaryCta = "/#services";
     .hero-visual{
       width: min(390px, calc(100vw - 2rem));
       margin-top: 0.5rem;
+      overflow: hidden;
     }
   }
 
@@ -1968,21 +1969,32 @@ const secondaryCta = "/#services";
 
   @media (max-width: 639px){
     .stack-container{
-      height: 360px;
+      height: 340px;
+      width: 100%;
       transform: none;
-      perspective: 1200px;
+      perspective: none;
+      overflow: hidden;
     }
 
     .glass-card{
       width: min(360px, 92vw);
       min-height: 258px;
       padding: 14px 14px 16px;
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+      box-sizing: border-box;
     }
 
-    .glass-card[data-pos="1"]{ z-index: 4; transform: translate3d(0px, 10px, 120px) rotateX(0deg) rotateY(-3deg) scale(1); }
-    .glass-card[data-pos="2"]{ z-index: 3; transform: translate3d(20px, -18px, 68px) rotateX(4deg) rotateY(-4deg) scale(0.95); }
-    .glass-card[data-pos="3"]{ display: none; }
-    .glass-card[data-pos="4"]{ display: none; }
+    .glass-card[data-pos="1"]{
+      z-index: 4;
+      transform: translate3d(0px, 8px, 0px) rotateX(0deg) rotateY(0deg) scale(1);
+    }
+    .glass-card[data-pos="2"],
+    .glass-card[data-pos="3"],
+    .glass-card[data-pos="4"]{
+      display: none;
+    }
 
     .flow-node{ padding: 7px 8px; }
     .node-label{ font-size: 9px; }
