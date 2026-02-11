@@ -1968,16 +1968,16 @@ const secondaryCta = "/#services";
 
   @media (max-width: 639px){
     .stack-container{
-      height: 372px;
+      height: 336px;
       transform: none;
       perspective: 1000px;
       overflow: visible;
     }
 
     .glass-card{
-      width: min(350px, 90vw);
-      min-height: 258px;
-      padding: 14px 14px 16px;
+      width: min(322px, 84vw);
+      min-height: 232px;
+      padding: 11px 11px 13px;
       left: 0;
       right: 0;
       margin-inline: auto;
@@ -1987,24 +1987,30 @@ const secondaryCta = "/#services";
     .glass-card[data-pos="1"]{
       z-index: 4;
       opacity: 1;
-      transform: translate3d(0px, 14px, 90px) rotateX(0deg) rotateY(-3deg) scale(1);
+      transform: translate3d(0px, 12px, 80px) rotateX(0deg) rotateY(-3deg) scale(0.94);
     }
     .glass-card[data-pos="2"]{
       z-index: 3;
       opacity: 0.82;
-      transform: translate3d(16px, -10px, 58px) rotateX(3deg) rotateY(-4deg) scale(0.95);
+      transform: translate3d(14px, -10px, 52px) rotateX(3deg) rotateY(-4deg) scale(0.9);
     }
     .glass-card[data-pos="3"]{
       z-index: 2;
       opacity: 0.56;
       display: flex;
-      transform: translate3d(20px, -30px, 24px) rotateX(5deg) rotateY(-5deg) scale(0.9);
+      transform: translate3d(18px, -28px, 20px) rotateX(5deg) rotateY(-5deg) scale(0.86);
     }
     .glass-card[data-pos="4"]{
       z-index: 1;
       opacity: 0.36;
       display: flex;
-      transform: translate3d(4px, -44px, 0px) rotateX(6deg) rotateY(-5deg) scale(0.86);
+      transform: translate3d(4px, -40px, 0px) rotateX(6deg) rotateY(-5deg) scale(0.82);
+    }
+
+    .card-header{
+      font-size: 9px;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
     }
 
     .flow-node{ padding: 7px 8px; }
@@ -2020,14 +2026,15 @@ const secondaryCta = "/#services";
     .stack-card.c{ transform: translateX(12px); }
 
     .hud-visual{
-      min-height: 138px;
-      padding: 10px;
+      min-height: 118px;
+      padding: 8px;
     }
     .hud-title{
-      font-size: 1.02rem;
+      font-size: 0.96rem;
     }
     .hud-subline{
-      font-size: 11px;
+      font-size: 10px;
+      line-height: 1.35;
     }
     .hud-visual-discovery{
       grid-template-columns: 54px 1fr;
