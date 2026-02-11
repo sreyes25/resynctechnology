@@ -426,6 +426,10 @@ const secondaryCta = "/#services";
       min-height: auto;
       padding-bottom: 1rem;
     }
+    .hero-shell{
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
     .hero-logos-row{
       gap: 1.4rem;
       flex-wrap: wrap;
@@ -440,7 +444,7 @@ const secondaryCta = "/#services";
       justify-content: center;
     }
     .hero-visual{
-      width: min(340px, 80vw);
+      width: min(390px, calc(100vw - 2rem));
       margin-top: 0.5rem;
     }
   }
@@ -1964,17 +1968,19 @@ const secondaryCta = "/#services";
 
   @media (max-width: 639px){
     .stack-container{
-      height: 420px;
-      transform: translate3d(0px, -6px, 0);
+      height: 360px;
+      transform: none;
+      perspective: 1200px;
     }
 
     .glass-card{
-      width: min(380px, 96%);
-      min-height: 290px;
+      width: min(360px, 92vw);
+      min-height: 258px;
+      padding: 14px 14px 16px;
     }
 
-    .glass-card[data-pos="1"]{ z-index: 4; transform: translate3d(0px, 18px, 150px) rotateX(2deg) rotateY(-10deg) scale(1); }
-    .glass-card[data-pos="2"]{ z-index: 3; transform: translate3d(44px, -36px, 78px) rotateX(9deg) rotateY(-10deg) scale(0.94); }
+    .glass-card[data-pos="1"]{ z-index: 4; transform: translate3d(0px, 10px, 120px) rotateX(0deg) rotateY(-3deg) scale(1); }
+    .glass-card[data-pos="2"]{ z-index: 3; transform: translate3d(20px, -18px, 68px) rotateX(4deg) rotateY(-4deg) scale(0.95); }
     .glass-card[data-pos="3"]{ display: none; }
     .glass-card[data-pos="4"]{ display: none; }
 
