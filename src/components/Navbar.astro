@@ -16,6 +16,19 @@ const serviceLinks = [
   { name: "Workflow automation", desc: "Integrations & Ops", href: "/#services", icon: "/services/automate.svg" },
   { name: "Digital Marketing", desc: "SEO, Ads, and Growth Strategy", href: "/services/digital-marketing", icon: "/services/consultation.svg" },
 ];
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/110126983/",
+    icon: "/hero/linkedin-svgrepo-com.svg",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/sreyes25",
+    icon: "/hero/github-142-svgrepo-com.svg",
+  },
+];
 ---
 
 <nav class="rt-nav" data-rt-root>
@@ -60,6 +73,19 @@ const serviceLinks = [
 
     <!-- Desktop CTA -->
     <div class="rt-desktop-actions">
+      <div class="rt-socials" aria-label="Social links">
+        {socialLinks.map((social) => (
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.name}
+            title={social.name}
+          >
+            <img src={social.icon} alt="" class="rt-social-icon" loading="lazy" />
+          </a>
+        ))}
+      </div>
       <a href="/start" class="rt-cta rt-desktop-cta">Get in touch</a>
     </div>
 
@@ -319,6 +345,22 @@ const serviceLinks = [
       align-items: center;
       gap: 12px;
       justify-self: end;
+    }
+    .rt-socials{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rt-social-icon{
+      width: 27px;
+      height: 27px;
+      opacity: 0.92;
+      filter: brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(2571%) hue-rotate(241deg) brightness(115%) contrast(86%);
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+    .rt-socials a:hover .rt-social-icon{
+      opacity: 1;
+      transform: translateY(-1px);
     }
 
     .rt-brand{
