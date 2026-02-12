@@ -4,6 +4,7 @@ const routes = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
   { path: "/about", changefreq: "monthly", priority: "0.7" },
   { path: "/start", changefreq: "weekly", priority: "0.9" },
+  { path: "/services/nyc-custom-software-development", changefreq: "weekly", priority: "0.95" },
   { path: "/services/websites", changefreq: "weekly", priority: "0.9" },
   { path: "/services/digital-marketing", changefreq: "weekly", priority: "0.9" },
   { path: "/invoiceamericano", changefreq: "monthly", priority: "0.6" },
