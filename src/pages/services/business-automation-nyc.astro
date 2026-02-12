@@ -1,0 +1,79 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Business Automation NYC | Workflow + CRM Automation";
+const description =
+  "Business automation services in NYC for workflow automation, CRM automation, and API integrations that reduce manual operations.";
+const keywords = [
+  "business automation nyc",
+  "workflow automation nyc",
+  "crm automation nyc",
+  "api integration nyc",
+  "custom software nyc",
+  "developer hire nyc",
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Business Automation",
+    areaServed: ["New York City", "Brooklyn"],
+    provider: { "@type": "ProfessionalService", name: "Resync Technology LLC" },
+    description,
+  }}
+>
+  <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-24 top-0 h-72 w-72 rounded-full bg-resync-600/25 blur-3xl"></div>
+      <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(225,29,72,0.08),transparent_28%),radial-gradient(circle_at_50%_70%,rgba(255,255,255,0.05),transparent_38%)]"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-6 pb-16 pt-28 md:pb-24">
+      <p class="hero-eyebrow">Business automation NYC</p>
+      <h1 class="mt-4 text-4xl font-black tracking-tight text-white md:text-6xl">
+        Automation Systems That Eliminate Repetitive Work
+      </h1>
+      <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-200/90">
+        We build workflow automation for NYC companies that need cleaner operations, faster response times, and reliable handoffs across sales, service, and internal teams.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="/start" class="rt-btn-primary">
+          Start an Automation Project
+          <span class="cta-glow" aria-hidden="true"></span>
+        </a>
+        <a href="/services/nyc-custom-software-development" class="cta-secondary">NYC Custom Software</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper text-slateink">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-bold text-slateink">Automation Services</h2>
+        <p class="mt-3 text-slate-700">
+          Build a unified operating flow across your tools so your team spends less time on manual updates and more time executing.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <article class="rounded-xl2 border border-black/10 bg-white p-6 shadow-soft">
+          <h3 class="text-lg font-semibold text-slateink">Workflow Automation</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Automate lead routing, follow-ups, status changes, and team notifications across your pipeline.</p>
+        </article>
+        <article class="rounded-xl2 border border-black/10 bg-white p-6 shadow-soft">
+          <h3 class="text-lg font-semibold text-slateink">CRM Automation</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Keep contact records, deal stages, and activity logs synced automatically with minimal manual data entry.</p>
+        </article>
+        <article class="rounded-xl2 border border-black/10 bg-white p-6 shadow-soft">
+          <h3 class="text-lg font-semibold text-slateink">API Integration</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Connect forms, CRM, invoicing, and communication tools into a single reliable automation layer.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
