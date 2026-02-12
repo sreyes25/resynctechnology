@@ -11,16 +11,6 @@ const socialLinks = [
     icon: "/hero/github-142-svgrepo-com.svg",
   },
 ];
-
-const footerLinks = [
-  { name: "Software Development Company NYC", href: "/services/nyc-custom-software-development" },
-  { name: "Web Development NYC", href: "/services/websites" },
-  { name: "App Development NYC", href: "/services/startup-mvp-development-nyc" },
-  { name: "Business Automation NYC", href: "/services/business-automation-nyc" },
-  { name: "Digital Marketing NYC", href: "/services/digital-marketing-nyc" },
-  { name: "Brooklyn Software Developer", href: "/services/brooklyn-software-developer" },
-  { name: "Start a Project", href: "/start" },
-];
 ---
 
 <footer class="relative overflow-hidden border-t border-white/10 bg-ink text-white">
@@ -36,19 +26,12 @@ const footerLinks = [
   </div>
 
   <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-    <div class="mb-8 flex flex-wrap gap-3 text-xs text-white/70">
-      {footerLinks.map((link) => (
-        <a class="rounded-full border border-white/15 bg-white/5 px-3 py-1 hover:bg-white/10" href={link.href}>
-          {link.name}
-        </a>
-      ))}
-    </div>
     <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
       <div class="flex items-center gap-3">
         <img src="/logos/logo.png" alt="Resync Technology" class="h-8 w-8 rounded-md" />
         <div>
           <div class="text-sm font-semibold">Resync Technology LLC</div>
-          <div class="text-xs text-white/60">NYC + Brooklyn • Modernize • Automate • Ship</div>
+          <div class="text-xs text-white/60">Modernize • Automate • Ship</div>
         </div>
       </div>
 

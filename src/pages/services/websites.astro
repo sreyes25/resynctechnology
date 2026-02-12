@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NYCServiceCluster from "../../components/NYCServiceCluster.astro";
 
 const serviceCategories = [
   {
@@ -106,30 +105,8 @@ const testimonials = [
 ---
 
 <BaseLayout
-  title="NYC Website Development Services | Brooklyn Web Design & SEO | Resync"
-  description="Custom website development in NYC and Brooklyn. We build high-performance business websites with technical SEO, conversion UX, and modern web stacks."
-  keywords={[
-    "web development nyc",
-    "website development nyc",
-    "software development company nyc",
-    "custom software nyc",
-    "websites nyc",
-    "website development brooklyn",
-    "nyc web design company",
-    "seo website development",
-    "custom website developer nyc",
-  ]}
-  structuredData={{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: "Website Development",
-    provider: {
-      "@type": "SoftwareCompany",
-      name: "Resync Technology LLC",
-    },
-    areaServed: ["New York City", "Brooklyn"],
-    description: "Custom website development for NYC and Brooklyn businesses.",
-  }}
+  title="Websites — Resync Technology"
+  description="Custom websites built for speed, conversion, and growth. WordPress, Shopify, and modern web stacks designed around your goals."
 >
   <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
     <div class="pointer-events-none absolute inset-0 -z-10">
@@ -498,5 +475,4 @@ const testimonials = [
       </div>
     </div>
   </section>
-  <NYCServiceCluster />
 </BaseLayout>

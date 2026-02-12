@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NYCServiceCluster from "../../components/NYCServiceCluster.astro";
 
 const focusAreas = [
   {
@@ -46,31 +45,8 @@ const process = [
 ---
 
 <BaseLayout
-  title="NYC Digital Marketing for Software & Service Businesses | Resync"
-  description="Digital marketing in NYC for software and service businesses. Technical SEO, paid search, content strategy, and automation to generate qualified leads."
-  keywords={[
-    "digital marketing nyc",
-    "software development company nyc",
-    "custom software nyc",
-    "web development nyc",
-    "app development nyc",
-    "business automation nyc",
-    "seo nyc",
-    "software marketing nyc",
-    "workflow automation nyc",
-    "brooklyn digital marketing",
-  ]}
-  structuredData={{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: "Digital Marketing",
-    provider: {
-      "@type": "SoftwareCompany",
-      name: "Resync Technology LLC",
-    },
-    areaServed: ["New York City", "Brooklyn"],
-    description: "Technical digital marketing and SEO for NYC businesses.",
-  }}
+  title="Digital Marketing — Resync Technology"
+  description="Digital marketing services that blend strategy, paid media, SEO, and lifecycle growth. Clear positioning, clean tracking, measurable results."
 >
   <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
     <div class="pointer-events-none absolute inset-0 -z-10">
@@ -241,5 +217,4 @@ const process = [
       </div>
     </div>
   </section>
-  <NYCServiceCluster />
 </BaseLayout>
