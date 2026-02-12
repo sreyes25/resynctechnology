@@ -1,6 +1,6 @@
 import { e as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute, l as renderScript } from '../chunks/astro/server_CZTop7a8.mjs';
 import 'piccolore';
-import { $ as $$BaseLayout } from '../chunks/BaseLayout_BpcINP5g.mjs';
+import { $ as $$BaseLayout } from '../chunks/BaseLayout_Cl9c8GtC.mjs';
 import { b as budgetRanges, p as projectTypes, t as timelineOptions } from '../chunks/intake_Dsa-aFUw.mjs';
 export { renderers } from '../renderers.mjs';
 

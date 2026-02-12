@@ -1,6 +1,6 @@
 import { e as createComponent, m as maybeRenderHead, h as addAttribute, l as renderScript, r as renderTemplate, k as renderComponent } from '../chunks/astro/server_CZTop7a8.mjs';
 import 'piccolore';
-import { $ as $$BaseLayout } from '../chunks/BaseLayout_BpcINP5g.mjs';
+import { $ as $$BaseLayout } from '../chunks/BaseLayout_Cl9c8GtC.mjs';
 import 'clsx';
 /* empty css                                 */
 import { $ as $$NYCServiceCluster } from '../chunks/NYCServiceCluster_B3gcafDl.mjs';
