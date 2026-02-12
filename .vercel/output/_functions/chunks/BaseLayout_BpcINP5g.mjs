@@ -101,29 +101,19 @@ const $$BaseLayout = createComponent(($$result, $$props, $$slots) => {
     canonical = Astro2.url?.toString?.() ?? ""
   } = Astro2.props;
   const fallbackUrl = Astro2.url?.toString?.() ?? "";
-  const normalizeAbsoluteUrl = (value) => {
-    if (!value) return "";
-    try {
-      const parsed = new URL(value);
-      parsed.hash = "";
-      parsed.search = "";
-      return parsed.toString();
-    } catch {
-      return "";
-    }
-  };
-  const joinUrl = (base, path) => {
-    if (!base) return path;
-    try {
-      return new URL(path, base).toString();
-    } catch {
-      return path;
-    }
-  };
-  const canonicalUrl = normalizeAbsoluteUrl(canonical) || normalizeAbsoluteUrl(fallbackUrl);
-  const rootUrl = canonicalUrl ? joinUrl(canonicalUrl, "/") : "";
-  const absoluteOgImage = ogImage ? joinUrl(canonicalUrl, ogImage) : ogImage;
-  const absoluteLogo = joinUrl(canonicalUrl, "/logos/whitelogo.png");
+  const baseUrl = canonical || fallbackUrl;
+  let canonicalUrl = baseUrl;
+  try {
+    const resolvedUrl = new URL(baseUrl);
+    resolvedUrl.hash = "";
+    resolvedUrl.search = "";
+    canonicalUrl = resolvedUrl.toString();
+  } catch {
+    canonicalUrl = baseUrl;
+  }
+  const rootUrl = canonicalUrl ? new URL("/", canonicalUrl).toString() : "";
+  const absoluteOgImage = canonicalUrl && ogImage ? new URL(ogImage, canonicalUrl).toString() : ogImage;
+  const absoluteLogo = canonicalUrl ? new URL("/logos/whitelogo.png", canonicalUrl).toString() : "/logos/whitelogo.png";
   const keywordContent = Array.isArray(keywords) ? keywords.join(", ") : keywords;
   const defaultStructuredData = [
     {
