@@ -5,18 +5,117 @@ import Footer from "../components/Footer.astro";
 
 const {
   title = "Resync Technology",
-  description = "Engineering-led software studio. Modernize systems, automate operations, and ship reliable products.",
-  // Optional page-level overrides
+  description = "NYC software studio for custom software, websites, apps, and automation. Serving New York City and Brooklyn businesses with engineering-led delivery.",
+  keywords = [
+    "software development company nyc",
+    "custom software development nyc",
+    "custom software nyc",
+    "web development nyc",
+    "app development nyc",
+    "business automation nyc",
+    "digital marketing nyc",
+    "legacy system modernization nyc",
+    "workflow automation nyc",
+    "startup mvp development nyc",
+    "api integration nyc",
+    "crm automation nyc",
+    "saas development nyc",
+  ],
   ogImage = "/og.png",
+  ogImageAlt = "Resync Technology - NYC software studio",
+  ogType = "website",
+  structuredData = [],
   noIndex = false,
   canonical = Astro.url?.toString?.() ?? "",
 } = Astro.props;
 
-const canonicalUrl = canonical || (Astro.url?.toString?.() ?? "");
+const fallbackUrl = Astro.url?.toString?.() ?? "";
+const baseUrl = canonical || fallbackUrl;
+let canonicalUrl = baseUrl;
+
+try {
+  const resolvedUrl = new URL(baseUrl);
+  resolvedUrl.hash = "";
+  resolvedUrl.search = "";
+  canonicalUrl = resolvedUrl.toString();
+} catch {
+  canonicalUrl = baseUrl;
+}
+
+const rootUrl = canonicalUrl ? new URL("/", canonicalUrl).toString() : "";
 const absoluteOgImage =
   canonicalUrl && ogImage
     ? new URL(ogImage, canonicalUrl).toString()
     : ogImage;
+const absoluteLogo =
+  canonicalUrl
+    ? new URL("/logos/whitelogo.png", canonicalUrl).toString()
+    : "/logos/whitelogo.png";
+const keywordContent = Array.isArray(keywords) ? keywords.join(", ") : keywords;
+
+const defaultStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${rootUrl || canonicalUrl || ""}#localbusiness`,
+    name: "Resync Technology LLC",
+    url: rootUrl || canonicalUrl || undefined,
+    image: absoluteOgImage,
+    logo: absoluteLogo,
+    description,
+    areaServed: ["New York City", "Brooklyn", "New York"],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Brooklyn",
+      addressRegion: "NY",
+      addressCountry: "US",
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/110126983/",
+      "https://github.com/sreyes25",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${rootUrl || canonicalUrl || ""}#professionalservice`,
+    name: "Resync Technology LLC",
+    url: rootUrl || canonicalUrl || undefined,
+    image: absoluteOgImage,
+    areaServed: ["New York City", "Brooklyn", "Manhattan", "Queens"],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Software and Growth Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Software Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "App Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Automation" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing" } },
+      ],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareCompany",
+    name: "Resync Technology LLC",
+    url: rootUrl || canonicalUrl || undefined,
+    image: absoluteOgImage,
+    description,
+    areaServed: ["New York City", "Brooklyn", "New York"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Resync Technology",
+    url: rootUrl || canonicalUrl || undefined,
+  },
+];
+
+const pageStructuredData = Array.isArray(structuredData)
+  ? structuredData
+  : [structuredData];
+const structuredDataItems = [...defaultStructuredData, ...pageStructuredData].filter(Boolean);
 ---
 
 <!doctype html>
@@ -25,32 +124,38 @@ const absoluteOgImage =
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywordContent} />
+    <meta name="author" content="Resync Technology LLC" />
+    <meta name="geo.region" content="US-NY" />
+    <meta name="geo.placename" content="Brooklyn, New York City" />
+    <meta name="ICBM" content="40.6782, -73.9442" />
+
     <!-- SEO -->
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+    <meta
+      name="robots"
+      content={noIndex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}
+    />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Resync Technology" />
     {absoluteOgImage && <meta property="og:image" content={absoluteOgImage} />}
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {absoluteOgImage && <meta name="twitter:image" content={absoluteOgImage} />}
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <title>{title}</title>
 
     <meta name="google-site-verification" content="GQ9Xekr-XnUXYETQ9_GqBBmXSaW5f5TNX2eYvqaEz4w" />
-
-    <!-- Google tag (gtag.js) event -->
-    <script>
-      gtag('event', 'ads_conversion_Submit_lead_form_1', {
-        // <event_parameters>
-      });
-    </script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TS78Y9ZJW"></script>
     <script>
@@ -68,17 +173,9 @@ const absoluteOgImage =
 
     <meta name="application-name" content="Resync Technology" />
     <meta name="theme-color" content="#0f172a" />
-    <meta property="og:site_name" content="Resync Technology" />
-    <meta property="og:type" content="website" />
-
-    <!-- Structured Data (Organization) -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Resync Technology",
-      url: canonicalUrl || undefined,
-      logo: canonicalUrl ? new URL("/logos/whitelogo.png", canonicalUrl).toString() : "/logos/whitelogo.png",
-    })}></script>
+    {structuredDataItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)}></script>
+    ))}
   </head>
 
   <body class="min-h-screen bg-gradient-to-b from-resync-50/60 via-paper to-paper text-ink antialiased">

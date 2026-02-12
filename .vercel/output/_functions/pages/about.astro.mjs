@@ -1,0 +1,64 @@
+import { e as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_CZTop7a8.mjs';
+import 'piccolore';
+import { $ as $$BaseLayout } from '../chunks/BaseLayout_BpcINP5g.mjs';
+export { renderers } from '../renderers.mjs';
+
+const $$Index = createComponent(($$result, $$props, $$slots) => {
+  const title = "About Resync | NYC & Brooklyn Custom Software Studio";
+  const description = "Meet Resync Technology, a Brooklyn-based software studio building custom software, websites, apps, and automations for NYC businesses.";
+  const keywords = [
+    "about resync technology",
+    "software development company nyc",
+    "software studio brooklyn",
+    "software nyc",
+    "NYC custom software",
+    "web development nyc",
+    "app development nyc",
+    "business automation nyc",
+    "hire software developer nyc"
+  ];
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": title, "description": description, "keywords": keywords, "structuredData": {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: title,
+    description
+  } }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<section class="relative overflow-hidden bg-[#05060f] text-slate-100"> <div class="pointer-events-none absolute inset-0 -z-10"> <div class="absolute -left-24 top-0 h-72 w-72 rounded-full bg-resync-600/25 blur-3xl"></div> <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div> <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(225,29,72,0.08),transparent_28%),radial-gradient(circle_at_50%_70%,rgba(255,255,255,0.05),transparent_38%)]"></div> </div> <div class="relative mx-auto max-w-6xl px-6 py-0 md:py-0 rt-hero-top"> <!-- Eyebrow --> <p class="hero-eyebrow py-6">
+NYC software studio
+</p> <!-- Main Title --> <h1 class="mt-1 text-4xl font-black tracking-tight text-white md:text-6xl">
+NYC based software, built to solve real problems.
+</h1> <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-200/90">
+Resync Technology is an NYC based, engineering led software company. We design and build modern web and mobile products, automate operations, and ship reliable systems with clean architecture. Small team energy, high leverage, fast delivery.
+</p> <!-- Values --> <div class="mt-12 grid gap-6 md:grid-cols-3"> <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur"> <h2 class="text-base font-semibold text-white">Engineering-led</h2> <p class="mt-2 text-sm text-slate-200/80">Real software built on strong foundations. No fluff. No shortcuts.</p> </div> <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur"> <h2 class="text-base font-semibold text-white">Automation-first</h2> <p class="mt-2 text-sm text-slate-200/80">Reduce manual work. Build leverage. Create repeatable workflows.</p> </div> <div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur"> <h2 class="text-base font-semibold text-white">Reliable delivery</h2> <p class="mt-2 text-sm text-slate-200/80">Clear scope, transparent communication, and predictable timelines.</p> </div> </div> <!-- Founder Section --> <div class="mt-16 rounded-xl2 border border-white/10 bg-linear-to-br from-white/10 via-white/5 to-white/0 p-10 shadow-[0_20px_70px_rgba(0,0,0,0.32)] backdrop-blur"> <div class="flex flex-col gap-8 md:flex-row md:items-start"> <!-- Photo --> <div class="shrink-0"> <img src="/about/SergioReyes.jpeg" alt="Sergio Reyes" class="h-28 w-28 rounded-full object-cover ring-4 ring-white/20 ring-offset-4 ring-offset-[#05060f] shadow-[0_12px_35px_rgba(0,0,0,0.45)]" loading="lazy"> </div> <!-- Text --> <div> <h2 class="text-3xl font-bold #">Founder & CEO</h2> <p class="mt-2 text-lg font-semibold text-[#c689ff]">
+Sergio Reyes
+</p> <p class="mt-4 leading-relaxed text-slate-200/90">
+I started programming in high school—building websites, small games, and tools just to learn. Over time that turned into a focus on software engineering, iOS development, and building systems that make work simpler. I care about practical products: fast UX, clear code, and fewer moving parts.
+</p> <p class="mt-4 leading-relaxed text-slate-200/90">
+I launched Resync Technology to help NYC small businesses, contractors, and growing teams upgrade their software without hiring a full engineering department. If you need an app, a dashboard, an automation pipeline, or a clean rebuild of something that’s slow or messy, I can help you scope it and ship it.
+</p> <p class="mt-4 leading-relaxed text-slate-200/90">
+Whether it’s an iOS app, modern website, internal tool, or payment + invoicing workflow—I believe great software should feel simple, dependable, and designed around real people.
+</p> </div> </div> </div> <!-- Featured Project --> <div class="mt-16 rounded-xl2 border border-white/10 bg-[#0a0e1a] p-10 shadow-[0_22px_80px_rgba(0,0,0,0.35)] backdrop-blur"> <h2 class="text-2xl font-bold text-white">Featured Project</h2> <h3 class="mt-3 text-xl font-semibold text-[#78C5EF]">Invoice Americano</h3> <p class="mt-2 leading-relaxed text-slate-200/85">
+Invoice Americano is an iOS invoicing app built for contractors and small business owners who want professional invoices without expensive, complicated tools. Create invoices fast, generate clean PDFs, track client history, and connect payments—so getting paid feels simple.
+</p> <div class="mt-5 flex flex-wrap gap-3"> <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-100">iOS</span> <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-100">Payments</span> <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-100">PDF Generation</span> <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-100">Automation</span> </div> <div class="mt-6 flex flex-wrap gap-3"> <a href="/invoiceamericano" class="rt-btn-primary">
+Open
+<span class="cta-glow" aria-hidden="true"></span> </a> </div> </div> <!-- CTA --> <div class="mt-16 rounded-xl2 border border-white/10 bg-white/4 p-10 shadow-[0_20px_70px_rgba(0,0,0,0.38)] backdrop-blur"> <h2 class="text-xl font-bold text-white">Work with us</h2> <p class="mt-3 leading-relaxed text-slate-200/85">
+If you want a fast, reliable build with clean architecture — tell us what you’re trying to accomplish. I’ll help you scope it, plan it, and ship it efficiently.
+</p> <div class="mt-6 flex flex-wrap gap-3"> <a href="/start" class="rt-btn-primary">
+Start a Project
+<span class="cta-glow" aria-hidden="true"></span> </a> <a href="/#work" class="cta-secondary">
+View Work
+</a> </div> </div> </div> </section> ` })}`;
+}, "/Users/sergioreyes/Resync/resynctechnology/src/pages/about/index.astro", void 0);
+
+const $$file = "/Users/sergioreyes/Resync/resynctechnology/src/pages/about/index.astro";
+const $$url = "/about";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

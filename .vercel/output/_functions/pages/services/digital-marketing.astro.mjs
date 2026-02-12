@@ -1,0 +1,108 @@
+import { e as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_CZTop7a8.mjs';
+import 'piccolore';
+import { $ as $$BaseLayout } from '../../chunks/BaseLayout_BpcINP5g.mjs';
+import { $ as $$NYCServiceCluster } from '../../chunks/NYCServiceCluster_B3gcafDl.mjs';
+export { renderers } from '../../renderers.mjs';
+
+const $$DigitalMarketing = createComponent(($$result, $$props, $$slots) => {
+  const focusAreas = [
+    {
+      title: "Paid Search + PPC",
+      desc: "Intent-led campaigns built around high-converting keywords, landing pages, and smart budget pacing."
+    },
+    {
+      title: "Search Engine Optimization",
+      desc: "Technical, on-page, and content SEO that improves rankings, conversions, and compounding traffic."
+    },
+    {
+      title: "Social + Community",
+      desc: "Paid and organic social designed for growth loops, creative testing, and warm audience conversion."
+    },
+    {
+      title: "Email + Lifecycle",
+      desc: "Automations and campaigns that increase retention, reactivation, and LTV across your funnel."
+    },
+    {
+      title: "Answer + Generative Search",
+      desc: "AEO and GEO optimization so you show up in AI summaries, voice answers, and modern search tools."
+    },
+    {
+      title: "Conversion Optimization",
+      desc: "Landing pages, testing, and analytics that turn clicks into booked calls and qualified leads."
+    }
+  ];
+  const process = [
+    {
+      title: "Strategy + positioning",
+      desc: "Clarify your offer, audience, and promise so every channel points to the same conversion goal."
+    },
+    {
+      title: "Launch + testing",
+      desc: "Rapid creative and landing page experiments to find the messages that actually convert."
+    },
+    {
+      title: "Scale + optimize",
+      desc: "Double down on what works, eliminate waste, and keep reporting clean and actionable."
+    }
+  ];
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "NYC Digital Marketing for Software & Service Businesses | Resync", "description": "Digital marketing in NYC for software and service businesses. Technical SEO, paid search, content strategy, and automation to generate qualified leads.", "keywords": [
+    "digital marketing nyc",
+    "software development company nyc",
+    "custom software nyc",
+    "web development nyc",
+    "app development nyc",
+    "business automation nyc",
+    "seo nyc",
+    "software marketing nyc",
+    "workflow automation nyc",
+    "brooklyn digital marketing"
+  ], "structuredData": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Digital Marketing",
+    provider: {
+      "@type": "SoftwareCompany",
+      name: "Resync Technology LLC"
+    },
+    areaServed: ["New York City", "Brooklyn"],
+    description: "Technical digital marketing and SEO for NYC businesses."
+  } }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<section class="relative overflow-hidden bg-[#05060f] text-slate-100"> <div class="pointer-events-none absolute inset-0 -z-10"> <div class="absolute -left-20 top-10 h-72 w-72 rounded-full bg-resync-600/30 blur-3xl"></div> <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-[#0d172a] blur-[140px]"></div> <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(225,29,72,0.08),transparent_28%),radial-gradient(circle_at_50%_70%,rgba(255,255,255,0.05),transparent_38%)]"></div> </div> <div class="relative mx-auto max-w-6xl px-6 pt-5 pb-16 md:pb-24 rt-hero-top"> <p class="hero-eyebrow">Digital marketing services</p> <div class="mt-4 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]"> <div> <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
+Full-funnel growth with a technical edge.
+</h1> <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-200/90">
+We combine paid media, organic growth, and lifecycle automation so you get measurable demand
+            without the usual marketing chaos. Clear positioning, crisp creative, and conversion-focused execution.
+</p> <div class="mt-6 flex flex-wrap gap-3"> <a href="/start" class="rt-btn-primary">
+Start a Project
+<span class="cta-glow" aria-hidden="true"></span> </a> <a href="/#services" class="cta-secondary">View All Services</a> </div> <div class="mt-8 grid gap-3 text-sm text-slate-200/85 sm:grid-cols-2"> ${[
+    "PPC + paid social",
+    "SEO + content strategy",
+    "Lifecycle email",
+    "AEO + GEO visibility"
+  ].map((item) => renderTemplate`<div class="flex items-center gap-2"> <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-xs text-white/90">→</span> <span>${item}</span> </div>`)} </div> </div> <div class="relative"> <div class="absolute -top-6 right-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#ff7a59] to-[#f43f5e] opacity-70 blur-2xl"></div> <div class="absolute -bottom-8 left-6 h-28 w-28 rounded-full bg-gradient-to-br from-[#38bdf8] to-[#6366f1] opacity-60 blur-2xl"></div> <div class="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-4 shadow-[0_25px_70px_rgba(0,0,0,0.45)]"> <div class="rounded-2xl border border-white/10 bg-white/5 p-4"> <div class="flex items-center justify-between text-xs text-white/60"> <span class="font-semibold text-white/80">Growth Dashboard</span> <span>Monthly</span> </div> <div class="mt-4 grid gap-3 sm:grid-cols-3"> ${[
+    { label: "Qualified leads", value: "612", delta: "+21%" },
+    { label: "Cost / lead", value: "$38", delta: "-15%" },
+    { label: "Pipeline", value: "$148k", delta: "+9%" }
+  ].map((stat) => renderTemplate`<div class="rounded-xl border border-white/10 bg-white/5 p-3"> <div class="text-xs text-white/60">${stat.label}</div> <div class="mt-2 text-lg font-semibold text-white">${stat.value}</div> <div class="mt-1 text-xs text-emerald-300/90">${stat.delta}</div> </div>`)} </div> </div> <div class="mt-4 grid gap-3 sm:grid-cols-2"> <div class="rounded-2xl border border-white/10 bg-white/5 p-4"> <div class="text-xs text-white/60">Channel mix</div> <div class="mt-3 space-y-2 text-sm text-white/80"> <div class="flex items-center justify-between"> <span>Search</span> <span class="text-white/60">48%</span> </div> <div class="flex items-center justify-between"> <span>Social</span> <span class="text-white/60">31%</span> </div> <div class="flex items-center justify-between"> <span>Email</span> <span class="text-white/60">21%</span> </div> </div> </div> <div class="rounded-2xl border border-white/10 bg-white/5 p-4"> <div class="text-xs text-white/60">Current experiments</div> <div class="mt-3 space-y-2 text-sm text-white/80"> <div class="flex items-center justify-between"> <span>Landing page v2</span> <span class="text-white/60">Live</span> </div> <div class="flex items-center justify-between"> <span>Ad creative set 3</span> <span class="text-white/60">Testing</span> </div> <div class="flex items-center justify-between"> <span>Retargeting flow</span> <span class="text-white/60">Scaling</span> </div> </div> </div> </div> </div> </div> </div> </div> </section> <section class="bg-paper text-slateink"> <div class="mx-auto max-w-6xl px-6 py-16 md:py-20"> <div class="max-w-2xl"> <h2 class="text-3xl font-bold text-slateink">What we cover</h2> <p class="mt-3 text-slate-700">
+From acquisition to retention, we build a full-funnel system that keeps messaging and measurement tight.
+</p> </div> <div class="mt-10 grid gap-6 md:grid-cols-2"> ${focusAreas.map((area) => renderTemplate`<div class="rounded-xl2 border border-black/5 bg-white p-6 shadow-soft"> <h3 class="text-lg font-semibold text-slateink">${area.title}</h3> <p class="mt-2 text-sm leading-relaxed text-slate-600">${area.desc}</p> </div>`)} </div> </div> </section> <section class="relative overflow-hidden bg-[#0a0e1a] text-slate-100"> <div class="pointer-events-none absolute inset-0 -z-10"> <div class="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-resync-700/25 blur-3xl"></div> <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div> </div> <div class="mx-auto max-w-6xl px-6 py-16 md:py-20"> <div class="max-w-2xl"> <h2 class="text-3xl font-bold text-white">How we work</h2> <p class="mt-3 text-slate-200/85">
+Simple, pragmatic, and fast. You get clean reporting, clear experiments, and predictable timelines.
+</p> </div> <div class="mt-10 grid gap-6 md:grid-cols-3"> ${process.map((step) => renderTemplate`<div class="rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur"> <h3 class="text-base font-semibold text-white">${step.title}</h3> <p class="mt-2 text-sm text-slate-200/80">${step.desc}</p> </div>`)} </div> <div class="mt-12 rounded-xl2 border border-white/10 bg-linear-to-br from-white/10 via-white/5 to-white/0 p-8 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur"> <h3 class="text-xl font-bold text-white">Ready to grow?</h3> <p class="mt-3 text-slate-200/85">
+Tell us your goals and we will map a plan that prioritizes ROI, not vanity metrics.
+</p> <div class="mt-6 flex flex-wrap gap-3"> <a href="/start" class="rt-btn-primary">
+Start a Project
+<span class="cta-glow" aria-hidden="true"></span> </a> <a href="/#work" class="cta-secondary">View Work</a> </div> </div> </div> </section> ${renderComponent($$result2, "NYCServiceCluster", $$NYCServiceCluster, {})} ` })}`;
+}, "/Users/sergioreyes/Resync/resynctechnology/src/pages/services/digital-marketing.astro", void 0);
+
+const $$file = "/Users/sergioreyes/Resync/resynctechnology/src/pages/services/digital-marketing.astro";
+const $$url = "/services/digital-marketing";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$DigitalMarketing,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

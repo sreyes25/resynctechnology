@@ -1,0 +1,76 @@
+import { e as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_CZTop7a8.mjs';
+import 'piccolore';
+import { $ as $$BaseLayout } from '../../chunks/BaseLayout_BpcINP5g.mjs';
+import { $ as $$NYCServiceCluster } from '../../chunks/NYCServiceCluster_B3gcafDl.mjs';
+export { renderers } from '../../renderers.mjs';
+
+const $$NycCustomSoftwareDevelopment = createComponent(($$result, $$props, $$slots) => {
+  const title = "NYC Custom Software Development Company | Resync Technology";
+  const description = "Resync is a software development company NYC teams hire for custom software, legacy system modernization, API integration, and SaaS development.";
+  const keywords = [
+    "software development company nyc",
+    "custom software nyc",
+    "nyc custom software development",
+    "legacy system modernization nyc",
+    "api integration nyc",
+    "saas development nyc"
+  ];
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": title, "description": description, "keywords": keywords, "structuredData": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Custom Software Development",
+      areaServed: ["New York City", "Brooklyn"],
+      provider: { "@type": "ProfessionalService", name: "Resync Technology LLC" },
+      description
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How much does custom software development cost in NYC?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Pricing depends on complexity, integrations, and delivery speed. Most NYC custom software engagements are scoped in milestones to protect budget and timeline."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Can you modernize legacy systems without a full rebuild?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. We phase modernization so critical workflows stay live while architecture, APIs, and data layers are upgraded."
+          }
+        }
+      ]
+    }
+  ] }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<section class="relative overflow-hidden bg-[#05060f] text-slate-100"> <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_15%,rgba(225,29,72,0.18),transparent_38%),radial-gradient(circle_at_85%_10%,rgba(56,189,248,0.18),transparent_35%)]"></div> <div class="mx-auto max-w-6xl px-6 pb-16 pt-28 md:pb-24"> <p class="hero-eyebrow">Custom software development NYC</p> <h1 class="mt-4 text-4xl font-black tracking-tight text-white md:text-6xl">
+Software Development Company NYC Businesses Depend On
+</h1> <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200/90">
+We design and build custom software for operations, revenue, and scale. From legacy system modernization to API integration and SaaS development, every build is engineered for reliability and speed.
+</p> <div class="mt-8 flex flex-wrap gap-3"> <a href="/start" class="rt-btn-primary">Start a Custom Software Project</a> <a href="/services/business-automation-nyc" class="cta-secondary">Explore Business Automation NYC</a> </div> </div> </section> <section class="bg-paper text-slateink"> <div class="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:grid-cols-2 md:py-20"> <article class="rounded-xl2 border border-black/10 bg-white p-6 shadow-soft"> <h2 class="text-2xl font-semibold">Legacy System Modernization in NYC</h2> <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">
+Replace brittle workflows, reduce maintenance drag, and migrate critical business logic without shutting down core operations.
+</p> </article> <article class="rounded-xl2 border border-black/10 bg-white p-6 shadow-soft"> <h2 class="text-2xl font-semibold">API Integration and CRM Automation</h2> <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">
+Connect sales, operations, support, and finance systems so your team runs from a single source of truth instead of disconnected tools.
+</p> </article> <article class="rounded-xl2 border border-black/10 bg-white p-6 shadow-soft"> <h2 class="text-2xl font-semibold">SaaS Development for Growth Teams</h2> <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">
+Build secure SaaS products with clean architecture, reliable deployment pipelines, and clear feature roadmaps.
+</p> </article> <article class="rounded-xl2 border border-black/10 bg-white p-6 shadow-soft"> <h2 class="text-2xl font-semibold">Hire a NYC Custom Software Team</h2> <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">
+You work directly with builders who scope clearly, ship in milestones, and maintain engineering quality from discovery through launch.
+</p> </article> </div> </section> ${renderComponent($$result2, "NYCServiceCluster", $$NYCServiceCluster, {})} ` })}`;
+}, "/Users/sergioreyes/Resync/resynctechnology/src/pages/services/nyc-custom-software-development.astro", void 0);
+
+const $$file = "/Users/sergioreyes/Resync/resynctechnology/src/pages/services/nyc-custom-software-development.astro";
+const $$url = "/services/nyc-custom-software-development";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$NycCustomSoftwareDevelopment,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };
