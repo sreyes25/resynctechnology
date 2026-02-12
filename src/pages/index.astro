@@ -7,6 +7,7 @@ import WhyResync from "../components/WhyResync.astro";
 import Work from "../components/Work.astro";
 import CTA from "../components/CTA.astro";
 import SeoFaq from "../components/SeoFaq.astro";
+import { seoFaqs } from "../lib/seoFaqs";
 
 const title = "Software Development Company NYC | Resync Technology";
 const description =
@@ -29,24 +30,14 @@ const keywords = [
   structuredData={{
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How much does custom software development cost in NYC?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Pricing depends on scope, integrations, and delivery timeline. Most projects are phased so teams can launch core workflows first.",
-        },
+    mainEntity: seoFaqs.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
       },
-      {
-        "@type": "Question",
-        name: "Do you build websites and apps in Brooklyn and NYC?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Resync builds websites, apps, and custom software for businesses across Brooklyn and New York City.",
-        },
-      },
-    ],
+    })),
   }}
 >
   <Hero />

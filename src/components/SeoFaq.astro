@@ -1,30 +1,59 @@
 ---
-const faqs = [
-  {
-    q: "How much does custom software development cost in NYC?",
-    a: "Pricing depends on scope, integrations, and delivery timeline. Most projects are phased so you can launch core workflows first and expand in measured milestones.",
-  },
-  {
-    q: "Can I hire a software developer in Brooklyn for websites and apps?",
-    a: "Yes. We build websites, apps, and custom software for Brooklyn and NYC businesses that need fast execution with clean engineering standards.",
-  },
-  {
-    q: "Do you offer business automation and API integration in NYC?",
-    a: "Yes. We build workflow automation, CRM automation, and API integrations to reduce repetitive work and improve operational speed.",
-  },
-];
+import { seoFaqs } from "../lib/seoFaqs";
 ---
 
-<section class="border-t border-black/5 bg-paper">
+<section class="relative overflow-hidden border-t border-white/10 bg-[#090b13] text-white">
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-[radial-gradient(70%_70%_at_15%_12%,rgba(225,29,72,0.2),transparent_60%),radial-gradient(70%_80%_at_85%_10%,rgba(56,189,248,0.16),transparent_58%)]"></div>
+    <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-size-[9px_9px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(120%_100%_at_50%_0%,transparent_30%,rgba(0,0,0,0.75)_100%)]"></div>
+  </div>
+
   <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-    <h2 class="text-3xl font-semibold tracking-tight text-slateink md:text-4xl">NYC Software FAQs</h2>
-    <div class="mt-8 grid gap-4">
-      {faqs.map((item) => (
-        <details class="rounded-xl2 border border-black/10 bg-white p-5 shadow-soft">
-          <summary class="cursor-pointer text-base font-semibold text-slateink">{item.q}</summary>
-          <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">{item.a}</p>
+    <div class="max-w-3xl">
+      <p class="hero-eyebrow">Frequently asked</p>
+      <h2 class="mt-3 text-3xl font-black tracking-tight text-white md:text-5xl">
+        NYC Software FAQs
+      </h2>
+      <p class="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">
+        Clear answers on scope, pricing, and how we deliver custom software and automation projects in NYC.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-4">
+      {seoFaqs.map((item, i) => (
+        <details class="group rounded-xl2 border border-white/12 bg-white/[0.045] p-5 shadow-[0_16px_50px_rgba(0,0,0,0.3)] backdrop-blur">
+          <summary class="flex cursor-pointer list-none items-start justify-between gap-6">
+            <div class="flex items-start gap-4">
+              <span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/6 text-[11px] font-semibold text-white/70">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span class="text-base font-semibold leading-snug text-white md:text-lg">{item.q}</span>
+            </div>
+            <span class="faq-plus mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/6 text-lg leading-none text-white/70">
+              +
+            </span>
+          </summary>
+          <p class="mt-4 pl-10 text-sm leading-relaxed text-white/75 sm:text-base">{item.a}</p>
         </details>
       ))}
     </div>
   </div>
+
+  <style>
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details[open] .faq-plus {
+      transform: rotate(45deg);
+      color: rgba(255, 255, 255, 0.95);
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .faq-plus {
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+  </style>
 </section>
