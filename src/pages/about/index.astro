@@ -1,8 +1,28 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "About Resync | NYC Software Studio";
+const description =
+  "Meet Resync Technology, a Brooklyn and NYC software studio focused on custom software, app development, websites, and automation.";
+const keywords = [
+  "software nyc",
+  "brooklyn software developer",
+  "custom software nyc",
+  "developer hire nyc",
+];
 ---
 
-<BaseLayout title="About — Resync Technology" description="NYC-based Resync Technology and its founder, Sergio Reyes — engineering-led execution, automation-first systems, and clean architecture.">
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: title,
+    description,
+  }}
+>
   <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
     <div class="pointer-events-none absolute inset-0 -z-10">
       <div class="absolute -left-24 top-0 h-72 w-72 rounded-full bg-resync-600/25 blur-3xl"></div>

@@ -5,18 +5,82 @@ import Footer from "../components/Footer.astro";
 
 const {
   title = "Resync Technology",
-  description = "Engineering-led software studio. Modernize systems, automate operations, and ship reliable products.",
-  // Optional page-level overrides
+  description = "NYC software studio for custom software, websites, apps, and automation. Serving New York City and Brooklyn businesses.",
+  keywords = [
+    "software development company nyc",
+    "custom software nyc",
+    "web development nyc",
+    "app development nyc",
+    "business automation nyc",
+    "digital marketing nyc",
+    "brooklyn software developer",
+    "developer hire nyc",
+    "workflow automation nyc",
+    "api integration nyc",
+  ],
   ogImage = "/og.png",
+  ogImageAlt = "Resync Technology NYC software studio",
+  ogType = "website",
+  structuredData = [],
   noIndex = false,
   canonical = Astro.url?.toString?.() ?? "",
 } = Astro.props;
 
-const canonicalUrl = canonical || (Astro.url?.toString?.() ?? "");
-const absoluteOgImage =
-  canonicalUrl && ogImage
-    ? new URL(ogImage, canonicalUrl).toString()
-    : ogImage;
+const toAbsoluteUrl = (value: string) => {
+  if (!value) return "";
+  try {
+    const parsed = new URL(value);
+    parsed.hash = "";
+    parsed.search = "";
+    return parsed.toString();
+  } catch {
+    return "";
+  }
+};
+
+const resolveUrl = (base: string, path: string) => {
+  if (!base) return path;
+  try {
+    return new URL(path, base).toString();
+  } catch {
+    return path;
+  }
+};
+
+const canonicalUrl = toAbsoluteUrl(canonical) || toAbsoluteUrl(Astro.url?.toString?.() ?? "");
+const rootUrl = canonicalUrl ? resolveUrl(canonicalUrl, "/") : "";
+const absoluteOgImage = ogImage ? resolveUrl(canonicalUrl, ogImage) : ogImage;
+const absoluteLogo = resolveUrl(canonicalUrl, "/logos/whitelogo.png");
+const keywordContent = Array.isArray(keywords) ? keywords.join(", ") : keywords;
+
+const defaultStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Resync Technology LLC",
+    url: rootUrl || undefined,
+    image: absoluteOgImage,
+    logo: absoluteLogo,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Brooklyn",
+      addressRegion: "NY",
+      addressCountry: "US",
+    },
+    areaServed: ["New York City", "Brooklyn"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Resync Technology LLC",
+    url: rootUrl || undefined,
+    areaServed: ["New York City", "Brooklyn"],
+    serviceType: "Custom Software Development",
+  },
+];
+
+const extraStructuredData = Array.isArray(structuredData) ? structuredData : [structuredData];
+const structuredDataItems = [...defaultStructuredData, ...extraStructuredData].filter(Boolean);
 ---
 
 <!doctype html>
@@ -25,32 +89,33 @@ const absoluteOgImage =
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywordContent} />
+    <meta name="author" content="Resync Technology LLC" />
+    <meta name="geo.region" content="US-NY" />
+    <meta name="geo.placename" content="Brooklyn, New York City" />
     <!-- SEO -->
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Resync Technology" />
     {absoluteOgImage && <meta property="og:image" content={absoluteOgImage} />}
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {absoluteOgImage && <meta name="twitter:image" content={absoluteOgImage} />}
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <title>{title}</title>
 
     <meta name="google-site-verification" content="GQ9Xekr-XnUXYETQ9_GqBBmXSaW5f5TNX2eYvqaEz4w" />
-
-    <!-- Google tag (gtag.js) event -->
-    <script>
-      gtag('event', 'ads_conversion_Submit_lead_form_1', {
-        // <event_parameters>
-      });
-    </script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TS78Y9ZJW"></script>
     <script>
@@ -68,17 +133,9 @@ const absoluteOgImage =
 
     <meta name="application-name" content="Resync Technology" />
     <meta name="theme-color" content="#0f172a" />
-    <meta property="og:site_name" content="Resync Technology" />
-    <meta property="og:type" content="website" />
-
-    <!-- Structured Data (Organization) -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Resync Technology",
-      url: canonicalUrl || undefined,
-      logo: canonicalUrl ? new URL("/logos/whitelogo.png", canonicalUrl).toString() : "/logos/whitelogo.png",
-    })}></script>
+    {structuredDataItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)}></script>
+    ))}
   </head>
 
   <body class="min-h-screen bg-gradient-to-b from-resync-50/60 via-paper to-paper text-ink antialiased">

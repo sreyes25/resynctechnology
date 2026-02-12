@@ -45,8 +45,23 @@ const process = [
 ---
 
 <BaseLayout
-  title="Digital Marketing — Resync Technology"
-  description="Digital marketing services that blend strategy, paid media, SEO, and lifecycle growth. Clear positioning, clean tracking, measurable results."
+  title="Digital Marketing NYC | SEO, Paid Search, and Growth"
+  description="Digital marketing services in NYC for software and service businesses: SEO, paid search, content strategy, and lifecycle automation."
+  keywords={[
+    "digital marketing nyc",
+    "seo nyc",
+    "software marketing nyc",
+    "business automation nyc",
+    "brooklyn digital marketing",
+  ]}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Digital Marketing",
+    areaServed: ["New York City", "Brooklyn"],
+    provider: { "@type": "ProfessionalService", name: "Resync Technology LLC" },
+    description: "Digital marketing services for NYC businesses.",
+  }}
 >
   <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
     <div class="pointer-events-none absolute inset-0 -z-10">
