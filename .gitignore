@@ -6,6 +6,9 @@ dist/
 # dependencies
 node_modules/
 
+# vercel local output (never deploy these from local prebuild)
+.vercel/
+
 # logs
 npm-debug.log*
 yarn-debug.log*
