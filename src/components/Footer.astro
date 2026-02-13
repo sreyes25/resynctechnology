@@ -45,7 +45,14 @@ const footerLinks = [
     </div>
     <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
       <div class="flex items-center gap-3">
-        <img src="/logos/logo.png" alt="Resync Technology" class="h-8 w-8 rounded-md" />
+        <img
+          src="/logo-96.png"
+          alt="Resync Technology"
+          width="32"
+          height="29"
+          decoding="async"
+          class="h-8 w-auto rounded-md"
+        />
         <div>
           <div class="text-sm font-semibold">Resync Technology LLC</div>
           <div class="text-xs text-white/60">NYC + Brooklyn • Modernize • Automate • Ship</div>
@@ -65,6 +72,9 @@ const footerLinks = [
               src={social.icon}
               alt=""
               loading="lazy"
+              width="25"
+              height="25"
+              decoding="async"
               class="h-[25px] w-[25px] opacity-90 transition hover:-translate-y-0.5 hover:opacity-100 [filter:brightness(0)_saturate(100%)_invert(99%)_sepia(1%)_saturate(2571%)_hue-rotate(241deg)_brightness(115%)_contrast(86%)]"
             />
           </a>

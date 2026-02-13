@@ -50,7 +50,7 @@ const resolveUrl = (base: string, path: string) => {
 const canonicalUrl = toAbsoluteUrl(canonical) || toAbsoluteUrl(Astro.url?.toString?.() ?? "");
 const rootUrl = canonicalUrl ? resolveUrl(canonicalUrl, "/") : "";
 const absoluteOgImage = ogImage ? resolveUrl(canonicalUrl, ogImage) : ogImage;
-const absoluteLogo = resolveUrl(canonicalUrl, "/logos/whitelogo.png");
+const absoluteLogo = resolveUrl(canonicalUrl, "/logo.png");
 const keywordContent = Array.isArray(keywords) ? keywords.join(", ") : keywords;
 
 const defaultStructuredData = [
@@ -116,13 +116,39 @@ const structuredDataItems = [...defaultStructuredData, ...extraStructuredData].f
     <title>{title}</title>
 
     <meta name="google-site-verification" content="GQ9Xekr-XnUXYETQ9_GqBBmXSaW5f5TNX2eYvqaEz4w" />
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TS78Y9ZJW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5TS78Y9ZJW');
+    <!-- Google Analytics (deferred to reduce main-thread work on initial paint) -->
+    <script is:inline>
+      (() => {
+        const GA_ID = "G-5TS78Y9ZJW";
+        const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+        if (isLocalhost) return;
+
+        const loadAnalytics = () => {
+          if (window.__rtGtagLoaded) return;
+          window.__rtGtagLoaded = true;
+
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function gtag() {
+            window.dataLayer.push(arguments);
+          };
+          window.gtag("js", new Date());
+          window.gtag("config", GA_ID);
+
+          const script = document.createElement("script");
+          script.async = true;
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+          document.head.appendChild(script);
+        };
+
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(loadAnalytics, { timeout: 2000 });
+          return;
+        }
+
+        window.addEventListener("load", () => {
+          setTimeout(loadAnalytics, 1200);
+        }, { once: true });
+      })();
     </script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
