@@ -116,38 +116,64 @@ const structuredDataItems = [...defaultStructuredData, ...extraStructuredData].f
     <title>{title}</title>
 
     <meta name="google-site-verification" content="GQ9Xekr-XnUXYETQ9_GqBBmXSaW5f5TNX2eYvqaEz4w" />
-    <!-- Google Analytics (deferred to reduce main-thread work on initial paint) -->
+    <!-- Google Analytics (lazy: load on first interaction or idle to reduce initial main-thread work) -->
     <script is:inline>
       (() => {
         const GA_ID = "G-5TS78Y9ZJW";
         const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
         if (isLocalhost) return;
 
-        const loadAnalytics = () => {
-          if (window.__rtGtagLoaded) return;
-          window.__rtGtagLoaded = true;
+        // Respect "Do Not Track" when enabled
+        const dnt = navigator.doNotTrack === "1" || (window as any).doNotTrack === "1";
+        if (dnt) return;
 
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function gtag() {
-            window.dataLayer.push(arguments);
+        const loadAnalytics = () => {
+          if ((window as any).__rtGtagLoaded) return;
+          (window as any).__rtGtagLoaded = true;
+
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).gtag = function gtag() {
+            (window as any).dataLayer.push(arguments);
           };
-          window.gtag("js", new Date());
-          window.gtag("config", GA_ID);
 
           const script = document.createElement("script");
           script.async = true;
           script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+          script.onload = () => {
+            (window as any).gtag("js", new Date());
+            (window as any).gtag("config", GA_ID);
+          };
           document.head.appendChild(script);
         };
 
-        if ("requestIdleCallback" in window) {
-          window.requestIdleCallback(loadAnalytics, { timeout: 2000 });
-          return;
-        }
+        // Load as soon as the user interacts (best for PageSpeed)
+        const onFirstInteraction = () => {
+          cleanup();
+          loadAnalytics();
+        };
 
-        window.addEventListener("load", () => {
-          setTimeout(loadAnalytics, 1200);
-        }, { once: true });
+        const cleanup = () => {
+          window.removeEventListener("pointerdown", onFirstInteraction);
+          window.removeEventListener("keydown", onFirstInteraction);
+          window.removeEventListener("scroll", onFirstInteraction);
+        };
+
+        window.addEventListener("pointerdown", onFirstInteraction, { once: true, passive: true });
+        window.addEventListener("keydown", onFirstInteraction, { once: true, passive: true });
+        window.addEventListener("scroll", onFirstInteraction, { once: true, passive: true });
+
+        // Fallback: load when the browser is idle (or shortly after load)
+        if ("requestIdleCallback" in window) {
+          (window as any).requestIdleCallback(loadAnalytics, { timeout: 4000 });
+        } else {
+          window.addEventListener(
+            "load",
+            () => {
+              setTimeout(loadAnalytics, 2000);
+            },
+            { once: true }
+          );
+        }
       })();
     </script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
