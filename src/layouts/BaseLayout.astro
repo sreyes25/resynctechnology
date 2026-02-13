@@ -50,7 +50,7 @@ const resolveUrl = (base: string, path: string) => {
 const canonicalUrl = toAbsoluteUrl(canonical) || toAbsoluteUrl(Astro.url?.toString?.() ?? "");
 const rootUrl = canonicalUrl ? resolveUrl(canonicalUrl, "/") : "";
 const absoluteOgImage = ogImage ? resolveUrl(canonicalUrl, ogImage) : ogImage;
-const absoluteLogo = resolveUrl(canonicalUrl, "/logo.png");
+const absoluteLogo = resolveUrl(canonicalUrl, "/logo.webp");
 const keywordContent = Array.isArray(keywords) ? keywords.join(", ") : keywords;
 
 const defaultStructuredData = [
