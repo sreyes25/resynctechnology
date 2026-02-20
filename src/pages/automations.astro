@@ -25,13 +25,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </p>
 
         <div class="mt-8 flex flex-wrap items-center gap-3">
-          <a href="/start" class="rt-btn-primary">
-            Book a call
+          <a href="/start" class="rt-btn-primary hero-cta">
+            Automate
             <span class="cta-glow" aria-hidden="true"></span>
           </a>
           <a
             href="#example-automations"
-            class="inline-flex items-center rounded-full border border-white/35 bg-white/90 px-4 py-2 text-sm font-medium text-slate-900 transition hover:bg-white"
+            class="hero-alt-btn hero-cta inline-flex items-center rounded-full text-sm font-medium transition"
           >
             See example automations
           </a>
@@ -133,15 +133,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <span class="flow-line"></span>
         <span>Confirm</span>
       </div>
-      <div class="automation-flow-mobile mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-slate-700/50 p-2 md:hidden">
-        <span>Trigger</span>
-        <span>Classify</span>
-        <span>Route</span>
-        <span>Confirm</span>
+      <div class="automation-flow-mobile mt-4 rounded-2xl border border-slate-700/50 md:hidden" aria-label="Mobile workflow sequence">
+        <div class="flow-mobile-window" aria-live="polite">
+          <div class="flow-mobile-track">
+            <span>Trigger</span>
+            <span>Classify</span>
+            <span>Route</span>
+            <span>Confirm</span>
+            <span>Trigger</span>
+          </div>
+        </div>
+        <span class="flow-mobile-dot" aria-hidden="true"></span>
       </div>
       <div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <article class="automation-card group rounded-2xl border border-black/10 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_45px_rgba(14,165,233,0.12)]">
-          <div class="liquid-chip" aria-hidden="true">
+          <div class="liquid-chip" data-liquid-chip aria-hidden="true">
             <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 7h16M7 7v10m10-10v10M4 17h16M9 11h6" />
             </svg>
@@ -154,7 +160,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </article>
 
         <article class="automation-card group rounded-2xl border border-black/10 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_45px_rgba(14,165,233,0.12)]">
-          <div class="liquid-chip" aria-hidden="true">
+          <div class="liquid-chip" data-liquid-chip aria-hidden="true">
             <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 5h16v10H7l-3 3z" />
             </svg>
@@ -167,7 +173,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </article>
 
         <article class="automation-card group rounded-2xl border border-black/10 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_45px_rgba(14,165,233,0.12)]">
-          <div class="liquid-chip" aria-hidden="true">
+          <div class="liquid-chip" data-liquid-chip aria-hidden="true">
             <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="4" y="11" width="3" height="7" />
               <rect x="10.5" y="8" width="3" height="10" />
@@ -182,7 +188,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </article>
 
         <article class="automation-card group rounded-2xl border border-black/10 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_45px_rgba(14,165,233,0.12)]">
-          <div class="liquid-chip" aria-hidden="true">
+          <div class="liquid-chip" data-liquid-chip aria-hidden="true">
             <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 6h16M4 12h16M4 18h16" />
               <circle cx="8" cy="6" r="1.5" fill="currentColor" stroke="none" />
@@ -527,35 +533,84 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <script type="module">
-  import {
-    liquidMetalFragmentShader,
-    ShaderMount
-  } from "https://esm.sh/@paper-design/shaders";
+  import { liquidMetalFragmentShader, ShaderMount } from "https://esm.sh/@paper-design/shaders";
 
-  const container = document.getElementById("liquid-metal");
+  const baseUniforms = {
+    u_repetition: 1.5,
+    u_softness: 0.5,
+    u_shiftRed: 0.3,
+    u_shiftBlue: 0.3,
+    u_distortion: 0,
+    u_contour: 0,
+    u_angle: 100,
+    u_scale: 1.5,
+    u_shape: 1,
+    u_offsetX: 0.1,
+    u_offsetY: -0.1
+  };
 
-  new ShaderMount(
-    container,
-    liquidMetalFragmentShader,
-    {
-      u_repetition: 1.5,
-      u_softness: 0.5,
-      u_shiftRed: 0.3,
-      u_shiftBlue: 0.3,
-      u_distortion: 0,
-      u_contour: 0,
-      u_angle: 100,
-      u_scale: 1.5,
-      u_shape: 1,
-      u_offsetX: 0.1,
-      u_offsetY: -0.1
-    },
-    undefined,
-    0.6
-  );
+  const primary = document.getElementById("liquid-metal");
+  if (primary) {
+    new ShaderMount(primary, liquidMetalFragmentShader, baseUniforms, undefined, 0.6);
+  }
+
+  const chips = document.querySelectorAll("[data-liquid-chip]");
+  chips.forEach((chip) => {
+    new ShaderMount(
+      chip,
+      liquidMetalFragmentShader,
+      {
+        ...baseUniforms,
+        u_softness: 0.58,
+        u_scale: 1.2,
+        u_shiftRed: 0.22,
+        u_shiftBlue: 0.22
+      },
+      undefined,
+      0.5
+    );
+  });
 </script>
 
 <style>
+  .hero-cta {
+    min-height: 2.95rem;
+    padding: 0.7rem 1.55rem;
+    border-radius: 999px;
+    font-size: 1.02rem;
+    line-height: 1;
+    font-weight: 650;
+  }
+
+  .hero-alt-btn {
+    border: 1px solid rgba(148, 163, 184, 0.42);
+    background:
+      radial-gradient(120% 90% at 20% 0%, rgba(255, 255, 255, 0.12), transparent 45%),
+      linear-gradient(180deg, rgba(15, 23, 42, 0.72), rgba(2, 6, 23, 0.78));
+    color: #e2e8f0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 10px 24px rgba(2, 6, 23, 0.32);
+  }
+
+  .hero-alt-btn:hover {
+    border-color: rgba(148, 163, 184, 0.65);
+    color: #f8fafc;
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 14px 30px rgba(2, 6, 23, 0.4);
+  }
+
+  .hero-alt-btn:focus-visible {
+    outline: 2px solid rgba(148, 163, 184, 0.75);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 767px) {
+    .hero-cta {
+      min-height: 3rem;
+      padding: 0.72rem 1.35rem;
+      font-size: 0.87rem;
+    }
+  }
+
   .liquid-metal-link {
     position: relative;
     display: inline-flex;
@@ -575,6 +630,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     width: 5.7rem;
     height: 5.7rem;
     border-radius: 50%;
+  }
+
+  .liquid-metal > canvas {
+    position: absolute !important;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .liquid-metal > canvas {
@@ -775,42 +840,75 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .automation-flow-mobile {
     position: relative;
     overflow: hidden;
+    padding: 0.9rem 0.7rem 1.15rem;
     background:
       radial-gradient(140% 120% at 20% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
       linear-gradient(180deg, #10141d 0%, #06090f 100%);
   }
 
-  .automation-flow-mobile::after {
+  .automation-flow-mobile::before {
     content: "";
     position: absolute;
-    top: -20%;
-    bottom: -20%;
-    left: -42%;
-    width: 36%;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(226, 232, 240, 0.34) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    filter: blur(1px);
-    animation: flowSweepMobile 7.8s ease-in-out infinite;
-    pointer-events: none;
+    left: 0.95rem;
+    right: 0.95rem;
+    bottom: 0.52rem;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(241, 245, 249, 0.8), rgba(148, 163, 184, 0.2));
+    border-radius: 999px;
   }
 
-  .automation-flow-mobile span {
+  .automation-flow-mobile::after {
+    display: none;
+  }
+
+  .flow-mobile-window {
     position: relative;
-    z-index: 1;
-    border: 1px solid rgba(148, 163, 184, 0.28);
-    border-radius: 0.7rem;
-    background: rgba(15, 23, 42, 0.58);
-    color: #e5e7eb;
+    z-index: 2;
+    overflow: hidden;
+    width: 100%;
+    height: 1.45rem;
+  }
+
+  .flow-mobile-track {
+    display: flex;
+    animation: flowWordSwipe 8s cubic-bezier(0.2, 0.9, 0.2, 1) infinite;
+    will-change: transform;
+  }
+
+  .flow-mobile-track span {
+    width: 100%;
+    flex: 0 0 100%;
     text-align: center;
-    font-size: 0.72rem;
+    font-size: 0.9rem;
     font-weight: 800;
-    letter-spacing: 0.11em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.62rem 0.5rem;
+    color: #e5e7eb;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .flow-mobile-dot {
+    position: absolute;
+    bottom: 0.52rem;
+    left: 50%;
+    width: 0.48rem;
+    height: 0.48rem;
+    border-radius: 999px;
+    transform: translate(-50%, 50%);
+    background: linear-gradient(180deg, #f8fafc, #cbd5e1);
+    box-shadow: 0 0 0 0 rgba(241, 245, 249, 0.5);
+    animation: flowDotRipple 8s linear infinite;
+    z-index: 2;
+  }
+
+  .flow-mobile-dot::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 1px solid rgba(241, 245, 249, 0.45);
+    opacity: 0;
+    animation: flowDotRing 8s linear infinite;
   }
 
   .automation-card {
@@ -835,6 +933,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     box-shadow: 0 6px 14px rgba(2, 6, 23, 0.2);
   }
 
+  .liquid-chip > canvas {
+    position: absolute !important;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .liquid-chip::before {
     content: "";
     position: absolute;
@@ -842,6 +950,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     border-radius: inherit;
     background: linear-gradient(#4b5563, #0b0f16);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26);
+    z-index: 1;
   }
 
   .liquid-chip::after {
@@ -858,11 +967,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     mask-composite: exclude;
     transition: filter 220ms ease;
     pointer-events: none;
+    z-index: 3;
   }
 
   .liquid-chip svg {
     position: relative;
-    z-index: 2;
+    z-index: 4;
   }
 
   .automation-card:hover .liquid-chip::after {
@@ -1032,6 +1142,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     to { transform: translateX(420%); }
   }
 
+  @keyframes flowWordSwipe {
+    0%, 16% { transform: translateX(0%); }
+    24%, 40% { transform: translateX(-100%); }
+    48%, 64% { transform: translateX(-200%); }
+    72%, 88% { transform: translateX(-300%); }
+    100% { transform: translateX(-400%); }
+  }
+
+  @keyframes flowDotRipple {
+    0%, 24%, 48%, 72% { box-shadow: 0 0 0 0 rgba(241, 245, 249, 0.62); }
+    8%, 32%, 56%, 80% { box-shadow: 0 0 0 12px rgba(241, 245, 249, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(241, 245, 249, 0); }
+  }
+
+  @keyframes flowDotRing {
+    0%, 24%, 48%, 72% { transform: scale(0.65); opacity: 0.65; }
+    8%, 32%, 56%, 80% { transform: scale(1.9); opacity: 0; }
+    100% { transform: scale(0.65); opacity: 0; }
+  }
+
   @keyframes automationDrift {
     0% { transform: translate3d(0, 0, 0) scale(1); }
     100% { transform: translate3d(0, -10px, 0) scale(1.03); }
@@ -1047,7 +1177,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .automation-aurora,
     .automation-flow::after,
     .automation-flow::before,
-    .automation-flow-mobile::after,
+    .flow-mobile-track,
+    .flow-mobile-dot,
+    .flow-mobile-dot::after,
     .flow-dot,
     .image-ring::after,
     .automation-surface::after {
