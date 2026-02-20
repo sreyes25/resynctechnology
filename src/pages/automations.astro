@@ -1,0 +1,1056 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="AI & Workflow Automations | Resync Technology"
+  description="Resync Technology builds custom AI and workflow automations for small businesses, including CRM sync, inbox routing, reporting, and back-office workflows."
+>
+  <header class="relative overflow-hidden border-b border-white/10 bg-[#070b17]">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute -left-28 -top-32 h-96 w-96 rounded-full bg-red-500/25 blur-3xl"></div>
+      <div class="absolute right-[-4rem] top-[-5rem] h-[28rem] w-[28rem] rounded-full bg-indigo-500/25 blur-3xl"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(120%_85%_at_18%_20%,rgba(225,29,72,0.24),transparent_48%),radial-gradient(120%_85%_at_85%_20%,rgba(56,189,248,0.18),transparent_52%),linear-gradient(180deg,rgba(10,14,28,0.9)_0%,rgba(7,10,20,0.98)_100%)]"></div>
+      <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.22)_1px,transparent_1px)] bg-size-[11px_11px]"></div>
+    </div>
+
+    <section class="relative mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/70">Resync Technology</p>
+        <h1 class="mt-4 max-w-xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+          AI &amp; Workflow<br class="hidden sm:block" /> Automations
+        </h1>
+        <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-200/90 sm:text-lg">
+          We design and build custom automations for small businesses across email, CRM, Google Workspace, and internal ops so your team spends less time on repetitive work.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="/start" class="rt-btn-primary">
+            Book a call
+            <span class="cta-glow" aria-hidden="true"></span>
+          </a>
+          <a
+            href="#example-automations"
+            class="inline-flex items-center rounded-full border border-white/35 bg-white/90 px-4 py-2 text-sm font-medium text-slate-900 transition hover:bg-white"
+          >
+            See example automations
+          </a>
+        </div>
+      </div>
+
+      <aside class="relative overflow-hidden rounded-3xl border border-white/25 bg-white/12 p-6 text-white shadow-[0_30px_90px_rgba(2,8,23,0.55)] backdrop-blur" aria-label="Automation outcomes">
+        <div class="absolute inset-0 bg-[radial-gradient(90%_70%_at_10%_0%,rgba(255,255,255,0.16),transparent_60%)]"></div>
+        <div class="relative">
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/70">Automation outcomes</p>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-xl border border-white/20 bg-white/12 p-3 text-white">
+              <div class="flex items-start gap-2.5">
+                <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/25 bg-slate-900/80 text-white">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                </span>
+                <div>
+                  <p class="text-xs text-white/75">Lead response</p>
+                  <p class="mt-1 text-sm font-semibold text-white">Faster handoff</p>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-xl border border-white/20 bg-white/12 p-3 text-white">
+              <div class="flex items-start gap-2.5">
+                <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/25 bg-slate-900/80 text-white">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <div>
+                  <p class="text-xs text-white/75">Data quality</p>
+                  <p class="mt-1 text-sm font-semibold text-white">Fewer manual errors</p>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-xl border border-white/20 bg-white/12 p-3 text-white">
+              <div class="flex items-start gap-2.5">
+                <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/25 bg-slate-900/80 text-white">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18h16M7 14l3-3 3 2 4-5"/></svg>
+                </span>
+                <div>
+                  <p class="text-xs text-white/75">Reporting</p>
+                  <p class="mt-1 text-sm font-semibold text-white">Always up to date</p>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-xl border border-white/20 bg-white/12 p-3 text-white">
+              <div class="flex items-start gap-2.5">
+                <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/25 bg-slate-900/80 text-white">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 19c1.5-3 4-4.5 7-4.5s5.5 1.5 7 4.5"/></svg>
+                </span>
+                <div>
+                  <p class="text-xs text-white/75">Ops workload</p>
+                  <p class="mt-1 text-sm font-semibold text-white">Less busywork</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 rounded-xl border border-white/25 bg-white/10 p-2">
+            <div class="mb-2 flex items-center justify-between rounded-lg border border-white/20 bg-white/8 px-3 py-1.5">
+              <span class="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/70">Live automation preview</span>
+              <span class="rounded-full border border-emerald-300/50 bg-emerald-300/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-200">n8n</span>
+            </div>
+            <div class="image-ring overflow-hidden rounded-lg border border-white/20 bg-slate-900/90 p-2">
+              <img
+                src="auto.png"
+                alt="n8n workflow canvas preview"
+                loading="lazy"
+                class="mx-auto w-full max-h-[22rem] object-contain"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/35 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-6 flex items-center gap-2">
+                <span class="rounded-full border border-white/30 bg-slate-900/70 px-2 py-0.5 text-[10px] font-semibold text-white">Webhook</span>
+                <span class="rounded-full border border-white/30 bg-slate-900/70 px-2 py-0.5 text-[10px] font-semibold text-white">AI Step</span>
+                <span class="rounded-full border border-white/30 bg-slate-900/70 px-2 py-0.5 text-[10px] font-semibold text-white">CRM Sync</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </header>
+
+  <section class="relative overflow-hidden bg-paper automation-surface" aria-labelledby="what-we-automate-heading">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute inset-0 bg-[radial-gradient(70%_80%_at_80%_20%,rgba(56,189,248,0.08),transparent_55%)]"></div>
+      <div class="automation-aurora absolute inset-0 opacity-70"></div>
+      <div class="automation-grid absolute inset-0 opacity-40"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
+      <h2 id="what-we-automate-heading" class="text-3xl font-bold tracking-tight text-slate-900">What we automate</h2>
+      <div class="automation-flow mt-6 hidden items-center justify-between rounded-2xl border border-slate-200/80 px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.16em] text-slate-500 shadow-soft md:flex lg:text-[13px]">
+        <span>Trigger</span>
+        <span class="flow-dot"></span>
+        <span class="flow-line"></span>
+        <span>Classify</span>
+        <span class="flow-dot"></span>
+        <span class="flow-line"></span>
+        <span>Route</span>
+        <span class="flow-dot"></span>
+        <span class="flow-line"></span>
+        <span>Confirm</span>
+      </div>
+      <div class="automation-flow-mobile mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-slate-700/50 p-2 md:hidden">
+        <span>Trigger</span>
+        <span>Classify</span>
+        <span>Route</span>
+        <span>Confirm</span>
+      </div>
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <article class="automation-card group rounded-2xl border border-black/10 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_45px_rgba(14,165,233,0.12)]">
+          <div class="liquid-chip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16M7 7v10m10-10v10M4 17h16M9 11h6" />
+            </svg>
+          </div>
+          <p class="mt-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">01 • Intake</p>
+          <h3 class="mt-4 text-base font-semibold text-slate-900">Lead &amp; CRM sync</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">
+            Move leads from forms, ads, and inboxes into your CRM with clean fields and instant handoff.
+          </p>
+        </article>
+
+        <article class="automation-card group rounded-2xl border border-black/10 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_45px_rgba(14,165,233,0.12)]">
+          <div class="liquid-chip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 5h16v10H7l-3 3z" />
+            </svg>
+          </div>
+          <p class="mt-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">02 • Triage</p>
+          <h3 class="mt-4 text-base font-semibold text-slate-900">Inbox triage &amp; routing</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">
+            Classify incoming messages and route them to the right person, label, or workflow automatically.
+          </p>
+        </article>
+
+        <article class="automation-card group rounded-2xl border border-black/10 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_45px_rgba(14,165,233,0.12)]">
+          <div class="liquid-chip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="11" width="3" height="7" />
+              <rect x="10.5" y="8" width="3" height="10" />
+              <rect x="17" y="5" width="3" height="13" />
+            </svg>
+          </div>
+          <p class="mt-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">03 • Report</p>
+          <h3 class="mt-4 text-base font-semibold text-slate-900">Reporting &amp; dashboards</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">
+            Consolidate data from multiple tools into daily summaries and dashboards your team can trust.
+          </p>
+        </article>
+
+        <article class="automation-card group rounded-2xl border border-black/10 bg-white/85 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_45px_rgba(14,165,233,0.12)]">
+          <div class="liquid-chip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+              <circle cx="8" cy="6" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="11" cy="18" r="1.5" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+          <p class="mt-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">04 • Execute</p>
+          <h3 class="mt-4 text-base font-semibold text-slate-900">Back-office workflows</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">
+            Automate billing updates, task creation, reminders, and follow-ups across your core systems.
+          </p>
+        </article>
+      </div>
+      <div class="mt-8 flex flex-col items-center justify-center gap-2">
+        <a href="/start" class="liquid-metal-link" aria-label="Start your automation build">
+          <span id="liquid-metal" class="liquid-metal">
+            <span class="outline">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="svg-icon" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 18V6"></path>
+                <path d="m7.5 10.5 4.5-4.5 4.5 4.5"></path>
+              </svg>
+            </span>
+          </span>
+        </a>
+        <span class="liquid-metal-label">Automate</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="example-automations" class="relative overflow-hidden border-y border-black/5 bg-[#f8fafc]" aria-labelledby="example-automations-heading">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute inset-0 bg-[radial-gradient(70%_75%_at_10%_15%,rgba(148,163,184,0.12),transparent_50%),radial-gradient(70%_70%_at_100%_50%,rgba(56,189,248,0.1),transparent_52%)]"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-4 py-14 sm:py-16 lg:py-20">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Blueprints</p>
+          <h2 id="example-automations-heading" class="mt-2 text-3xl font-bold tracking-tight text-slate-900">PSD intake automation system</h2>
+        </div>
+        <div class="rounded-full border border-black/10 bg-white/80 px-4 py-2 text-xs font-medium text-slate-600">
+          Inbox check interval: every 1 minute
+        </div>
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
+        <div class="relative flex flex-col gap-3 sm:pl-2 lg:h-full lg:justify-between">
+          <div class="pointer-events-none absolute bottom-3 left-6 top-3 hidden w-px bg-gradient-to-b from-red-200/80 via-slate-200 to-sky-200/80 sm:block"></div>
+
+          <article class="group rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <div class="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-md border border-slate-300 bg-slate-900 text-[11px] font-semibold text-white">01</div>
+              <div class="min-w-0 flex-1">
+                <div class="mb-2 flex items-center justify-between gap-3">
+                  <span class="rounded-full border border-slate-300 bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-700">Lead ops</span>
+                  <span class="text-slate-300 transition group-hover:text-slate-500">→</span>
+                </div>
+                <p class="text-sm text-slate-700 sm:text-base">Watch the <span class="font-semibold text-slate-900">client intake inbox</span> and trigger on approved sender patterns.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <div class="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-md border border-slate-300 bg-slate-900 text-[11px] font-semibold text-white">02</div>
+              <div class="min-w-0 flex-1">
+                <div class="mb-2 flex items-center justify-between gap-3">
+                  <span class="rounded-full border border-slate-300 bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-700">Intent AI</span>
+                  <span class="text-slate-300 transition group-hover:text-slate-500">→</span>
+                </div>
+                <p class="text-sm text-slate-700 sm:text-base">Classify each message by category, urgency, and action needed (medical, cosmetic, insurance, spam, callback).</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <div class="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-md border border-slate-300 bg-slate-900 text-[11px] font-semibold text-white">03</div>
+              <div class="min-w-0 flex-1">
+                <div class="mb-2 flex items-center justify-between gap-3">
+                  <span class="rounded-full border border-slate-300 bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-700">JSON output</span>
+                  <span class="text-slate-300 transition group-hover:text-slate-500">→</span>
+                </div>
+                <p class="text-sm text-slate-700 sm:text-base">Return structured output: <code>category</code>, <code>urgency_level</code>, <code>summary</code>, <code>action_needed</code>, <code>confidence_score</code>.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <div class="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-md border border-slate-300 bg-slate-900 text-[11px] font-semibold text-white">04</div>
+              <div class="min-w-0 flex-1">
+                <div class="mb-2 flex items-center justify-between gap-3">
+                  <span class="rounded-full border border-slate-300 bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-700">Smart routing</span>
+                  <span class="text-slate-300 transition group-hover:text-slate-500">→</span>
+                </div>
+                <p class="text-sm text-slate-700 sm:text-base">Route high-priority cases instantly and direct each category to the correct staff workflow.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <div class="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-md border border-slate-300 bg-slate-900 text-[11px] font-semibold text-white">05</div>
+              <div class="min-w-0 flex-1">
+                <div class="mb-2 flex items-center justify-between gap-3">
+                  <span class="rounded-full border border-slate-300 bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-700">Live alerts</span>
+                  <span class="text-slate-300 transition group-hover:text-slate-500">→</span>
+                </div>
+                <p class="text-sm text-slate-700 sm:text-base">Post priority updates to the care team channel and log every handoff for follow-up visibility.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="relative h-full overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-5 text-slate-100 shadow-[0_25px_70px_rgba(15,23,42,0.28)] sm:p-6" aria-label="Example workflow diagram">
+          <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_80%_at_20%_0%,rgba(30,41,59,0.9),transparent_55%),radial-gradient(90%_80%_at_80%_100%,rgba(15,23,42,0.9),transparent_55%)]"></div>
+          <div class="relative">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">PSD workflow map</p>
+            <div class="mt-4 space-y-3">
+              <div class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-sm font-semibold text-slate-100">Incoming PSD inbox email</div>
+              <div class="flex justify-center">
+                <div class="inline-flex rounded-full border border-slate-600 bg-slate-800 px-3 py-1 text-xs text-slate-300">Gmail trigger</div>
+              </div>
+              <div class="text-center text-slate-500">↓</div>
+              <div class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-sm font-semibold text-slate-100">AI classification + urgency scoring</div>
+              <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+                <div class="h-px w-full bg-slate-700"></div>
+                <span class="text-[11px] uppercase tracking-[0.12em] text-slate-500">route</span>
+                <div class="h-px w-full bg-slate-700"></div>
+              </div>
+              <div class="grid gap-3 sm:grid-cols-2">
+                <div class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-sm font-semibold text-slate-100">Priority alert + callback queue</div>
+                <div class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-sm font-semibold text-slate-100">Category-based staff routing</div>
+              </div>
+            </div>
+            <div class="image-ring mt-5 overflow-hidden rounded-xl border border-slate-700">
+              <img
+                src="/psd-automation.jpg"
+                alt="PSD automation workflow screenshot"
+                loading="lazy"
+                class="w-full h-auto object-contain"
+              />
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <article class="mt-10 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_25px_80px_rgba(15,23,42,0.08)]">
+        <div class="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="p-6 sm:p-8">
+            <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <h3 class="text-2xl font-bold tracking-tight text-slate-900">Featured automation: PSD Email Intake AI Routing</h3>
+              <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-slate-600">Live client workflow</span>
+            </div>
+            <p class="text-sm leading-relaxed text-slate-700 sm:text-base">
+              This automation monitors every new email, interprets intent with AI, and routes each message into the right handling lane before the inbox bottlenecks your staff.
+            </p>
+            <div class="mt-5 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Current impact</p>
+                <ul class="mt-2 space-y-1.5 text-sm text-slate-700">
+                  <li>Less manual triage</li>
+                  <li>Faster first response</li>
+                  <li>Fewer missed urgent cases</li>
+                </ul>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Structured output</p>
+                <ul class="mt-2 space-y-1.5 text-sm text-slate-700">
+                  <li><code>category</code></li>
+                  <li><code>urgency_level</code></li>
+                  <li><code>confidence_score</code></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-200 bg-slate-900 p-6 text-slate-100 lg:border-l lg:border-t-0 sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">What’s possible next for PSD</p>
+            <div class="mt-4 space-y-3">
+              <div class="rounded-xl border border-slate-700 bg-slate-800 p-3">
+                <p class="text-sm font-semibold text-white">Auto-reply by intent</p>
+                <p class="mt-1 text-xs text-slate-300">Send safe reply templates for common inquiries in seconds.</p>
+              </div>
+              <div class="rounded-xl border border-slate-700 bg-slate-800 p-3">
+                <p class="text-sm font-semibold text-white">Ops command dashboard</p>
+                <p class="mt-1 text-xs text-slate-300">Live category volume, SLA clock, and unresolved thread queue.</p>
+              </div>
+              <div class="rounded-xl border border-slate-700 bg-slate-800 p-3">
+                <p class="text-sm font-semibold text-white">AI follow-up assistant</p>
+                <p class="mt-1 text-xs text-slate-300">Draft callback notes and next-best actions for staff approval.</p>
+              </div>
+              <div class="rounded-xl border border-slate-700 bg-slate-800 p-3">
+                <p class="text-sm font-semibold text-white">Provider-specific tuning</p>
+                <p class="mt-1 text-xs text-slate-300">Train routing rules and prompts for PSD language and priorities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="border-y border-black/5 bg-[#f4f7fb]" aria-labelledby="tools-heading">
+    <div class="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+      <h2 id="tools-heading" class="text-sm font-semibold uppercase tracking-[0.14em] text-slate-600">Tools we use</h2>
+      <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="tool-card">
+          <div class="tool-icon-shell" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/n8n-color.png" alt="" loading="lazy" class="tool-logo tool-logo-n8n" />
+          </div>
+          <h3 class="tool-title">n8n automation</h3>
+          <p class="tool-copy">Workflow orchestration and scheduled automation runs.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon-shell" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/webhook.svg" alt="" loading="lazy" class="tool-logo" />
+          </div>
+          <h3 class="tool-title">APIs &amp; webhooks</h3>
+          <p class="tool-copy">Reliable integrations between forms, inboxes, and business apps.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon-shell" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg" alt="" loading="lazy" class="tool-logo" />
+          </div>
+          <h3 class="tool-title">AI models</h3>
+          <p class="tool-copy">Intent classification, summaries, and structured outputs.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon-shell" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/digitalocean.svg" alt="" loading="lazy" class="tool-logo" />
+          </div>
+          <h3 class="tool-title">VPS / cloud</h3>
+          <p class="tool-copy">Stable hosting, uptime monitoring, and secure deployment.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden border-y border-white/10 bg-[#090d14] text-white" aria-labelledby="how-it-works-heading">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute inset-0 bg-[radial-gradient(65%_70%_at_12%_12%,rgba(148,163,184,0.16),transparent_55%),radial-gradient(70%_75%_at_85%_8%,rgba(56,189,248,0.12),transparent_58%)]"></div>
+      <div class="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-size-[10px_10px]"></div>
+    </div>
+    <div class="relative mx-auto max-w-6xl px-4 py-14 sm:py-16 lg:py-20">
+      <h2 id="how-it-works-heading" class="text-3xl font-bold tracking-tight text-white">How it works</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        <article class="rounded-2xl border border-white/15 bg-white/5 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.3)] backdrop-blur">
+          <p class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/10 text-xs font-semibold text-white">1</p>
+          <h3 class="mt-3 text-base font-semibold text-white">Map your process</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">We identify repetitive tasks, handoffs, and data gaps that are slowing your team down.</p>
+        </article>
+        <article class="rounded-2xl border border-white/15 bg-white/5 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.3)] backdrop-blur">
+          <p class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/10 text-xs font-semibold text-white">2</p>
+          <h3 class="mt-3 text-base font-semibold text-white">Design the workflow</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">We build and test the automation with clear logic, guardrails, and real-world scenarios.</p>
+        </article>
+        <article class="rounded-2xl border border-white/15 bg-white/5 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.3)] backdrop-blur">
+          <p class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/10 text-xs font-semibold text-white">3</p>
+          <h3 class="mt-3 text-base font-semibold text-white">Deploy &amp; maintain</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">We launch, monitor, and refine the workflow so it stays reliable as your business evolves.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden border-y border-white/10 bg-[#090b13] text-white" aria-labelledby="faq-heading">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(70%_70%_at_15%_12%,rgba(148,163,184,0.2),transparent_60%),radial-gradient(70%_80%_at_85%_10%,rgba(56,189,248,0.16),transparent_58%)]"></div>
+      <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-size-[9px_9px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(120%_100%_at_50%_0%,transparent_30%,rgba(0,0,0,0.75)_100%)]"></div>
+    </div>
+    <div class="mx-auto max-w-6xl px-4 py-14 sm:py-16 lg:py-20">
+      <div class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-white/60">Frequently asked</p>
+        <h2 id="faq-heading" class="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">Automation FAQs</h2>
+        <p class="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">Clear answers on scope, setup, and what to expect from your automation build.</p>
+      </div>
+      <div class="mt-8 grid gap-4">
+        <details class="group rounded-2xl border border-white/12 bg-white/[0.045] p-5 shadow-[0_16px_50px_rgba(0,0,0,0.3)] backdrop-blur">
+          <summary class="flex cursor-pointer list-none items-start justify-between gap-6">
+            <span class="text-base font-semibold leading-snug text-white sm:text-lg">What can you automate?</span>
+            <span class="faq-plus inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/6 text-lg leading-none text-white/70">+</span>
+          </summary>
+          <p class="mt-4 text-sm leading-relaxed text-white/75 sm:text-base">Anything with repeatable rules, such as lead handoff, email sorting, reporting, reminders, and data sync between business tools.</p>
+        </details>
+        <details class="group rounded-2xl border border-white/12 bg-white/[0.045] p-5 shadow-[0_16px_50px_rgba(0,0,0,0.3)] backdrop-blur">
+          <summary class="flex cursor-pointer list-none items-start justify-between gap-6">
+            <span class="text-base font-semibold leading-snug text-white sm:text-lg">Do I need technical knowledge?</span>
+            <span class="faq-plus inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/6 text-lg leading-none text-white/70">+</span>
+          </summary>
+          <p class="mt-4 text-sm leading-relaxed text-white/75 sm:text-base">No. We handle implementation and explain the workflow in plain language so your team can use it with confidence.</p>
+        </details>
+        <details class="group rounded-2xl border border-white/12 bg-white/[0.045] p-5 shadow-[0_16px_50px_rgba(0,0,0,0.3)] backdrop-blur">
+          <summary class="flex cursor-pointer list-none items-start justify-between gap-6">
+            <span class="text-base font-semibold leading-snug text-white sm:text-lg">How long does it take to launch?</span>
+            <span class="faq-plus inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/6 text-lg leading-none text-white/70">+</span>
+          </summary>
+          <p class="mt-4 text-sm leading-relaxed text-white/75 sm:text-base">Most focused automations launch in 1-3 weeks, depending on complexity and integration access.</p>
+        </details>
+        <details class="group rounded-2xl border border-white/12 bg-white/[0.045] p-5 shadow-[0_16px_50px_rgba(0,0,0,0.3)] backdrop-blur">
+          <summary class="flex cursor-pointer list-none items-start justify-between gap-6">
+            <span class="text-base font-semibold leading-snug text-white sm:text-lg">How do you price projects?</span>
+            <span class="faq-plus inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/6 text-lg leading-none text-white/70">+</span>
+          </summary>
+          <p class="mt-4 text-sm leading-relaxed text-white/75 sm:text-base">Pricing is based on scope, number of integrations, and support level. You get a clear proposal before any build starts.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="relative overflow-hidden border-t border-white/10 bg-[#0b0f14] text-white">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute inset-0 bg-[radial-gradient(60%_80%_at_18%_12%,rgba(148,163,184,0.16),transparent_60%),radial-gradient(60%_80%_at_82%_18%,rgba(16,185,129,0.08),transparent_58%),radial-gradient(70%_90%_at_60%_110%,rgba(255,255,255,0.04),transparent_55%)]"></div>
+      <div class="absolute inset-0 opacity-35 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-size-[8px_8px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,transparent_45%,rgba(0,0,0,0.75)_100%)]"></div>
+    </div>
+    <section class="relative mx-auto max-w-6xl px-4 py-14 sm:py-16">
+      <div class="rounded-3xl border border-white/12 bg-white/[0.05] p-7 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur sm:p-10">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Ready to automate your busywork?</h2>
+        <p class="mt-3 max-w-2xl text-sm text-white/70 sm:text-base">
+          Let us find high-impact workflows you can ship quickly and maintain confidently.
+        </p>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a href="/start" class="inline-flex rt-btn-primary">
+            Get a free automation audit
+            <span class="cta-glow" aria-hidden="true"></span>
+          </a>
+          <a href="#example-automations" class="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/16">
+            Review blueprint
+          </a>
+        </div>
+        <p class="mt-3 text-xs text-white/55">We&apos;ll review your current tools and send concrete ideas.</p>
+      </div>
+    </section>
+  </footer>
+</BaseLayout>
+
+<script type="module">
+  import {
+    liquidMetalFragmentShader,
+    ShaderMount
+  } from "https://esm.sh/@paper-design/shaders";
+
+  const container = document.getElementById("liquid-metal");
+
+  new ShaderMount(
+    container,
+    liquidMetalFragmentShader,
+    {
+      u_repetition: 1.5,
+      u_softness: 0.5,
+      u_shiftRed: 0.3,
+      u_shiftBlue: 0.3,
+      u_distortion: 0,
+      u_contour: 0,
+      u_angle: 100,
+      u_scale: 1.5,
+      u_shape: 1,
+      u_offsetX: 0.1,
+      u_offsetY: -0.1
+    },
+    undefined,
+    0.6
+  );
+</script>
+
+<style>
+  .liquid-metal-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+
+  .liquid-metal {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.7rem;
+    height: 5.7rem;
+    border-radius: 50%;
+  }
+
+  .liquid-metal > canvas {
+    position: absolute !important;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .liquid-metal::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5.2rem;
+    height: 5.2rem;
+    background: linear-gradient(#444, #000);
+    border-radius: 50%;
+    box-shadow: inset 0 0.1rem 0.1rem 0.1rem rgba(255, 255, 255, 0.3);
+    z-index: 1;
+  }
+
+  .outline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.8rem;
+    height: 5.8rem;
+    border-radius: inherit;
+    z-index: 2;
+  }
+
+  .outline::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 0.2rem;
+    border-radius: inherit;
+    background: conic-gradient(from 180deg, blue, purple, red, purple, blue);
+    filter: grayscale(1);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: filter 0.3s ease;
+    pointer-events: none;
+  }
+
+  .liquid-metal-link:hover .outline::before {
+    filter: grayscale(0);
+  }
+
+  .svg-icon {
+    width: 1.7rem;
+    height: 1.7rem;
+    color: #6b7280;
+    transform: translateY(-0.05rem);
+    position: relative;
+    z-index: 3;
+    transition: color 180ms ease;
+  }
+
+  .liquid-metal-link:hover .svg-icon {
+    color: #ffffff;
+  }
+
+  .liquid-metal-link:focus-visible {
+    outline: 2px solid rgba(148, 163, 184, 0.75);
+    outline-offset: 4px;
+  }
+
+  .liquid-metal-label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #0f172a 0%, #334155 42%, #0f172a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 16px rgba(2, 6, 23, 0.2);
+    transition: filter 180ms ease, opacity 180ms ease;
+    opacity: 0.95;
+  }
+
+  .liquid-metal-link:hover + .liquid-metal-label {
+    filter: brightness(1.1);
+    opacity: 1;
+  }
+
+  .automation-surface::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(14, 165, 233, 0.45) 50%, transparent 100%);
+  }
+
+  .automation-aurora {
+    background:
+      radial-gradient(45% 55% at 18% 12%, rgba(148, 163, 184, 0.16), transparent 62%),
+      radial-gradient(45% 55% at 82% 88%, rgba(14, 165, 233, 0.14), transparent 62%);
+    animation: automationDrift 14s ease-in-out infinite alternate;
+  }
+
+  .automation-surface::after {
+    content: "";
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 18rem;
+    background:
+      linear-gradient(105deg, rgba(148, 163, 184, 0.1), rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.08));
+    filter: blur(30px);
+    animation: surfaceSweep 9s linear infinite;
+    pointer-events: none;
+  }
+
+  .automation-grid {
+    background-image:
+      linear-gradient(to right, rgba(71, 85, 105, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(71, 85, 105, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.28), transparent 85%);
+  }
+
+  .automation-flow {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-color: rgba(148, 163, 184, 0.28);
+    background:
+      radial-gradient(140% 120% at 20% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
+      linear-gradient(180deg, #10141d 0%, #06090f 100%);
+    color: #e5e7eb;
+  }
+
+  .automation-flow > span:not(.flow-dot):not(.flow-line) {
+    color: #dbe2ea;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+  }
+
+  .automation-flow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(148, 163, 184, 0.02));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .automation-flow::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    bottom: -20%;
+    left: -26%;
+    width: 22%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(248, 250, 252, 0.08) 38%,
+      rgba(226, 232, 240, 0.4) 50%,
+      rgba(248, 250, 252, 0.08) 62%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    filter: blur(1px);
+    transform: translateX(0);
+    animation: flowSweep 7.4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .flow-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #f8fafc, #a3afbf);
+    box-shadow: 0 0 0 0 rgba(148, 163, 184, 0.38);
+    animation: flowPulse 2s ease-out infinite;
+  }
+
+  .flow-line {
+    width: clamp(2rem, 5vw, 4.25rem);
+    height: 2px;
+    background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(241, 245, 249, 0.85), rgba(148, 163, 184, 0.2));
+  }
+
+  .automation-flow-mobile {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(140% 120% at 20% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
+      linear-gradient(180deg, #10141d 0%, #06090f 100%);
+  }
+
+  .automation-flow-mobile::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    bottom: -20%;
+    left: -42%;
+    width: 36%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(226, 232, 240, 0.34) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    filter: blur(1px);
+    animation: flowSweepMobile 7.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .automation-flow-mobile span {
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 0.7rem;
+    background: rgba(15, 23, 42, 0.58);
+    color: #e5e7eb;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    padding: 0.62rem 0.5rem;
+  }
+
+  .automation-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 15rem;
+    background:
+      radial-gradient(120% 90% at 0% 0%, rgba(14, 165, 233, 0.06), transparent 45%),
+      rgba(255, 255, 255, 0.88);
+  }
+
+  .liquid-chip {
+    position: relative;
+    display: inline-flex;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    background: #000;
+    box-shadow: 0 6px 14px rgba(2, 6, 23, 0.2);
+  }
+
+  .liquid-chip::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    background: linear-gradient(#4b5563, #0b0f16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  }
+
+  .liquid-chip::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1.5px;
+    border-radius: inherit;
+    background: conic-gradient(from 180deg, blue, purple, red, purple, blue);
+    filter: grayscale(1);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: filter 220ms ease;
+    pointer-events: none;
+  }
+
+  .liquid-chip svg {
+    position: relative;
+    z-index: 2;
+  }
+
+  .automation-card:hover .liquid-chip::after {
+    filter: grayscale(0.35);
+  }
+
+  .tool-card {
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    padding: 0.95rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    transition: transform 180ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+  }
+
+  .tool-icon-shell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 0.7rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    color: #475569;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .tool-icon-placeholder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tool-logo {
+    width: 1.2rem;
+    height: 1.2rem;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0.5);
+  }
+
+  .tool-logo-n8n {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .image-ring {
+    isolation: isolate;
+  }
+
+  .image-ring > * {
+
+    z-index: 1;
+  }
+
+  .image-ring::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--image-ring-angle),
+      rgba(255, 255, 255, 0.1) 0deg,
+      rgba(255, 255, 255, 0.1) 60deg,
+      rgba(255, 255, 255, 0.85) 120deg,
+      rgba(255, 255, 255, 0.1) 180deg,
+      rgba(255, 255, 255, 0.1) 240deg,
+      rgba(255, 255, 255, 0.85) 300deg,
+      rgba(255, 255, 255, 0.1) 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: imageRingSpin 5.8s linear infinite;
+    z-index: 2;
+  }
+
+  @property --image-ring-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  @keyframes imageRingSpin {
+    0% { --image-ring-angle: 0deg; }
+    100% { --image-ring-angle: 360deg; }
+  }
+
+  .tool-title {
+    margin-top: 0.72rem;
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .tool-copy {
+    margin-top: 0.32rem;
+    font-size: 0.79rem;
+    line-height: 1.45;
+    color: #475569;
+  }
+
+  .automation-card::after {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(148, 163, 184, 0.22), rgba(14, 165, 233, 0.42), rgba(16, 185, 129, 0.18));
+    opacity: 0.6;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] .faq-plus {
+    transform: rotate(45deg);
+    color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .faq-plus {
+    transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  .automation-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 35%, rgba(14, 165, 233, 0.08) 50%, transparent 65%);
+    transform: translateX(-120%);
+    transition: transform 550ms ease;
+    pointer-events: none;
+  }
+
+  .automation-card:hover::before {
+    transform: translateX(120%);
+  }
+
+  @keyframes flowPulse {
+    0% { box-shadow: 0 0 0 0 rgba(148, 163, 184, 0.4); }
+    100% { box-shadow: 0 0 0 8px rgba(148, 163, 184, 0); }
+  }
+
+  @keyframes flowSweep {
+    to { transform: translateX(560%); }
+  }
+
+  @keyframes flowSweepMobile {
+    to { transform: translateX(420%); }
+  }
+
+  @keyframes automationDrift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(0, -10px, 0) scale(1.03); }
+  }
+
+  @keyframes surfaceSweep {
+    0% { transform: translateX(-12%) translateY(0); opacity: 0.5; }
+    50% { transform: translateX(6%) translateY(10px); opacity: 0.9; }
+    100% { transform: translateX(18%) translateY(0); opacity: 0.5; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .automation-aurora,
+    .automation-flow::after,
+    .automation-flow::before,
+    .automation-flow-mobile::after,
+    .flow-dot,
+    .image-ring::after,
+    .automation-surface::after {
+      animation: none;
+    }
+  }
+</style>
