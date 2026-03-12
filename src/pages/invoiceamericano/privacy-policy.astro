@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const effectiveDate = "March 12, 2026";
+---
+
+<BaseLayout
+  title="Privacy Policy — Invoice Americano"
+  description="Privacy Policy for Invoice Americano, an iOS invoicing app."
+>
+  <section class="bg-[#05060f] text-slate-100">
+    <div class="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <article class="rounded-xl2 border border-white/10 bg-white/5 p-6 md:p-8">
+        <h1 class="text-3xl font-black tracking-tight text-white md:text-4xl">
+          Privacy Policy — Invoice Americano
+        </h1>
+        <p class="mt-3 text-sm text-slate-300">Effective date: {effectiveDate}</p>
+
+        <div class="mt-8 space-y-6 text-slate-200">
+          <section>
+            <h2 class="text-lg font-semibold text-white">What information is collected</h2>
+            <p class="mt-2 leading-relaxed">
+              Invoice Americano collects information needed to provide invoicing
+              features, including account details, invoice and client data you enter,
+              and payment-related details needed to process transactions.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">How information is used</h2>
+            <p class="mt-2 leading-relaxed">
+              We use collected information to operate the app, generate and manage
+              invoices, maintain client and invoice history, process payments,
+              provide support, and improve reliability and security.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">Payment processing</h2>
+            <p class="mt-2 leading-relaxed">
+              Invoice Americano uses Stripe to process payments. Payment card data
+              is handled by Stripe under Stripe's systems and policies.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">Third-party services</h2>
+            <p class="mt-2 leading-relaxed">
+              Invoice Americano uses third-party providers to run the service,
+              including Stripe for payment processing and Supabase for backend
+              services and data storage.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">Data retention and security</h2>
+            <p class="mt-2 leading-relaxed">
+              We retain data for as long as needed to provide the app, meet legal
+              obligations, resolve disputes, and enforce agreements. We apply
+              reasonable administrative and technical safeguards to protect data.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">User rights and account deletion requests</h2>
+            <p class="mt-2 leading-relaxed">
+              You may request access, correction, or deletion of your account data.
+              To submit a deletion or privacy request, contact us using the contact
+              method below.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">Contact information</h2>
+            <p class="mt-2 leading-relaxed">
+              For privacy questions or account deletion requests, contact us at
+              <a href="/start" class="font-semibold text-resync-300 underline decoration-white/30 underline-offset-4 hover:text-white">
+                /start
+              </a>.
+            </p>
+          </section>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
