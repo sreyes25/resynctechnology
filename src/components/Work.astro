@@ -1,3 +1,7 @@
+---
+const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id6759622290";
+---
+
 <section id="work" class="relative overflow-hidden border-t border-black/5 bg-paper">
   <!-- Ambient background (light mode, subtle) -->
   <div class="pointer-events-none absolute inset-0">
@@ -24,7 +28,7 @@
             </p>
           </div>
 
-          <span class="rt-badge rt-badge-wip">In Progress</span>
+          <span class="rt-badge rt-badge-live">Live on App Store</span>
         </div>
 
         <div class="mt-5 flex flex-wrap gap-2">
@@ -34,10 +38,32 @@
           <span class="rt-tag-light">Automation</span>
         </div>
 
-        <div class="mt-6">
-          <a href="/invoiceamericano" class="rt-btn-primary-light">
-            Open
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="/invoice" class="rt-btn-primary-light">
+            View Page
             <span class="cta-glow" aria-hidden="true"></span>
+          </a>
+          <a
+            href={appStoreUrl}
+            class="ia-appstore-mini"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Download Invoice Americano on the App Store"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="ia-appstore-mini-icon"
+            >
+              <path
+                fill="currentColor"
+                d="M16.12 1.23c0 .93-.35 1.9-1.04 2.9-.83 1.2-1.84 1.89-3.01 1.8-.03-.12-.04-.24-.04-.37 0-.92.4-1.9 1.1-2.82.35-.46.79-.85 1.33-1.16.53-.31 1.04-.49 1.51-.53.1.18.15.24.15.18zm3.89 12.06c-.34.8-.74 1.51-1.2 2.17-.63.9-1.15 1.52-1.55 1.87-.62.58-1.3.87-2.02.89-.52 0-1.13-.14-1.86-.44-.72-.29-1.4-.44-2.03-.44-.65 0-1.35.15-2.1.44-.74.3-1.34.45-1.8.47-.7.02-1.39-.28-2.07-.92-.44-.38-.98-1.02-1.62-1.94-.7-.98-1.27-2.11-1.71-3.42C1.36 10.57 1.11 9.2 1.11 7.9c0-1.5.32-2.78.96-3.86.5-.88 1.18-1.56 2.03-2.07.84-.5 1.76-.76 2.74-.78.53 0 1.24.16 2.11.5.87.33 1.43.5 1.68.5.19 0 .82-.19 1.89-.57 1.03-.35 1.87-.5 2.56-.46 1.85.16 3.25.88 4.17 2.2-1.66 1-2.49 2.42-2.47 4.25.01 1.42.53 2.61 1.53 3.54.46.44.97.78 1.54 1.02-.13.37-.26.72-.4 1.06z"
+              ></path>
+            </svg>
+            <span class="ia-appstore-mini-copy">
+              <span class="ia-appstore-mini-kicker">Download on the</span>
+              <span class="ia-appstore-mini-title">App Store</span>
+            </span>
           </a>
         </div>
       </article>
@@ -135,11 +161,18 @@
       );
     }
 
-    .rt-badge-wip{
+    .rt-badge-live{
       position: relative;
+      border-color: rgba(255,255,255,0.22);
+      background: linear-gradient(
+        180deg,
+        #0f8f5f 0%,
+        #0a6c47 45%,
+        #075739 100%
+      );
     }
 
-    .rt-badge-wip::after{
+    .rt-badge-live::after{
       content: "";
       position: absolute;
       inset: -2px;
@@ -153,6 +186,56 @@
       );
       opacity: 0.35;
       pointer-events: none;
+    }
+
+    .ia-appstore-mini{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.72);
+      background: linear-gradient(180deg, #171717, #050505);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 13px;
+      box-shadow:
+        0 12px 26px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.16);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .ia-appstore-mini:hover{
+      transform: translateY(-1px);
+      border-color: rgba(0,0,0,0.86);
+      box-shadow:
+        0 16px 30px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+
+    .ia-appstore-mini-icon{
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+    }
+
+    .ia-appstore-mini-copy{
+      display: grid;
+      line-height: 1;
+      text-align: left;
+    }
+
+    .ia-appstore-mini-kicker{
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      opacity: 0.9;
+    }
+
+    .ia-appstore-mini-title{
+      margin-top: 2px;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
     }
   </style>
 </section>
