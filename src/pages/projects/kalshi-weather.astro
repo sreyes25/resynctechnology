@@ -355,6 +355,25 @@ const modelPoints = toPoints(modelSeries);
   </section>
 
   <style>
+    :global(main#main) {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    :global(main#main) > .kw-shell,
+    :global(main#main) > .kw-surface {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    :global(html),
+    :global(body) {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
     .kw-shell {
       --kw-green: #22c55e;
       --kw-cyan: #38bdf8;
@@ -527,6 +546,12 @@ const modelPoints = toPoints(modelSeries);
     }
 
     @media (max-width: 520px) {
+      .kw-shell .px-6,
+      .kw-surface .px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
       .kw-live-pill {
         width: 100%;
         justify-content: center;
