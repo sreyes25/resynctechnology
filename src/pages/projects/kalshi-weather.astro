@@ -1,0 +1,536 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const tags = [
+  "Python",
+  "Kalshi Markets",
+  "NWS + Open-Meteo",
+  "GFS + ECMWF",
+  "KNYC Live Data",
+];
+
+const stats = [
+  { label: "Forecast sources", value: "3 models + NWS guidance" },
+  { label: "Live station", value: "Central Park (KNYC)" },
+  { label: "Signal output", value: "Bracket probabilities + edge flags" },
+];
+
+const steps = [
+  {
+    title: "Reads the weather",
+    desc: "Pulls forecast guidance from GFS, ECMWF, and NWS to build a single market-facing forecast baseline.",
+    icon: "forecast",
+  },
+  {
+    title: "Watches the sky",
+    desc: "Tracks real-time Central Park observations to adjust trajectories as intraday conditions shift.",
+    icon: "station",
+  },
+  {
+    title: "Computes odds",
+    desc: "Transforms adjusted weather trajectories into probability weights for every Kalshi temperature bracket.",
+    icon: "odds",
+  },
+  {
+    title: "Finds edges",
+    desc: "Compares model-implied probabilities to market prices and highlights mismatches worth manual review.",
+    icon: "edge",
+  },
+];
+
+const commands = [
+  {
+    title: "Run dashboard",
+    cmd: "python -m kalshi_weather run --city NYC",
+    desc: "Launches the live trading view with forecasts, station data, and bracket probabilities.",
+  },
+  {
+    title: "View progression graph",
+    cmd: "python -m kalshi_weather view-graph --city NYC --refresh 15",
+    desc: "Streams intraday line progression for observed highs vs final model mean.",
+  },
+  {
+    title: "Replay/backtest",
+    cmd: "kalshi-weather backtest --city NYC --days 7 --starting-balance 20",
+    desc: "Replays logs and reports prediction quality, win rate, and strategy ROI.",
+  },
+  {
+    title: "Settlement lookup",
+    cmd: "python -m kalshi_weather settlement --days 7",
+    desc: "Pulls official NWS climate settlements for historical validation.",
+  },
+];
+
+const alertEnv = `# Enable outbound alerts
+ALERTS_ENABLED=true
+ALERTS_PROVIDER=whatsapp_cloud
+
+# Position risk threshold (0.35 = 35% loss from entry-side price)
+ALERT_POSITION_LOSS_FRACTION=0.35
+
+# Bracket-change updates
+ALERT_BRACKET_CHANGE_ENABLED=true
+ALERT_LLM_PROMPT_ENABLED=true
+ALERT_TOP_BRACKETS=3`;
+
+const observedSeries = [64, 65, 66, 67, 69, 70, 71, 72, 72, 73];
+const modelSeries = [65, 66, 67, 68, 69, 70, 71, 72, 73, 73];
+
+const toPoints = (values: number[]) =>
+  values.map((value, index) => `${index * 46},${170 - (value - 60) * 6}`).join(" ");
+
+const observedPoints = toPoints(observedSeries);
+const modelPoints = toPoints(modelSeries);
+---
+
+<BaseLayout
+  title="Kalshi Weather Bot — Resync Technology"
+  description="Kalshi Weather Bot aggregates weather models and live station data to surface pricing edges in Kalshi NYC Daily High Temperature markets."
+  keywords={[
+    "kalshi weather bot",
+    "weather trading bot",
+    "kalshi nyc temperature market",
+    "forecast trajectory modeling",
+    "python market analytics",
+  ]}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Kalshi Weather Bot",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Cross-platform",
+    creator: { "@type": "Person", name: "Sergio Reyes" },
+    contributor: [{ "@type": "Person", name: "Srinath Srinivasan" }],
+    description:
+      "A Python weather-market analytics bot for Kalshi NYC Daily High Temperature brackets using model aggregation, live observations, and probability scoring.",
+  }}
+>
+  <section class="kw-shell relative overflow-hidden bg-[#040b14] text-slate-100">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="kw-aurora kw-aurora-a"></div>
+      <div class="kw-aurora kw-aurora-b"></div>
+      <div class="kw-aurora kw-aurora-c"></div>
+      <div class="kw-grid"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-6 pt-5 pb-16 md:pb-24 rt-hero-top">
+      <p class="hero-eyebrow">Featured Project</p>
+
+      <div class="mt-6 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+        <div>
+          <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
+            Kalshi Weather Bot
+          </h1>
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <span class="kw-live-pill">
+              <span class="kw-live-dot"></span>
+              Real-time trajectory modeling
+            </span>
+            <span class="text-xs text-emerald-100/80">NYC Daily High Temperature markets</span>
+          </div>
+
+          <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-200/90">
+            A Python market intelligence bot that aggregates weather forecasts, tracks live Central Park temperature
+            observations, and estimates bracket-level probabilities to identify market mispricing.
+          </p>
+          <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-200/80">
+            Based on an original project by Srinath Srinivasan. Modified and extended by Sergio Reyes to include
+            real-time weather trajectory modeling and Kalshi advisory signals.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            {tags.map((tag) => (
+              <span class="kw-tag">{tag}</span>
+            ))}
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/start" class="rt-btn-primary">
+              Start a Project
+              <span class="cta-glow" aria-hidden="true"></span>
+            </a>
+            <a href="/services/websites" class="cta-secondary">
+              Website Systems Work
+            </a>
+          </div>
+          <p class="mt-3 text-sm text-slate-200/75">
+            Quick start: <code class="kw-inline-code">python -m kalshi_weather run --city NYC</code>
+          </p>
+        </div>
+
+        <aside class="kw-panel rounded-xl2 border border-white/10 p-6 shadow-[0_22px_80px_rgba(0,0,0,0.45)] backdrop-blur">
+          <h2 class="text-base font-semibold text-white">Live Signal Console</h2>
+          <p class="mt-2 text-sm text-slate-200/80">
+            Forecast trajectory and observed highs are continuously compared to market pricing brackets.
+          </p>
+
+          <div class="kw-chart mt-5 rounded-xl2 border border-emerald-200/20 bg-emerald-400/5 p-4">
+            <div class="mb-3 flex items-center justify-between text-xs text-emerald-100/70">
+              <span class="font-semibold text-emerald-100/90">Intraday trajectory</span>
+              <span>NYC / KNYC</span>
+            </div>
+            <svg viewBox="0 0 414 190" class="h-40 w-full" aria-label="Observed and model trajectory chart">
+              <defs>
+                <linearGradient id="kw-observed" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#38bdf8"></stop>
+                  <stop offset="100%" stop-color="#60a5fa"></stop>
+                </linearGradient>
+                <linearGradient id="kw-model" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#34d399"></stop>
+                  <stop offset="100%" stop-color="#22c55e"></stop>
+                </linearGradient>
+              </defs>
+              <g stroke="rgba(148,163,184,0.28)" stroke-width="1">
+                <line x1="0" y1="52" x2="414" y2="52"></line>
+                <line x1="0" y1="86" x2="414" y2="86"></line>
+                <line x1="0" y1="120" x2="414" y2="120"></line>
+                <line x1="0" y1="154" x2="414" y2="154"></line>
+              </g>
+              <polyline
+                points={observedPoints}
+                fill="none"
+                stroke="url(#kw-observed)"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></polyline>
+              <polyline
+                points={modelPoints}
+                fill="none"
+                stroke="url(#kw-model)"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-dasharray="8 7"
+              ></polyline>
+            </svg>
+            <div class="mt-3 flex flex-wrap gap-4 text-[11px] text-emerald-50/85">
+              <span class="inline-flex items-center gap-2"><span class="kw-legend kw-legend-observed"></span>Observed high</span>
+              <span class="inline-flex items-center gap-2"><span class="kw-legend kw-legend-model"></span>Final model mean</span>
+            </div>
+          </div>
+
+          <div class="mt-5 grid gap-3">
+            {stats.map((stat) => (
+              <div class="rounded-xl2 border border-white/10 bg-white/5 p-3">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-300/70">{stat.label}</p>
+                <p class="mt-1 text-sm text-slate-100">{stat.value}</p>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        {steps.map((step) => (
+          <article class="kw-feature rounded-xl2 border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur">
+            <div class="mb-3 flex items-center gap-3">
+              <span class="kw-icon-wrap" aria-hidden="true">
+                {
+                  step.icon === "forecast" && (
+                    <svg viewBox="0 0 24 24" class="kw-icon">
+                      <path fill="currentColor" d="M7 19a4 4 0 0 1-.7-7.94A6.5 6.5 0 0 1 18.8 9.5h.2a3.5 3.5 0 1 1 0 7H7Z"></path>
+                    </svg>
+                  )
+                }
+                {
+                  step.icon === "station" && (
+                    <svg viewBox="0 0 24 24" class="kw-icon">
+                      <path fill="currentColor" d="M10 2a2 2 0 0 1 4 0v8.59a5 5 0 1 1-4 0V2Zm2 11a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"></path>
+                    </svg>
+                  )
+                }
+                {
+                  step.icon === "odds" && (
+                    <svg viewBox="0 0 24 24" class="kw-icon">
+                      <path fill="currentColor" d="M3 4h18v2H3V4Zm2 5h2v9H5V9Zm6-3h2v12h-2V6Zm6 5h2v7h-2v-7Z"></path>
+                    </svg>
+                  )
+                }
+                {
+                  step.icon === "edge" && (
+                    <svg viewBox="0 0 24 24" class="kw-icon">
+                      <path fill="currentColor" d="M12 2 2 7l10 5 8-4v6h2V7L12 2Zm-8 9 8 4 8-4v2l-8 4-8-4v-2Zm0 5 8 4 8-4v2l-8 4-8-4v-2Z"></path>
+                    </svg>
+                  )
+                }
+              </span>
+              <h3 class="text-base font-semibold text-white">{step.title}</h3>
+            </div>
+            <p class="text-sm leading-relaxed text-slate-200/80">{step.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="kw-surface border-y border-emerald-400/15 bg-[#07111d]">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Command surface</h2>
+        <p class="mt-3 text-slate-200/80">
+          The bot ships with operational commands for live monitoring, graphing, settlements, and historical replay.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        <div class="grid gap-4">
+          {commands.map((item) => (
+            <article class="kw-command-card rounded-xl2 border border-white/10 bg-white/5 p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.13em] text-emerald-200/70">{item.title}</p>
+              <pre class="kw-pre mt-3"><code>{item.cmd}</code></pre>
+              <p class="mt-3 text-sm text-slate-200/78">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <aside class="kw-log-card rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.13em] text-emerald-200/70">Intraday progression logs</p>
+          <h3 class="mt-2 text-xl font-semibold text-white">Live data snapshots every refresh cycle</h3>
+          <p class="mt-3 text-sm leading-relaxed text-slate-200/80">
+            Each run appends to city/day CSV files so your team can inspect trajectory shifts from opening conditions
+            through close.
+          </p>
+
+          <pre class="kw-pre mt-5"><code>logs/temperature_progression/NYC/&lt;YYYY-MM-DD&gt;.csv</code></pre>
+
+          <div class="mt-5 grid gap-3">
+            <div class="rounded-xl2 border border-white/10 bg-white/5 p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-300/70">Progression lines</p>
+              <ul class="mt-2 space-y-1 text-sm text-slate-100/90">
+                <li>observed_high_f</li>
+                <li>final_model_mean</li>
+              </ul>
+            </div>
+            <div class="rounded-xl2 border border-white/10 bg-white/5 p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-300/70">Live graph mode</p>
+              <pre class="kw-pre mt-2"><code>python -m kalshi_weather view-graph --city NYC --refresh 15</code></pre>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="kw-shell relative overflow-hidden bg-[#040b14] text-slate-100">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_16px_50px_rgba(0,0,0,0.32)]">
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-200/70">Alerts</p>
+          <h2 class="mt-2 text-2xl font-bold text-white">Risk and bracket-change notifications</h2>
+          <p class="mt-3 text-sm leading-relaxed text-slate-200/80">
+            Alert routing supports WhatsApp Cloud and Twilio. You can configure drawdown thresholds, bracket-shift
+            notices, and prompt-ready summaries for faster manual decisions.
+          </p>
+
+          <pre class="kw-pre mt-5"><code>{alertEnv}</code></pre>
+          <p class="mt-3 text-xs text-slate-300/75">
+            For a 25% loss trigger instead of 35%, set <code class="kw-inline-code">ALERT_POSITION_LOSS_FRACTION=0.25</code>.
+          </p>
+        </article>
+
+        <aside class="rounded-2xl border border-emerald-200/20 bg-emerald-400/10 p-6 shadow-[0_16px_50px_rgba(0,0,0,0.28)]">
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-100/80">Project scope</p>
+          <h3 class="mt-2 text-xl font-semibold text-white">Architecture and model workflow</h3>
+          <ul class="mt-4 space-y-2 text-sm text-emerald-50/90">
+            <li>Forecast aggregation: GFS, ECMWF, NWS, Open-Meteo</li>
+            <li>Station telemetry: Central Park observations (KNYC)</li>
+            <li>Probability engine across Kalshi settlement brackets</li>
+            <li>Backtest mode with lead-time, win-rate, and ROI output</li>
+            <li>CLI surfaces for run, dsm, settlements, forecasts, and status</li>
+          </ul>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/services/websites" class="rt-btn-primary">
+              See Website Work
+              <span class="cta-glow" aria-hidden="true"></span>
+            </a>
+            <a href="/#work" class="cta-secondary">
+              Back to Work
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .kw-shell {
+      --kw-green: #22c55e;
+      --kw-cyan: #38bdf8;
+      --kw-navy: #040b14;
+    }
+
+    .kw-aurora {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(70px);
+      opacity: 0.45;
+    }
+
+    .kw-aurora-a {
+      left: -9rem;
+      top: -5rem;
+      height: 18rem;
+      width: 18rem;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.55), transparent 68%);
+    }
+
+    .kw-aurora-b {
+      right: -8rem;
+      top: 6rem;
+      height: 20rem;
+      width: 20rem;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.5), transparent 70%);
+    }
+
+    .kw-aurora-c {
+      bottom: -9rem;
+      left: 35%;
+      height: 20rem;
+      width: 20rem;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.38), transparent 72%);
+    }
+
+    .kw-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(circle at 50% 40%, black 35%, transparent 85%);
+      opacity: 0.55;
+    }
+
+    .kw-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      background: rgba(34, 197, 94, 0.2);
+      color: #dcfce7;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .kw-live-dot {
+      height: 8px;
+      width: 8px;
+      border-radius: 999px;
+      background: #34d399;
+      box-shadow: 0 0 0 6px rgba(52, 211, 153, 0.2);
+    }
+
+    .kw-tag {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 6px 12px;
+      font-size: 12px;
+      color: rgba(226, 232, 240, 0.95);
+    }
+
+    .kw-inline-code {
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(15, 23, 42, 0.62);
+      padding: 2px 8px;
+      font-size: 12px;
+      color: #c7f9d7;
+    }
+
+    .kw-panel {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03)),
+        radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.22), transparent 42%);
+    }
+
+    .kw-chart {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 14px 36px rgba(2, 6, 23, 0.35);
+    }
+
+    .kw-legend {
+      height: 2px;
+      width: 24px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .kw-legend-observed {
+      background: linear-gradient(90deg, #38bdf8, #60a5fa);
+    }
+
+    .kw-legend-model {
+      background: linear-gradient(90deg, #34d399, #22c55e);
+    }
+
+    .kw-feature {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kw-feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 10%, rgba(34, 197, 94, 0.14), transparent 55%);
+      pointer-events: none;
+    }
+
+    .kw-icon-wrap {
+      display: inline-flex;
+      height: 32px;
+      width: 32px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      background: rgba(52, 211, 153, 0.16);
+      color: #a7f3d0;
+      flex: 0 0 auto;
+    }
+
+    .kw-icon {
+      height: 18px;
+      width: 18px;
+    }
+
+    .kw-surface {
+      background-image:
+        radial-gradient(circle at 15% -10%, rgba(56, 189, 248, 0.2), transparent 45%),
+        radial-gradient(circle at 90% 110%, rgba(34, 197, 94, 0.2), transparent 45%),
+        linear-gradient(180deg, #07111d 0%, #060d18 100%);
+    }
+
+    .kw-command-card,
+    .kw-log-card {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 14px 34px rgba(2, 6, 23, 0.35);
+    }
+
+    .kw-pre {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(2, 6, 23, 0.82);
+      padding: 11px 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #d1fae5;
+    }
+
+    @media (max-width: 520px) {
+      .kw-live-pill {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</BaseLayout>

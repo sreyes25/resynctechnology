@@ -17,7 +17,7 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
       </p>
     </div>
 
-    <div class="mt-10 grid gap-6 md:grid-cols-2">
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       <!-- Card 1 -->
       <article class="rounded-2xl border border-black/10 bg-white/90 p-7 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <div class="flex items-start justify-between gap-6">
@@ -70,20 +70,64 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
 
       <!-- Card 2 -->
       <article class="rounded-2xl border border-black/10 bg-white/90 p-7 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
-        <h3 class="text-xl font-bold">Client Systems & Automation</h3>
+        <div class="flex items-start justify-between gap-6">
+          <div>
+            <h3 class="text-xl font-bold">Kalshi Weather Bot</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">
+              Python trading dashboard for Kalshi NYC Daily High Temperature markets. It blends NWS, GFS, and ECMWF
+              forecasts with live Central Park (KNYC) readings and a probability engine to flag pricing dislocations.
+            </p>
+            <p class="mt-2 text-xs leading-relaxed text-ink/60">
+              Based on an original project by Srinath Srinivasan. Modified and extended by Sergio Reyes for real-time
+              weather trajectory modeling and Kalshi advisory signals.
+            </p>
+          </div>
+          <span class="rt-badge rt-badge-kalshi">Live Modeling</span>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="rt-tag-light">Python</span>
+          <span class="rt-tag-light">Kalshi</span>
+          <span class="rt-tag-light">Weather Models</span>
+          <span class="rt-tag-light">Probability Engine</span>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="/projects/kalshi-weather" class="rt-btn-primary-light">
+            View Project
+          </a>
+          <a href="/projects/kalshi-weather" class="rt-link-inline">
+            See model details →
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="rounded-2xl border border-black/10 bg-white/90 p-7 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
+        <h3 class="text-xl font-bold">Infiniker Website Platform</h3>
         <p class="mt-2 text-sm leading-relaxed text-ink/70">
-          Internal tooling, <a href="/automations" class="font-semibold text-resync-700 underline decoration-resync-300 underline-offset-2 hover:text-resync-900">workflow automation</a>, integrations, and monitoring — built to reduce manual work and increase operational clarity.
+          Website expansion for Infiniker including a mobile-friendly media panel so the team can upload project gallery
+          photos on the go, plus secure Supabase login, contact form intake, and Google Reviews API integration.
         </p>
 
         <div class="mt-5 flex flex-wrap gap-2">
-          <span class="rt-tag-light">Integrations</span>
-          <span class="rt-tag-light">APIs</span>
-          <span class="rt-tag-light">Observability</span>
+          <span class="rt-tag-light">Supabase Auth</span>
+          <span class="rt-tag-light">Media Uploads</span>
+          <span class="rt-tag-light">Contact API</span>
+          <span class="rt-tag-light">Google Reviews API</span>
         </div>
 
-        <div class="mt-6">
-          <a href="/automations" class="rt-link-inline">
-            See automation systems →
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href="https://infiniker.com/"
+            class="rt-btn-primary-light"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit Site
+          </a>
+          <a href="/services/websites" class="rt-link-inline">
+            See implementation work →
           </a>
         </div>
       </article>
@@ -169,6 +213,17 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
         #0f8f5f 0%,
         #0a6c47 45%,
         #075739 100%
+      );
+    }
+
+    .rt-badge-kalshi{
+      position: relative;
+      border-color: rgba(255,255,255,0.22);
+      background: linear-gradient(
+        180deg,
+        #22c55e 0%,
+        #16a34a 45%,
+        #15803d 100%
       );
     }
 
