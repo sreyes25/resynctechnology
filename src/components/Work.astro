@@ -19,26 +19,26 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
 
     <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       <!-- Card 1 -->
-      <article class="rounded-2xl border border-black/10 bg-white/90 p-7 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <article class="rounded-2xl border border-black/10 bg-white/90 p-6 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <div class="flex items-start justify-between gap-6">
           <div>
             <h3 class="text-xl font-bold">Invoice Americano</h3>
             <p class="mt-2 text-sm leading-relaxed text-ink/70">
-              iOS invoicing app for contractors and small business owners. Create invoices fast, generate professional PDFs, and keep client history organized.
+              iOS invoicing app for contractors: create invoices fast, generate clean PDFs, and keep client history organized.
             </p>
           </div>
 
           <span class="rt-badge rt-badge-live">Live on App Store</span>
         </div>
 
-        <div class="mt-5 flex flex-wrap gap-2">
+        <div class="mt-4 flex flex-wrap gap-2">
           <span class="rt-tag-light">iOS</span>
           <span class="rt-tag-light">Payments</span>
           <span class="rt-tag-light">PDF</span>
           <span class="rt-tag-light">Automation</span>
         </div>
 
-        <div class="mt-6 flex flex-wrap items-center gap-3">
+        <div class="mt-5 flex flex-wrap items-center gap-3">
           <a href="/invoice" class="rt-btn-primary-light">
             View Page
             <span class="cta-glow" aria-hidden="true"></span>
@@ -50,16 +50,18 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
             rel="noopener noreferrer"
             aria-label="Download Invoice Americano on the App Store"
           >
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              class="ia-appstore-mini-icon"
-            >
-              <path
-                fill="currentColor"
-                d="M16.12 1.23c0 .93-.35 1.9-1.04 2.9-.83 1.2-1.84 1.89-3.01 1.8-.03-.12-.04-.24-.04-.37 0-.92.4-1.9 1.1-2.82.35-.46.79-.85 1.33-1.16.53-.31 1.04-.49 1.51-.53.1.18.15.24.15.18zm3.89 12.06c-.34.8-.74 1.51-1.2 2.17-.63.9-1.15 1.52-1.55 1.87-.62.58-1.3.87-2.02.89-.52 0-1.13-.14-1.86-.44-.72-.29-1.4-.44-2.03-.44-.65 0-1.35.15-2.1.44-.74.3-1.34.45-1.8.47-.7.02-1.39-.28-2.07-.92-.44-.38-.98-1.02-1.62-1.94-.7-.98-1.27-2.11-1.71-3.42C1.36 10.57 1.11 9.2 1.11 7.9c0-1.5.32-2.78.96-3.86.5-.88 1.18-1.56 2.03-2.07.84-.5 1.76-.76 2.74-.78.53 0 1.24.16 2.11.5.87.33 1.43.5 1.68.5.19 0 .82-.19 1.89-.57 1.03-.35 1.87-.5 2.56-.46 1.85.16 3.25.88 4.17 2.2-1.66 1-2.49 2.42-2.47 4.25.01 1.42.53 2.61 1.53 3.54.46.44.97.78 1.54 1.02-.13.37-.26.72-.4 1.06z"
-              ></path>
-            </svg>
+            <span class="ia-appstore-mini-icon-wrap">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                class="ia-appstore-mini-icon"
+              >
+                <path
+                  fill="currentColor"
+                  d="M16.12 1.23c0 .93-.35 1.9-1.04 2.9-.83 1.2-1.84 1.89-3.01 1.8-.03-.12-.04-.24-.04-.37 0-.92.4-1.9 1.1-2.82.35-.46.79-.85 1.33-1.16.53-.31 1.04-.49 1.51-.53.1.18.15.24.15.18zm3.89 12.06c-.34.8-.74 1.51-1.2 2.17-.63.9-1.15 1.52-1.55 1.87-.62.58-1.3.87-2.02.89-.52 0-1.13-.14-1.86-.44-.72-.29-1.4-.44-2.03-.44-.65 0-1.35.15-2.1.44-.74.3-1.34.45-1.8.47-.7.02-1.39-.28-2.07-.92-.44-.38-.98-1.02-1.62-1.94-.7-.98-1.27-2.11-1.71-3.42C1.36 10.57 1.11 9.2 1.11 7.9c0-1.5.32-2.78.96-3.86.5-.88 1.18-1.56 2.03-2.07.84-.5 1.76-.76 2.74-.78.53 0 1.24.16 2.11.5.87.33 1.43.5 1.68.5.19 0 .82-.19 1.89-.57 1.03-.35 1.87-.5 2.56-.46 1.85.16 3.25.88 4.17 2.2-1.66 1-2.49 2.42-2.47 4.25.01 1.42.53 2.61 1.53 3.54.46.44.97.78 1.54 1.02-.13.37-.26.72-.4 1.06z"
+                ></path>
+              </svg>
+            </span>
             <span class="ia-appstore-mini-copy">
               <span class="ia-appstore-mini-kicker">Download on the</span>
               <span class="ia-appstore-mini-title">App Store</span>
@@ -69,30 +71,26 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
       </article>
 
       <!-- Card 2 -->
-      <article class="rounded-2xl border border-black/10 bg-white/90 p-7 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <article class="rounded-2xl border border-black/10 bg-white/90 p-6 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <div class="flex items-start justify-between gap-6">
           <div>
             <h3 class="text-xl font-bold">Kalshi Weather Bot</h3>
             <p class="mt-2 text-sm leading-relaxed text-ink/70">
-              Python trading dashboard for Kalshi NYC Daily High Temperature markets. It blends NWS, GFS, and ECMWF
-              forecasts with live Central Park (KNYC) readings and a probability engine to flag pricing dislocations.
-            </p>
-            <p class="mt-2 text-xs leading-relaxed text-ink/60">
-              Based on an original project by Srinath Srinivasan. Modified and extended by Sergio Reyes for real-time
-              weather trajectory modeling and Kalshi advisory signals.
+              Python weather-trading dashboard combining NWS/GFS/ECMWF forecasts with live Central Park data and
+              bracket probability modeling.
             </p>
           </div>
           <span class="rt-badge rt-badge-kalshi">Live Modeling</span>
         </div>
 
-        <div class="mt-5 flex flex-wrap gap-2">
+        <div class="mt-4 flex flex-wrap gap-2">
           <span class="rt-tag-light">Python</span>
           <span class="rt-tag-light">Kalshi</span>
           <span class="rt-tag-light">Weather Models</span>
           <span class="rt-tag-light">Probability Engine</span>
         </div>
 
-        <div class="mt-6 flex flex-wrap items-center gap-3">
+        <div class="mt-5 flex flex-wrap items-center gap-3">
           <a href="/projects/kalshi-weather" class="rt-btn-primary-light">
             View Project
           </a>
@@ -103,21 +101,20 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
       </article>
 
       <!-- Card 3 -->
-      <article class="rounded-2xl border border-black/10 bg-white/90 p-7 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <article class="rounded-2xl border border-black/10 bg-white/90 p-6 shadow-soft backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <h3 class="text-xl font-bold">Infiniker Website Platform</h3>
         <p class="mt-2 text-sm leading-relaxed text-ink/70">
-          Website expansion for Infiniker including a mobile-friendly media panel so the team can upload project gallery
-          photos on the go, plus secure Supabase login, contact form intake, and Google Reviews API integration.
+          Website expansion for Infiniker with secure Supabase media uploads, contact intake, and Google Reviews API.
         </p>
 
-        <div class="mt-5 flex flex-wrap gap-2">
+        <div class="mt-4 flex flex-wrap gap-2">
           <span class="rt-tag-light">Supabase Auth</span>
           <span class="rt-tag-light">Media Uploads</span>
           <span class="rt-tag-light">Contact API</span>
           <span class="rt-tag-light">Google Reviews API</span>
         </div>
 
-        <div class="mt-6 flex flex-wrap items-center gap-3">
+        <div class="mt-5 flex flex-wrap items-center gap-3">
           <a
             href="https://infiniker.com/"
             class="rt-btn-primary-light"
@@ -268,9 +265,21 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
     }
 
     .ia-appstore-mini-icon{
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .ia-appstore-mini-icon-wrap{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 22px;
       height: 22px;
       flex: 0 0 22px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
     }
 
     .ia-appstore-mini-copy{
@@ -288,7 +297,7 @@ const appStoreUrl = "https://apps.apple.com/us/app/invoice-americano/id675962229
 
     .ia-appstore-mini-title{
       margin-top: 2px;
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 600;
       letter-spacing: 0.01em;
     }
