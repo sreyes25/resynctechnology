@@ -64,18 +64,21 @@ const featuredSites = [
   {
     name: "Park Slope Dermatology",
     url: "https://parkslopedermatology.com/",
-    label: "Healthcare",
-    summary: "WordPress foundation with custom design, bespoke components, and automation workflows tailored to patient intake.",
-    tags: ["WordPress", "Custom design", "Automation"],
+    caseHref: "/services/websites/parkslopedermatology",
+    label: "Healthcare Ops",
+    summary:
+      "Website and AI-assisted intake workflow that categorizes patient requests, keeps inbound inquiries structured, and reduces missed appointments.",
+    tags: ["AI Intake", "Patient Routing", "Auto-response CRM", "Admin Workflow"],
     bg: "#acffac66",
   },
   {
     name: "Infiniker",
     url: "https://infiniker.com/",
-    label: "Home Services",
+    caseHref: "/services/websites/infiniker",
+    label: "AI Gallery System",
     summary:
-      "Custom website + operator panel with Supabase-secured media uploads for project galleries, integrated contact intake, and a live Google Reviews API feed.",
-    tags: ["Supabase Auth", "Media Upload Panel", "Gallery Workflow", "Contact Intake", "Google Reviews API"],
+      "Custom website and operator panel where uploaded project images are labeled automatically, organized into structured categories, and made filter-ready without manual tagging.",
+    tags: ["AI Image Labeling", "Structured Gallery", "Media Upload Panel", "Team Workflow"],
     bg: "#4bb8ff59",
   },
 ];
@@ -103,6 +106,17 @@ const testimonials = [
     company: "Civic Analytics",
   },
 ];
+
+const industryLinks: Record<string, { label: string; href: string }> = {
+  Healthcare: {
+    label: "Park Slope Dermatology backlink",
+    href: "/services/websites/parkslopedermatology",
+  },
+  "Construction & Trades": {
+    label: "Infiniker backlink",
+    href: "/services/websites/infiniker",
+  },
+};
 ---
 
 <BaseLayout
@@ -298,6 +312,14 @@ const testimonials = [
                 </a>
               </div>
 
+              <a
+                href={site.caseHref}
+                class="mt-4 inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-soft transition hover:border-resync-200 hover:text-resync-700"
+              >
+                View website profile
+                <span aria-hidden="true" class="ml-2">›</span>
+              </a>
+
               <div class="preview-frame mt-5 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
                 <div class="flex items-center justify-between border-b border-slate-200 bg-white px-3 py-2 text-[11px] text-slate-400">
                   <span class="font-semibold text-slate-500">Live preview</span>
@@ -419,6 +441,15 @@ const testimonials = [
             <div class="rounded-2xl border border-white/40 bg-white/85 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.12)] backdrop-blur">
               <h4 class="text-base font-semibold text-slateink">{industry.title}</h4>
               <p class="mt-2 text-sm text-slate-600">{industry.desc}</p>
+              {industryLinks[industry.title] && (
+                <a
+                  href={industryLinks[industry.title].href}
+                  class="mt-4 inline-flex items-center rounded-full border border-blue-200/70 bg-blue-50/80 px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-resync-200 hover:bg-white hover:text-resync-700"
+                >
+                  {industryLinks[industry.title].label}
+                  <span aria-hidden="true" class="ml-2">›</span>
+                </a>
+              )}
             </div>
           ))}
         </div>

@@ -10,6 +10,8 @@ const routes = [
   { path: "/services/startup-mvp-development-nyc", changefreq: "weekly", priority: "0.95" },
   { path: "/services/digital-marketing-nyc", changefreq: "weekly", priority: "0.95" },
   { path: "/services/websites", changefreq: "weekly", priority: "0.9" },
+  { path: "/services/websites/parkslopedermatology", changefreq: "monthly", priority: "0.75" },
+  { path: "/services/websites/infiniker", changefreq: "monthly", priority: "0.75" },
   { path: "/services/digital-marketing", changefreq: "weekly", priority: "0.9" },
   { path: "/invoiceamericano", changefreq: "monthly", priority: "0.6" },
 ];

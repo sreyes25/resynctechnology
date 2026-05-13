@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const highlights = [
+  "Long Island construction and home improvement company",
+  "Interior remodeling, exterior projects, and residential repairs",
+  "Project gallery with patios, studio work, kitchens, and outdoor kitchens",
+  "Estimate and phone-first conversion paths for homeowners",
+];
+
+const services = [
+  "Kitchen, bathroom, living area, and interior renovation work",
+  "Light fixtures, plumbing, deck and patio, drywall, and home repairs",
+  "Siding, decks, outdoor projects, and exterior improvements",
+  "Project gallery pages built to show completed craftsmanship",
+];
+---
+
+<BaseLayout
+  title="Infiniker Website Profile | Resync Technology"
+  description="Website profile and backlink page for Infiniker, a Long Island construction and home improvement company supported by Resync Technology."
+  keywords={[
+    "Infiniker",
+    "Long Island construction",
+    "home remodeling Long Island",
+    "construction website",
+    "Resync Technology websites",
+  ]}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Infiniker Website Profile",
+    about: {
+      "@type": "HomeAndConstructionBusiness",
+      name: "Infiniker",
+      url: "https://infiniker.com/",
+      areaServed: "Long Island, NY",
+    },
+  }}
+>
+  <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-24 top-0 h-72 w-72 rounded-full bg-resync-600/25 blur-3xl"></div>
+      <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(225,29,72,0.08),transparent_28%),radial-gradient(circle_at_50%_70%,rgba(255,255,255,0.05),transparent_38%)]"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-6 pt-5 pb-16 md:pb-24 rt-hero-top">
+      <p class="hero-eyebrow">Construction website profile</p>
+      <div class="mt-4 grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+        <div>
+          <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
+            Infiniker construction website.
+          </h1>
+          <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-200/90">
+            Infiniker is a Long Island construction and home improvement company serving homeowners with interior
+            remodeling, repairs, exterior projects, and estimate-driven service workflows.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="https://infiniker.com/" class="rt-btn-primary" target="_blank" rel="noreferrer">
+              Visit Infiniker
+              <span class="cta-glow" aria-hidden="true"></span>
+            </a>
+            <a href="/services/websites" class="cta-secondary">Back to Websites</a>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-[0_25px_70px_rgba(0,0,0,0.45)] backdrop-blur">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">Client site</p>
+            <h2 class="mt-3 text-2xl font-bold text-white">A practical web presence for homeowner trust.</h2>
+            <p class="mt-3 text-sm leading-relaxed text-slate-200/80">
+              The site keeps the path simple: understand the construction services, review project work, request an
+              estimate, or call directly from the page.
+            </p>
+          </div>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-xs text-white/60">Industry</div>
+              <div class="mt-2 text-lg font-semibold text-white">Construction</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-xs text-white/60">Market</div>
+              <div class="mt-2 text-lg font-semibold text-white">Long Island, NY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ws-section ws-mid accent-blue text-slateink">
+    <div class="section-wash"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">About the company</p>
+          <h2 class="mt-3 text-3xl font-bold text-slateink">Home remodeling and repairs across Long Island.</h2>
+          <p class="mt-4 text-sm leading-relaxed text-slate-700">
+            Infiniker presents itself as an all-phase home remodeling company built around quality craftsmanship,
+            close collaboration with clients, and practical help for both large and small home improvement needs.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {highlights.map((item) => (
+            <div class="rounded-2xl border border-white/50 bg-white/85 p-5 shadow-soft backdrop-blur">
+              <h3 class="text-sm font-semibold text-slateink">{item}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ws-section ws-mid accent-purple text-slateink">
+    <div class="section-wash"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-resync-600">Search context</p>
+        <h2 class="mt-3 text-3xl font-bold text-slateink">What homeowners can find on the site.</h2>
+        <p class="mt-3 text-slate-700">
+          The website supports local search and direct conversion by pairing service details with gallery links,
+          project examples, a request estimate flow, and a click-to-call path.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-2">
+        {services.map((service) => (
+          <div class="rounded-2xl border border-black/5 bg-white p-5 shadow-soft">
+            <p class="text-sm font-semibold text-slateink">{service}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="ws-section ws-mid accent-red text-slateink">
+    <div class="section-wash"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="rounded-xl2 border border-black/5 bg-white p-8 shadow-soft">
+        <h2 class="text-3xl font-bold text-slateink">Backlink reference</h2>
+        <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+          Resync Technology recognizes Infiniker as a construction website client and public resource for Long Island
+          homeowners researching remodeling, repair, exterior improvement, and project estimate options.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://infiniker.com/" class="rt-btn-primary-light" target="_blank" rel="noreferrer">
+            Open Client Website
+          </a>
+          <a href="/start" class="cta-secondary">Build a Construction Website</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

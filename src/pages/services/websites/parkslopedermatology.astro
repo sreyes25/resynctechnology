@@ -1,0 +1,165 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const highlights = [
+  "Brooklyn dermatology practice serving Park Slope and nearby neighborhoods",
+  "Medical, cosmetic, laser dermatology, and medi-spa services",
+  "Doctor-led care from Dr. Brigitte Holder, M.D.",
+  "Structured appointment and patient inquiry paths",
+];
+
+const services = [
+  "Acne treatment and acne scar care",
+  "Rosacea, psoriasis, rashes, hair loss, and skin cancer care",
+  "Fraxel, Excel V, Virtue RF, laser hair reduction, and CoolSculpting",
+  "Cosmetic injectables, fillers, chemical peels, and medi-spa treatments",
+];
+---
+
+<BaseLayout
+  title="Park Slope Dermatology Website Profile | Resync Technology"
+  description="Website profile and backlink page for Park Slope Dermatology, a Brooklyn dermatology and medi-spa practice supported by Resync Technology."
+  keywords={[
+    "Park Slope Dermatology",
+    "Brooklyn dermatologist",
+    "dermatology website",
+    "healthcare web development",
+    "Resync Technology websites",
+  ]}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Park Slope Dermatology Website Profile",
+    about: {
+      "@type": "MedicalBusiness",
+      name: "Park Slope Dermatology & Medi Spa",
+      url: "https://parkslopedermatology.com/",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "456A 9th Street",
+        addressLocality: "Brooklyn",
+        addressRegion: "NY",
+        postalCode: "11215",
+        addressCountry: "US",
+      },
+    },
+  }}
+>
+  <section class="relative overflow-hidden bg-[#05060f] text-slate-100">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-24 top-0 h-72 w-72 rounded-full bg-resync-600/25 blur-3xl"></div>
+      <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-[#0d172a] blur-[120px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(225,29,72,0.08),transparent_28%),radial-gradient(circle_at_50%_70%,rgba(255,255,255,0.05),transparent_38%)]"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-6 pt-5 pb-16 md:pb-24 rt-hero-top">
+      <p class="hero-eyebrow">Healthcare website profile</p>
+      <div class="mt-4 grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+        <div>
+          <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
+            Park Slope Dermatology & Medi Spa.
+          </h1>
+          <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-200/90">
+            Park Slope Dermatology is a Brooklyn dermatology and medi-spa practice focused on personalized skin care,
+            medical dermatology, cosmetic dermatology, laser treatments, and patient education.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="https://parkslopedermatology.com/" class="rt-btn-primary" target="_blank" rel="noreferrer">
+              Visit Park Slope Dermatology
+              <span class="cta-glow" aria-hidden="true"></span>
+            </a>
+            <a href="/services/websites" class="cta-secondary">Back to Websites</a>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-[0_25px_70px_rgba(0,0,0,0.45)] backdrop-blur">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">Client site</p>
+            <h2 class="mt-3 text-2xl font-bold text-white">Brooklyn skin care with clear service paths</h2>
+            <p class="mt-3 text-sm leading-relaxed text-slate-200/80">
+              The website gives patients direct routes to appointment requests, medical dermatology services,
+              cosmetic treatments, before-and-after examples, office information, and care guidance.
+            </p>
+          </div>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-xs text-white/60">Industry</div>
+              <div class="mt-2 text-lg font-semibold text-white">Healthcare</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-xs text-white/60">Location</div>
+              <div class="mt-2 text-lg font-semibold text-white">Brooklyn, NY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ws-section ws-mid accent-blue text-slateink">
+    <div class="section-wash"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">About the practice</p>
+          <h2 class="mt-3 text-3xl font-bold text-slateink">A focused dermatology destination in Park Slope.</h2>
+          <p class="mt-4 text-sm leading-relaxed text-slate-700">
+            Park Slope Dermatology & Medi Spa provides medical and cosmetic dermatology in Brooklyn. The practice
+            highlights consistent doctor-led care, advanced laser technology, individualized treatment plans, and
+            a calm office experience that includes a medi-spa and healing garden.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {highlights.map((item) => (
+            <div class="rounded-2xl border border-white/50 bg-white/85 p-5 shadow-soft backdrop-blur">
+              <h3 class="text-sm font-semibold text-slateink">{item}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ws-section ws-mid accent-purple text-slateink">
+    <div class="section-wash"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-resync-600">Search context</p>
+        <h2 class="mt-3 text-3xl font-bold text-slateink">What patients can find on the site.</h2>
+        <p class="mt-3 text-slate-700">
+          The site supports local discovery with service-specific content, treatment descriptions, patient result
+          examples, appointment pathways, and clear contact details.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-2">
+        {services.map((service) => (
+          <div class="rounded-2xl border border-black/5 bg-white p-5 shadow-soft">
+            <p class="text-sm font-semibold text-slateink">{service}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="ws-section ws-mid accent-red text-slateink">
+    <div class="section-wash"></div>
+    <div class="section-content mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="rounded-xl2 border border-black/5 bg-white p-8 shadow-soft">
+        <h2 class="text-3xl font-bold text-slateink">Backlink reference</h2>
+        <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+          Resync Technology recognizes Park Slope Dermatology & Medi Spa as a healthcare website client and public
+          resource for Brooklyn patients researching dermatology services, appointment options, and skin care
+          treatment information.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://parkslopedermatology.com/" class="rt-btn-primary-light" target="_blank" rel="noreferrer">
+            Open Client Website
+          </a>
+          <a href="/start" class="cta-secondary">Build a Healthcare Website</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

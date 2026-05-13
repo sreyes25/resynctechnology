@@ -2,62 +2,64 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const tags = [
-  "Python",
-  "Kalshi Markets",
+  "Forecasting Platform",
+  "Real-Time Data",
   "NWS + Open-Meteo",
-  "GFS + ECMWF",
   "KNYC Live Data",
+  "Decision Support",
 ];
 
+const livePlatformUrl = "https://knyc-signal-platform-web-3nu8.vercel.app/";
+
 const stats = [
-  { label: "Forecast sources", value: "3 models + NWS guidance" },
+  { label: "Forecast sources", value: "Multi-model + NWS guidance" },
   { label: "Live station", value: "Central Park (KNYC)" },
-  { label: "Signal output", value: "Bracket probabilities + edge flags" },
+  { label: "Signal output", value: "Structured signals + monitored outputs" },
 ];
 
 const steps = [
   {
-    title: "Reads the weather",
-    desc: "Pulls forecast guidance from GFS, ECMWF, and NWS to build a single market-facing forecast baseline.",
+    title: "Aggregates live data",
+    desc: "Pulls forecast guidance from multiple sources and combines it into one monitored forecasting baseline.",
     icon: "forecast",
   },
   {
-    title: "Watches the sky",
-    desc: "Tracks real-time Central Park observations to adjust trajectories as intraday conditions shift.",
+    title: "Tracks KNYC conditions",
+    desc: "Uses real-time Central Park observations to update the system view as intraday conditions shift.",
     icon: "station",
   },
   {
-    title: "Computes odds",
-    desc: "Transforms adjusted weather trajectories into probability weights for every Kalshi temperature bracket.",
+    title: "Computes structured signals",
+    desc: "Transforms live trajectories into readable outputs for analysis, scenario review, and decision support.",
     icon: "odds",
   },
   {
-    title: "Finds edges",
-    desc: "Compares model-implied probabilities to market prices and highlights mismatches worth manual review.",
+    title: "Surfaces decision support",
+    desc: "Keeps the reasoning transparent with monitored outputs, replayable data, and operational visibility.",
     icon: "edge",
   },
 ];
 
 const commands = [
   {
-    title: "Run dashboard",
+    title: "Run platform",
     cmd: "python -m kalshi_weather run --city NYC",
-    desc: "Launches the live trading view with forecasts, station data, and bracket probabilities.",
+    desc: "Launches the live platform view with forecasts, station data, and structured signal output.",
   },
   {
     title: "View progression graph",
     cmd: "python -m kalshi_weather view-graph --city NYC --refresh 15",
-    desc: "Streams intraday line progression for observed highs vs final model mean.",
+    desc: "Streams intraday progression for observed highs versus the current model baseline.",
   },
   {
-    title: "Replay/backtest",
+    title: "Replay historical run",
     cmd: "kalshi-weather backtest --city NYC --days 7 --starting-balance 20",
-    desc: "Replays logs and reports prediction quality, win rate, and strategy ROI.",
+    desc: "Replays logged runs for validation, signal review, and historical comparison.",
   },
   {
     title: "Settlement lookup",
     cmd: "python -m kalshi_weather settlement --days 7",
-    desc: "Pulls official NWS climate settlements for historical validation.",
+    desc: "Pulls official NWS climate settlements for reference and validation.",
   },
 ];
 
@@ -84,25 +86,25 @@ const modelPoints = toPoints(modelSeries);
 ---
 
 <BaseLayout
-  title="Kalshi Weather Bot — Resync Technology"
-  description="Kalshi Weather Bot aggregates weather models and live station data to surface pricing edges in Kalshi NYC Daily High Temperature markets."
+  title="KNYC Signal Platform — Resync Technology"
+  description="KNYC Signal Platform is a live forecasting and decision-support system that aggregates weather models and real-time KNYC data into monitored outputs."
   keywords={[
-    "kalshi weather bot",
-    "weather trading bot",
-    "kalshi nyc temperature market",
-    "forecast trajectory modeling",
-    "python market analytics",
+    "knyc signal platform",
+    "forecasting platform",
+    "real-time decision support",
+    "weather data aggregation",
+    "signal platform",
   ]}
   structuredData={{
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Kalshi Weather Bot",
+    name: "KNYC Signal Platform",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Cross-platform",
     creator: { "@type": "Person", name: "Sergio Reyes" },
     contributor: [{ "@type": "Person", name: "Srinath Srinivasan" }],
     description:
-      "A Python weather-market analytics bot for Kalshi NYC Daily High Temperature brackets using model aggregation, live observations, and probability scoring.",
+      "A live forecasting and decision-support system using model aggregation, real-time observations, and structured signal outputs.",
   }}
 >
   <section class="kw-shell relative overflow-hidden bg-[#040b14] text-slate-100">
@@ -119,23 +121,23 @@ const modelPoints = toPoints(modelSeries);
       <div class="mt-6 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
         <div>
           <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
-            Kalshi Weather Bot
+            KNYC Signal Platform
           </h1>
           <div class="mt-4 flex flex-wrap items-center gap-2">
             <span class="kw-live-pill">
               <span class="kw-live-dot"></span>
-              Real-time trajectory modeling
+              Live forecasting platform
             </span>
-            <span class="text-xs text-emerald-100/80">NYC Daily High Temperature markets</span>
+            <span class="text-xs text-emerald-100/80">Real-time KNYC decision support</span>
           </div>
 
           <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-200/90">
-            A Python market intelligence bot that aggregates weather forecasts, tracks live Central Park temperature
-            observations, and estimates bracket-level probabilities to identify market mispricing.
+            A live forecasting and decision-support system that aggregates multiple weather data sources, tracks real-time
+            Central Park observations, and produces structured outputs for analysis and operational review.
           </p>
           <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-200/80">
-            Based on an original project by Srinath Srinivasan. Modified and extended by Sergio Reyes to include
-            real-time weather trajectory modeling and Kalshi advisory signals.
+            Built from an original weather-modeling foundation by Srinath Srinivasan and extended by Sergio Reyes with an
+            emphasis on reliability, monitoring, and transparent system behavior.
           </p>
 
           <div class="mt-6 flex flex-wrap gap-3">
@@ -145,12 +147,12 @@ const modelPoints = toPoints(modelSeries);
           </div>
 
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="/start" class="rt-btn-primary">
-              Start a Project
+            <a href={livePlatformUrl} class="rt-btn-primary" target="_blank" rel="noopener noreferrer">
+              See Live Platform
               <span class="cta-glow" aria-hidden="true"></span>
             </a>
-            <a href="/services/websites" class="cta-secondary">
-              Website Systems Work
+            <a href="/start" class="cta-secondary">
+              Start a Project
             </a>
           </div>
           <p class="mt-3 text-sm text-slate-200/75">
@@ -161,7 +163,7 @@ const modelPoints = toPoints(modelSeries);
         <aside class="kw-panel rounded-xl2 border border-white/10 p-6 shadow-[0_22px_80px_rgba(0,0,0,0.45)] backdrop-blur">
           <h2 class="text-base font-semibold text-white">Live Signal Console</h2>
           <p class="mt-2 text-sm text-slate-200/80">
-            Forecast trajectory and observed highs are continuously compared to market pricing brackets.
+            Forecast trajectories and observed highs are combined into one monitored signal view.
           </p>
 
           <div class="kw-chart mt-5 rounded-xl2 border border-emerald-200/20 bg-emerald-400/5 p-4">
@@ -269,7 +271,7 @@ const modelPoints = toPoints(modelSeries);
       <div class="max-w-2xl">
         <h2 class="text-3xl font-bold tracking-tight text-white">Command surface</h2>
         <p class="mt-3 text-slate-200/80">
-          The bot ships with operational commands for live monitoring, graphing, settlements, and historical replay.
+          The platform ships with operational commands for live monitoring, graphing, validations, and historical replay.
         </p>
       </div>
 
@@ -300,8 +302,7 @@ const modelPoints = toPoints(modelSeries);
           <p class="text-xs font-semibold uppercase tracking-[0.13em] text-emerald-200/70">Intraday progression logs</p>
           <h3 class="mt-2 text-xl font-semibold text-white">Live data snapshots every refresh cycle</h3>
           <p class="mt-3 text-sm leading-relaxed text-slate-200/80">
-            Each run appends to city/day CSV files so your team can inspect trajectory shifts from opening conditions
-            through close.
+            Each run appends to city/day CSV files so forecast changes and observed shifts stay inspectable over time.
           </p>
 
           <div class="kw-code-wrap mt-5" data-kw-code-wrap>
@@ -353,10 +354,10 @@ const modelPoints = toPoints(modelSeries);
       <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_16px_50px_rgba(0,0,0,0.32)]">
           <p class="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-200/70">Alerts</p>
-          <h2 class="mt-2 text-2xl font-bold text-white">Risk and bracket-change notifications</h2>
+          <h2 class="mt-2 text-2xl font-bold text-white">Threshold and signal-change notifications</h2>
           <p class="mt-3 text-sm leading-relaxed text-slate-200/80">
-            Alert routing supports WhatsApp Cloud and Twilio. You can configure drawdown thresholds, bracket-shift
-            notices, and prompt-ready summaries for faster manual decisions.
+            Alert routing supports WhatsApp Cloud and Twilio. You can configure thresholds, signal-shift notices, and
+            prompt-ready summaries for faster manual decisions.
           </p>
 
           <div class="kw-code-wrap mt-5" data-kw-code-wrap>
@@ -383,14 +384,14 @@ const modelPoints = toPoints(modelSeries);
           <ul class="mt-4 space-y-2 text-sm text-emerald-50/90">
             <li>Forecast aggregation: GFS, ECMWF, NWS, Open-Meteo</li>
             <li>Station telemetry: Central Park observations (KNYC)</li>
-            <li>Probability engine across Kalshi settlement brackets</li>
-            <li>Backtest mode with lead-time, win-rate, and ROI output</li>
+            <li>Structured outputs for forecast scenarios and signal review</li>
+            <li>Historical replay for validation and monitoring analysis</li>
             <li>CLI surfaces for run, dsm, settlements, forecasts, and status</li>
           </ul>
 
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="/services/websites" class="rt-btn-primary">
-              See Website Work
+            <a href={livePlatformUrl} class="rt-btn-primary" target="_blank" rel="noopener noreferrer">
+              See Live Platform
               <span class="cta-glow" aria-hidden="true"></span>
             </a>
             <a href="/#work" class="cta-secondary">

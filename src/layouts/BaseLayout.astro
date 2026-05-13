@@ -124,24 +124,24 @@ const structuredDataItems = [...defaultStructuredData, ...extraStructuredData].f
         if (isLocalhost) return;
 
         // Respect "Do Not Track" when enabled
-        const dnt = navigator.doNotTrack === "1" || (window as any).doNotTrack === "1";
+        const dnt = navigator.doNotTrack === "1" || window.doNotTrack === "1";
         if (dnt) return;
 
         const loadAnalytics = () => {
-          if ((window as any).__rtGtagLoaded) return;
-          (window as any).__rtGtagLoaded = true;
+          if (window.__rtGtagLoaded) return;
+          window.__rtGtagLoaded = true;
 
-          (window as any).dataLayer = (window as any).dataLayer || [];
-          (window as any).gtag = function gtag() {
-            (window as any).dataLayer.push(arguments);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function gtag() {
+            window.dataLayer.push(arguments);
           };
 
           const script = document.createElement("script");
           script.async = true;
           script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
           script.onload = () => {
-            (window as any).gtag("js", new Date());
-            (window as any).gtag("config", GA_ID);
+            window.gtag("js", new Date());
+            window.gtag("config", GA_ID);
           };
           document.head.appendChild(script);
         };
@@ -164,7 +164,7 @@ const structuredDataItems = [...defaultStructuredData, ...extraStructuredData].f
 
         // Fallback: load when the browser is idle (or shortly after load)
         if ("requestIdleCallback" in window) {
-          (window as any).requestIdleCallback(loadAnalytics, { timeout: 4000 });
+          window.requestIdleCallback(loadAnalytics, { timeout: 4000 });
         } else {
           window.addEventListener(
             "load",
